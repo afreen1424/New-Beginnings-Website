@@ -223,12 +223,6 @@ body {
     }
 }
 
-@keyframes strokeReveal {
-    to {
-        stroke-dashoffset: 0;
-    }
-}
-
 @keyframes coupleNameFade {
     from {
         opacity: 0;
