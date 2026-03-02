@@ -91,7 +91,7 @@ export default function HomePage({ onIntroComplete }) {
               className={`serif-display hero-title-gold hero-heading-shell mt-8 text-3xl font-normal sm:whitespace-nowrap sm:text-5xl lg:text-6xl ${
                 heroContentFading ? "hero-heading-fade-out" : ""
               }`}
-              style={{ letterSpacing: mobile ? "0.22em" : "0.3em" }}
+              style={{ letterSpacing: mobile ? "0.16em" : "0.26em" }}
               data-testid="home-hero-heading"
             >
               {HERO_TITLE.split("").map((char, idx) => (
