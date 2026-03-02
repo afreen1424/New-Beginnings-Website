@@ -14,7 +14,7 @@ export default function SfxEntriesPage() {
           <h1 className="serif-display text-4xl text-[#F5EFE6] sm:text-5xl" data-testid="sfx-heading">
             Make an Entrance They&apos;ll Never Forget.
           </h1>
-          <p className="mt-4 max-w-3xl text-sm leading-relaxed text-[#F5EFE6]/92 sm:text-base" data-testid="sfx-hero-paragraph">
+          <p className="mt-4 max-w-3xl text-sm leading-relaxed text-[rgba(245,239,230,0.92)] sm:text-base" data-testid="sfx-hero-paragraph">
             From cinematic walk-ins to precision-timed special effects, each entrance is engineered to create a lasting first moment with elegance and impact.
           </p>
         </div>

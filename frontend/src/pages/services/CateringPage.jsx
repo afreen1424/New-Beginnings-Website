@@ -14,7 +14,7 @@ export default function CateringPage() {
           <h1 className="serif-display text-4xl text-[#F5EFE6] sm:text-5xl" data-testid="catering-heading">
             Curated Culinary Experiences.
           </h1>
-          <p className="mt-4 max-w-3xl text-sm leading-relaxed text-[#F5EFE6]/92 sm:text-base" data-testid="catering-hero-paragraph">
+          <p className="mt-4 max-w-3xl text-sm leading-relaxed text-[rgba(245,239,230,0.92)] sm:text-base" data-testid="catering-hero-paragraph">
             Refined menu design, seamless service, and elevated presentation come together to create dining that feels as memorable as the celebration itself.
           </p>
         </div>
