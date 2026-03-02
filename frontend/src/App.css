@@ -89,7 +89,7 @@ body {
 }
 
 .hero-heading-fade-out {
-    opacity: 0;
+    opacity: 0.22;
     transform: translateY(-5px);
 }
 
