@@ -14,9 +14,9 @@ export default function PortfolioPage() {
   const activeEvents = useMemo(() => portfolioEvents[activeTab] || [], [activeTab]);
 
   return (
-    <div className="bg-[#E8D8C3] px-5 pb-20 pt-28 sm:px-8 lg:px-12" data-testid="portfolio-page">
+    <div className="bg-[#F5EFE6] px-5 pb-20 pt-28 sm:px-8 lg:px-12" data-testid="portfolio-page">
       <section className="mx-auto w-full max-w-6xl text-center" data-testid="portfolio-hero-section">
-        <h1 className="serif-display text-4xl text-[#3E0B14] sm:text-5xl lg:text-6xl" data-testid="portfolio-heading">
+        <h1 className="serif-display text-4xl text-[#350A13] sm:text-5xl lg:text-6xl" data-testid="portfolio-heading">
           Celebrations, Curated to Perfection.
         </h1>
 
@@ -26,7 +26,7 @@ export default function PortfolioPage() {
               <TabsTrigger
                 key={tab.value}
                 value={tab.value}
-                className="rounded-none border-b-2 border-transparent bg-transparent px-1 pb-2 text-xs uppercase tracking-[0.24em] text-[#5A0F1C] shadow-none data-[state=active]:border-[#C6A75E] data-[state=active]:text-[#C6A75E]"
+                className="rounded-none border-b-2 border-transparent bg-transparent px-1 pb-2 text-xs uppercase tracking-[0.24em] text-[#4B0F1B] shadow-none data-[state=active]:border-[#C6A75E] data-[state=active]:text-[#C6A75E]"
                 data-testid={`portfolio-tab-${tab.value}`}
               >
                 {tab.label}
@@ -42,7 +42,7 @@ export default function PortfolioPage() {
             <Link
               key={event.id}
               to={`/portfolio/${activeTab}/${event.id}`}
-              className="group overflow-hidden rounded-2xl border border-[#5A0F1C]/10 bg-white"
+              className="group overflow-hidden rounded-2xl border border-[#4B0F1B]/10 bg-white"
               data-testid={`portfolio-card-${event.id}`}
             >
               <img
@@ -53,10 +53,10 @@ export default function PortfolioPage() {
                 data-testid={`portfolio-card-image-${event.id}`}
               />
               <div className="p-6">
-                <h2 className="serif-display text-2xl text-[#3E0B14]" data-testid={`portfolio-card-title-${event.id}`}>
+                <h2 className="serif-display text-2xl text-[#350A13]" data-testid={`portfolio-card-title-${event.id}`}>
                   {event.title}
                 </h2>
-                <p className="mt-2 text-sm text-[#5A0F1C]" data-testid={`portfolio-card-subtitle-${event.id}`}>
+                <p className="mt-2 text-sm text-[#4B0F1B]" data-testid={`portfolio-card-subtitle-${event.id}`}>
                   {event.subtitle}
                 </p>
               </div>
