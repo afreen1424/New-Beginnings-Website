@@ -25,7 +25,7 @@ function AppLayout() {
   }, [location.pathname]);
 
   return (
-    <div className="min-h-screen bg-[#E8D8C3]" data-testid="app-layout">
+    <div className="min-h-screen bg-[#F5EFE6]" data-testid="app-layout">
       <SiteHeader introComplete={introComplete} />
       <main data-testid="app-main-content">
         <Routes>
