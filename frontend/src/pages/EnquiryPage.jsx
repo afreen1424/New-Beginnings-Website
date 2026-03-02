@@ -131,7 +131,7 @@ export default function EnquiryPage() {
 
         {submitted && (
           <div className="mt-10 rounded-2xl border border-[#C6A75E]/35 bg-[#4B0F1B]/10 p-6 text-center" data-testid="enquiry-success-message-panel">
-            <p className="serif-display text-3xl text-[#3E0B14]" data-testid="enquiry-success-title">
+            <p className="serif-display text-3xl text-[#350A13]" data-testid="enquiry-success-title">
               Your Story Begins Here.
             </p>
             <p className="mt-3 text-sm text-[#50332F]" data-testid="enquiry-success-text">
