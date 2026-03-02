@@ -1,54 +1,55 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import "@/App.css";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import axios from "axios";
+import { BrowserRouter, Navigate, Route, Routes, useLocation } from "react-router-dom";
+import SiteHeader from "./components/layout/SiteHeader";
+import SiteFooter from "./components/layout/SiteFooter";
+import HomePage from "./pages/HomePage";
+import PortfolioPage from "./pages/PortfolioPage";
+import EventDetailPage from "./pages/EventDetailPage";
+import BlogPage from "./pages/BlogPage";
+import BlogDetailPage from "./pages/BlogDetailPage";
+import CorporateEventsPage from "./pages/services/CorporateEventsPage";
+import CateringPage from "./pages/services/CateringPage";
+import SfxEntriesPage from "./pages/services/SfxEntriesPage";
+import EnquiryPage from "./pages/EnquiryPage";
 
-const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
-const API = `${BACKEND_URL}/api`;
-
-const Home = () => {
-  const helloWorldApi = async () => {
-    try {
-      const response = await axios.get(`${API}/`);
-      console.log(response.data.message);
-    } catch (e) {
-      console.error(e, `errored out requesting / api`);
-    }
-  };
+function AppLayout() {
+  const location = useLocation();
+  const [introComplete, setIntroComplete] = useState(location.pathname !== "/");
 
   useEffect(() => {
-    helloWorldApi();
-  }, []);
+    window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+    if (location.pathname !== "/") {
+      setIntroComplete(true);
+    }
+  }, [location.pathname]);
 
   return (
-    <div>
-      <header className="App-header">
-        <a
-          className="App-link"
-          href="https://emergent.sh"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <img src="https://avatars.githubusercontent.com/in/1201222?s=120&u=2686cf91179bbafbc7a71bfbc43004cf9ae1acea&v=4" />
-        </a>
-        <p className="mt-5">Building something incredible ~!</p>
-      </header>
-    </div>
-  );
-};
-
-function App() {
-  return (
-    <div className="App">
-      <BrowserRouter>
+    <div className="min-h-screen bg-[#E8D8C3]" data-testid="app-layout">
+      <SiteHeader introComplete={introComplete} />
+      <main data-testid="app-main-content">
         <Routes>
-          <Route path="/" element={<Home />}>
-            <Route index element={<Home />} />
-          </Route>
+          <Route path="/" element={<HomePage onIntroComplete={() => setIntroComplete(true)} />} />
+          <Route path="/portfolio" element={<PortfolioPage />} />
+          <Route path="/portfolio/:category/:eventId" element={<EventDetailPage />} />
+          <Route path="/blog" element={<BlogPage />} />
+          <Route path="/blog/:slug" element={<BlogDetailPage />} />
+          <Route path="/services/corporate-events" element={<CorporateEventsPage />} />
+          <Route path="/services/catering" element={<CateringPage />} />
+          <Route path="/services/sfx-entries" element={<SfxEntriesPage />} />
+          <Route path="/enquiry" element={<EnquiryPage />} />
+          <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
-      </BrowserRouter>
+      </main>
+      <SiteFooter />
     </div>
   );
 }
 
-export default App;
+export default function App() {
+  return (
+    <BrowserRouter>
+      <AppLayout />
+    </BrowserRouter>
+  );
+}
