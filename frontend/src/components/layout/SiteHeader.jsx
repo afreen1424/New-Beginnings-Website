@@ -16,19 +16,11 @@ const serviceLinks = [
   { label: "SFX & Entries", path: "/services/sfx-entries" },
 ];
 
-export default function SiteHeader({ introComplete }) {
-  const [scrolled, setScrolled] = useState(false);
+export default function SiteHeader() {
   const [servicesOpen, setServicesOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const location = useLocation();
   const servicesRef = useRef(null);
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 30);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
 
   useEffect(() => {
     setServicesOpen(false);
@@ -45,14 +37,10 @@ export default function SiteHeader({ introComplete }) {
     return () => document.removeEventListener("mousedown", handleOutsideClick);
   }, []);
 
-  const solidHeader = scrolled || location.pathname !== "/" || mobileOpen;
-
   return (
     <>
       <header
-        className={`fixed left-0 right-0 top-0 z-50 border-b border-transparent transition-all duration-500 ${
-          introComplete ? "opacity-100" : "opacity-0"
-        } ${solidHeader ? "bg-[rgba(53,10,19,0.96)] shadow-[0_12px_30px_rgba(0,0,0,0.4)]" : "bg-transparent"}`}
+        className="fixed left-0 right-0 top-0 z-50 border-b border-transparent bg-[rgba(53,10,19,0.96)] shadow-[0_12px_30px_rgba(0,0,0,0.4)]"
         data-testid="site-header"
       >
         <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
