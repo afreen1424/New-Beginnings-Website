@@ -82,13 +82,13 @@ body {
         0 0 18px rgba(198, 167, 94, 0.08);
 }
 
-.hero-content-shell {
+.hero-heading-shell {
     transition:
         opacity 0.55s ease-in-out,
         transform 0.55s ease-in-out;
 }
 
-.hero-content-fade-out {
+.hero-heading-fade-out {
     opacity: 0;
     transform: translateY(-5px);
 }
