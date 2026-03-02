@@ -14,6 +14,8 @@ const HERO_TITLE = "NEW BEGINNINGS EVENTS";
 
 export default function HomePage({ onIntroComplete }) {
   const [showTitle, setShowTitle] = useState(false);
+  const [heroContentFading, setHeroContentFading] = useState(false);
+  const [carouselVisible, setCarouselVisible] = useState(false);
   const [mobile, setMobile] = useState(false);
   const [reviewIndex, setReviewIndex] = useState(0);
   const [decorScale, setDecorScale] = useState(1);
@@ -30,18 +32,25 @@ export default function HomePage({ onIntroComplete }) {
   }, []);
 
   useEffect(() => {
+    setHeroContentFading(false);
+    setCarouselVisible(false);
+
     const showTimer = setTimeout(() => setShowTitle(true), 600);
     const stagger = mobile ? 50 : 70;
-    const totalDuration = 600 + HERO_TITLE.length * stagger + 900;
+    const fadeOutStart = 600 + HERO_TITLE.length * stagger + 260;
+    const textFadeTimer = setTimeout(() => setHeroContentFading(true), fadeOutStart);
+    const revealTimer = setTimeout(() => setCarouselVisible(true), fadeOutStart + 520);
 
     const doneTimer = setTimeout(() => {
       if (introDoneRef.current) return;
       introDoneRef.current = true;
       onIntroComplete?.();
-    }, totalDuration);
+    }, fadeOutStart + 520);
 
     return () => {
       clearTimeout(showTimer);
+      clearTimeout(textFadeTimer);
+      clearTimeout(revealTimer);
       clearTimeout(doneTimer);
     };
   }, [mobile, onIntroComplete]);
@@ -69,7 +78,10 @@ export default function HomePage({ onIntroComplete }) {
   return (
     <div className="overflow-hidden" data-testid="home-page">
       <section className="bg-royal-velvet relative flex min-h-screen items-center justify-center px-5 text-center" data-testid="home-hero-section">
-        <div className="relative z-10 mx-auto max-w-5xl">
+        <div
+          className={`hero-content-shell relative z-10 mx-auto max-w-5xl ${heroContentFading ? "hero-content-fade-out" : ""}`}
+          data-testid="home-hero-content"
+        >
           <img
             src={brandConfig.logo}
             alt="New Beginnings Events"
@@ -79,8 +91,8 @@ export default function HomePage({ onIntroComplete }) {
 
           {showTitle && (
             <h1
-              className="serif-display mt-8 text-3xl text-[#E8D8C3] sm:text-5xl lg:text-6xl"
-              style={{ letterSpacing: mobile ? "0.12em" : "0.42em" }}
+              className="serif-display hero-title-gold mt-8 text-3xl font-normal sm:text-5xl lg:text-6xl"
+              style={{ letterSpacing: mobile ? "0.22em" : "0.3em" }}
               data-testid="home-hero-heading"
             >
               {HERO_TITLE.split("").map((char, idx) => (
@@ -98,18 +110,18 @@ export default function HomePage({ onIntroComplete }) {
         </div>
       </section>
 
-      <section data-testid="home-main-carousel-section">
-        <FadeCarousel slides={homeCarouselSlides} caption testId="home-main-carousel" />
+      <section
+        className={`transition-opacity duration-[900ms] ease-in-out ${carouselVisible ? "opacity-100" : "pointer-events-none opacity-0"}`}
+        data-testid="home-main-carousel-section"
+      >
+        <FadeCarousel slides={homeCarouselSlides} caption testId="home-main-carousel" fadeDuration={900} />
       </section>
 
       <section className="bg-[#E8D8C3] px-5 py-20 sm:px-8 lg:px-12" data-testid="home-about-section">
         <div className="mx-auto grid w-full max-w-6xl items-center gap-12 lg:grid-cols-2">
           <RevealBlock direction="left" testId="about-text-reveal">
-            <p className="text-xs uppercase tracking-[0.24em] text-[#5A0F1C]" data-testid="about-kicker">
-              Shall We Set the Date to Forever?
-            </p>
-            <h2 className="serif-display mt-4 text-3xl text-[#3E0B14] sm:text-4xl" data-testid="about-heading">
-              Crafted Celebrations with Timeless Authority
+            <h2 className="about-poetic-heading mt-2 text-4xl sm:text-5xl" data-testid="about-heading">
+              Shall we set the date to forever?
             </h2>
             <p className="mt-6 max-w-xl text-base leading-relaxed text-[#50332F] sm:text-lg" data-testid="about-paragraph">
               At New Beginnings Events, we design celebrations that transcend trends and time. From refined intimate affairs to grand wedding experiences,
@@ -121,12 +133,13 @@ export default function HomePage({ onIntroComplete }) {
           </RevealBlock>
 
           <RevealBlock direction="right" testId="about-image-reveal">
-            <div className="overflow-hidden rounded-3xl border border-[#C6A75E]/35 shadow-[0_30px_70px_rgba(62,11,20,0.2)]">
+            <div className="relative mx-auto w-full max-w-[250px] overflow-hidden rounded-2xl shadow-[0_14px_30px_rgba(62,11,20,0.14)] lg:ml-auto" data-testid="about-image-wrapper">
+              <div className="absolute left-1/2 top-2 z-10 h-3 w-3 -translate-x-1/2 rounded-full bg-[#C6A75E] shadow-[0_0_6px_rgba(198,167,94,0.38)]" data-testid="about-image-pin" />
               <img
                 src="/assets/wedding-3.webp"
                 alt="Luxury wedding portrait"
                 loading="lazy"
-                className="aspect-[4/5] w-full object-cover object-center"
+                className="aspect-square w-full object-cover object-center"
                 data-testid="about-image"
               />
             </div>
@@ -139,18 +152,22 @@ export default function HomePage({ onIntroComplete }) {
           <p className="text-center text-xs uppercase tracking-[0.24em] text-[#C6A75E]" data-testid="decor-kicker">
             Every Detail Tells a Story.
           </p>
-          <div className="mt-8 overflow-hidden rounded-3xl border border-[#C6A75E]/35" data-testid="decor-video-wrapper">
-            <video
-              src="/assets/decor-video.webm"
-              autoPlay
-              muted
-              loop
-              playsInline
-              preload="metadata"
-              className="w-full object-cover transition-transform duration-500"
-              style={{ transform: `scale(${decorScale})` }}
-              data-testid="decor-highlight-video"
-            />
+          <div className="mx-auto mt-10 w-full max-w-2xl" data-testid="decor-arch-container">
+            <div className="arch-editorial-frame" data-testid="decor-video-wrapper">
+              <div className="arch-editorial-inner" data-testid="decor-arch-inner">
+                <video
+                  src="/assets/decor-video.webm"
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  preload="metadata"
+                  className="h-full w-full object-cover transition-transform duration-500"
+                  style={{ transform: `scale(${decorScale})` }}
+                  data-testid="decor-highlight-video"
+                />
+              </div>
+            </div>
           </div>
         </div>
       </section>
