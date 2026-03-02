@@ -21,7 +21,7 @@ body {
     background-color: var(--royal-maroon);
     background-image:
         linear-gradient(to bottom, rgba(62, 11, 20, 0.58), rgba(62, 11, 20, 0.78)),
-        url("/assets/velvet-texture.webp");
+        url("./assets/velvet-texture.webp");
     background-size: cover, 420px 420px;
     background-repeat: no-repeat, repeat;
     background-position: center;
