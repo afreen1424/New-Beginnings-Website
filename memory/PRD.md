@@ -67,3 +67,8 @@ Build a fully functional, production-ready luxury event management website for *
 - Refined Home About (poetic hook + divider + revised copy + pinned square image), Decor section (full-width ivory arched frame), Reviews (ivory styling), and Social hover glow
 - Upgraded Corporate/Catering/SFX hero overlays, supporting copy blocks, hover-gradient showcase cards, and centered CTAs
 - Enhanced Blog card motion/overlay styling and Enquiry panel opening animation while preserving existing routes and architecture
+
+## Micro Refinement Pass (Hero/Header/Carousel Text)
+- Hero logo now uses a stroke-style line-drawing animation and fades out with the full hero content timeline before carousel takeover.
+- Header is now always fixed and visible from initial load with no opacity/transition fade behavior tied to hero animation.
+- Home carousel captions moved to bottom-right, now showing only couple names in antique gold serif with subtle fade-in on slide change.
