@@ -70,6 +70,44 @@ body {
     opacity: 0;
 }
 
+.hero-logo-draw {
+    height: 112px;
+    width: 112px;
+}
+
+.hero-logo-draw svg {
+    height: 100%;
+    width: 100%;
+}
+
+.hero-logo-stroke {
+    stroke: #c6a75e;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 2;
+    filter: drop-shadow(0 0 7px rgba(198, 167, 94, 0.2));
+}
+
+.hero-logo-path-1 {
+    stroke-dasharray: 280;
+    stroke-dashoffset: 280;
+    animation: strokeReveal 1.35s ease forwards;
+}
+
+.hero-logo-path-2 {
+    stroke-dasharray: 180;
+    stroke-dashoffset: 180;
+    animation: strokeReveal 1s ease forwards;
+    animation-delay: 0.75s;
+}
+
+.hero-logo-path-3 {
+    stroke-dasharray: 220;
+    stroke-dashoffset: 220;
+    animation: strokeReveal 1.2s ease forwards;
+    animation-delay: 1.15s;
+}
+
 .hero-letter {
     display: inline-block;
     opacity: 0;
@@ -94,19 +132,24 @@ body {
         0 0 18px rgba(198, 167, 94, 0.08);
 }
 
-.hero-heading-shell {
+.hero-content-shell {
     transition:
         opacity 0.6s ease-in-out,
         transform 0.6s ease-in-out;
 }
 
-.hero-heading-fade-out {
+.hero-content-fade-out {
     opacity: 0;
     transform: translateY(-5px);
 }
 
 .hero-carousel-layer {
     transition: opacity 0.8s ease-in-out;
+}
+
+.carousel-couple-name {
+    animation: coupleNameFade 0.45s ease both;
+    letter-spacing: 0.08em;
 }
 
 .about-poetic-heading {
@@ -153,6 +196,23 @@ body {
 }
 
 @keyframes letterReveal {
+    from {
+        opacity: 0;
+        transform: translateY(6px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes strokeReveal {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+@keyframes coupleNameFade {
     from {
         opacity: 0;
         transform: translateY(6px);
