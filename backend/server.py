@@ -1,12 +1,12 @@
-from fastapi import FastAPI, APIRouter
+from fastapi import FastAPI, APIRouter, HTTPException
 from dotenv import load_dotenv
 from starlette.middleware.cors import CORSMiddleware
 from motor.motor_asyncio import AsyncIOMotorClient
 import os
 import logging
 from pathlib import Path
-from pydantic import BaseModel, Field, ConfigDict
-from typing import List
+from pydantic import BaseModel, Field, ConfigDict, EmailStr
+from typing import List, Optional
 import uuid
 from datetime import datetime, timezone
 
@@ -37,6 +37,34 @@ class StatusCheck(BaseModel):
 class StatusCheckCreate(BaseModel):
     client_name: str
 
+
+class EnquiryCreate(BaseModel):
+    full_name: str
+    email: EmailStr
+    phone: str
+    event_date: Optional[str] = None
+    event_location: str
+    estimated_guest_count: str
+    event_type: str
+    referral_source: str
+    vision: str
+
+
+class Enquiry(BaseModel):
+    model_config = ConfigDict(extra="ignore")
+
+    id: str = Field(default_factory=lambda: str(uuid.uuid4()))
+    full_name: str
+    email: EmailStr
+    phone: str
+    event_date: Optional[str] = None
+    event_location: str
+    estimated_guest_count: str
+    event_type: str
+    referral_source: str
+    vision: str
+    submitted_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
+
 # Add your routes to the router instead of directly to app
 @api_router.get("/")
 async def root():
@@ -65,6 +93,29 @@ async def get_status_checks():
             check['timestamp'] = datetime.fromisoformat(check['timestamp'])
     
     return status_checks
+
+
+@api_router.post("/enquiries", response_model=Enquiry)
+async def create_enquiry(input: EnquiryCreate):
+    enquiry = Enquiry(**input.model_dump())
+    enquiry_doc = enquiry.model_dump()
+    enquiry_doc["submitted_at"] = enquiry_doc["submitted_at"].isoformat()
+
+    result = await db.enquiries.insert_one(enquiry_doc)
+    if not result.inserted_id:
+        raise HTTPException(status_code=500, detail="Failed to submit enquiry")
+
+    return enquiry
+
+
+@api_router.get("/enquiries", response_model=List[Enquiry])
+async def get_enquiries():
+    enquiries = await db.enquiries.find({}, {"_id": 0}).sort("submitted_at", -1).to_list(1000)
+    for enquiry in enquiries:
+        if isinstance(enquiry["submitted_at"], str):
+            enquiry["submitted_at"] = datetime.fromisoformat(enquiry["submitted_at"])
+
+    return enquiries
 
 # Include the router in the main app
 app.include_router(api_router)
