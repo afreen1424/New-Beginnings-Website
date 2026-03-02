@@ -70,42 +70,31 @@ body {
     opacity: 0;
 }
 
-.hero-logo-draw {
+.hero-logo-cinematic-wrap {
+    position: relative;
     height: 112px;
     width: 112px;
+    opacity: 0;
+    transform: scale(0.95);
+    animation: logoCinematicReveal 1.2s ease forwards;
+    filter: drop-shadow(0 0 10px rgba(198, 167, 94, 0.2));
 }
 
-.hero-logo-draw svg {
+.hero-logo-cinematic-image {
     height: 100%;
     width: 100%;
+    object-fit: contain;
 }
 
-.hero-logo-stroke {
-    stroke: #c6a75e;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-    stroke-width: 2;
-    filter: drop-shadow(0 0 7px rgba(198, 167, 94, 0.2));
-}
-
-.hero-logo-path-1 {
-    stroke-dasharray: 280;
-    stroke-dashoffset: 280;
-    animation: strokeReveal 1.35s ease forwards;
-}
-
-.hero-logo-path-2 {
-    stroke-dasharray: 180;
-    stroke-dashoffset: 180;
-    animation: strokeReveal 1s ease forwards;
-    animation-delay: 0.75s;
-}
-
-.hero-logo-path-3 {
-    stroke-dasharray: 220;
-    stroke-dashoffset: 220;
-    animation: strokeReveal 1.2s ease forwards;
-    animation-delay: 1.15s;
+.hero-logo-shimmer {
+    position: absolute;
+    inset: 6% 8%;
+    width: 34%;
+    background: linear-gradient(110deg, rgba(198, 167, 94, 0) 0%, rgba(226, 194, 122, 0.58) 52%, rgba(198, 167, 94, 0) 100%);
+    transform: translateX(-180%) skewX(-18deg);
+    opacity: 0;
+    pointer-events: none;
+    animation: logoShimmerSweep 1.4s ease 1.05s 1 forwards;
 }
 
 .hero-letter {
@@ -203,6 +192,34 @@ body {
     to {
         opacity: 1;
         transform: translateY(0);
+    }
+}
+
+@keyframes logoCinematicReveal {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes logoShimmerSweep {
+    0% {
+        opacity: 0;
+        transform: translateX(-180%) skewX(-18deg);
+    }
+    20% {
+        opacity: 0.42;
+    }
+    70% {
+        opacity: 0.3;
+    }
+    100% {
+        opacity: 0;
+        transform: translateX(315%) skewX(-18deg);
     }
 }
 
@@ -318,6 +335,11 @@ body {
 @media (max-width: 768px) {
     .hero-letter {
         animation-duration: 0.42s;
+    }
+
+    .hero-logo-cinematic-wrap {
+        height: 98px;
+        width: 98px;
     }
 
     .gold-outline-button {
