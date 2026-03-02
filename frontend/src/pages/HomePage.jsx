@@ -12,6 +12,22 @@ import {
 
 const HERO_TITLE = "NEW BEGINNINGS EVENTS";
 
+function HeroLogoLineDraw() {
+  return (
+    <div className="hero-logo-draw mx-auto" data-testid="home-hero-logo">
+      <svg viewBox="0 0 120 120" role="img" aria-label="New Beginnings Events Monogram">
+        <circle className="hero-logo-stroke hero-logo-path-1" cx="60" cy="60" r="44" fill="none" />
+        <path className="hero-logo-stroke hero-logo-path-2" d="M42 84V36L74 76V36" fill="none" />
+        <path
+          className="hero-logo-stroke hero-logo-path-3"
+          d="M76 84V36H87C94 36 98.5 40.4 98.5 46.4C98.5 52 95.4 55.2 90.4 56.5C96.5 57.8 100 61.8 100 67.9C100 75.5 94.7 84 84.5 84H76Z"
+          fill="none"
+        />
+      </svg>
+    </div>
+  );
+}
+
 export default function HomePage({ onIntroComplete }) {
   const [showTitle, setShowTitle] = useState(false);
   const [heroContentFading, setHeroContentFading] = useState(false);
