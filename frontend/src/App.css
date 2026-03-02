@@ -1,34 +1,150 @@
-.App-logo {
-    height: 40vmin;
-    pointer-events: none;
+:root {
+    --royal-maroon: #5a0f1c;
+    --dark-maroon: #3e0b14;
+    --beige: #e8d8c3;
+    --gold: #c6a75e;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-    .App-logo {
-        animation: App-logo-spin infinite 20s linear;
-    }
+* {
+    box-sizing: border-box;
 }
 
-.App-header {
-    background-color: #0f0f10;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: calc(10px + 2vmin);
-    color: white;
+body {
+    overflow-x: hidden;
 }
 
-.App-link {
-    color: #61dafb;
+.serif-display {
+    font-family: "Cinzel", "Cormorant Garamond", serif;
 }
 
-@keyframes App-logo-spin {
+.bg-royal-velvet {
+    background-color: var(--royal-maroon);
+    background-image:
+        linear-gradient(to bottom, rgba(62, 11, 20, 0.58), rgba(62, 11, 20, 0.78)),
+        url("/assets/velvet-texture.webp");
+    background-size: cover, 420px 420px;
+    background-repeat: no-repeat, repeat;
+    background-position: center;
+}
+
+.nav-link {
+    color: var(--beige);
+    font-size: 0.74rem;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: var(--gold);
+}
+
+.gold-outline-button {
+    border: 1px solid var(--gold);
+    border-radius: 999px;
+    color: var(--gold);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    padding: 0.8rem 1.45rem;
+    text-transform: uppercase;
+    transition:
+        background-color 0.3s ease,
+        color 0.3s ease,
+        transform 0.3s ease;
+}
+
+.gold-outline-button:hover {
+    background-color: var(--gold);
+    color: var(--dark-maroon);
+    transform: translateY(-2px);
+}
+
+.intro-logo {
+    animation: introFade 0.6s ease forwards;
+    opacity: 0;
+}
+
+.hero-letter {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(6px);
+    animation: letterReveal 0.55s ease forwards;
+}
+
+@keyframes introFade {
     from {
-        transform: rotate(0deg);
+        opacity: 0;
+        transform: translateY(8px);
     }
     to {
-        transform: rotate(360deg);
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes letterReveal {
+    from {
+        opacity: 0;
+        transform: translateY(6px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.reveal-block {
+    opacity: 0;
+    transition:
+        opacity 0.75s ease,
+        transform 0.75s ease;
+}
+
+.reveal-up {
+    transform: translateY(18px);
+}
+
+.reveal-left {
+    transform: translateX(-22px);
+}
+
+.reveal-right {
+    transform: translateX(22px);
+}
+
+.reveal-block.visible {
+    opacity: 1;
+    transform: translate(0);
+}
+
+.enquiry-input {
+    border-width: 0 0 2px;
+    border-color: rgba(90, 15, 28, 0.35);
+    border-radius: 0;
+    background: transparent;
+    color: #3e0b14;
+    padding-left: 0;
+    padding-right: 0;
+    box-shadow: none;
+    transition: border-color 0.3s ease;
+}
+
+.enquiry-input:focus {
+    border-color: var(--gold);
+    outline: none;
+}
+
+@media (max-width: 768px) {
+    .hero-letter {
+        animation-duration: 0.42s;
+    }
+
+    .gold-outline-button {
+        transition-duration: 0.22s;
+    }
+
+    .reveal-block {
+        transition-duration: 0.45s;
     }
 }
