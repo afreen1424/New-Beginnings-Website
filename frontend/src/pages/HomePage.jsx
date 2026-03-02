@@ -21,8 +21,13 @@ export default function HomePage({ onIntroComplete }) {
   const [decorScale, setDecorScale] = useState(1);
   const decorRef = useRef(null);
   const introDoneRef = useRef(false);
+  const onIntroCompleteRef = useRef(onIntroComplete);
 
   const portfolioPreview = useMemo(() => portfolioEvents.weddings.slice(0, 4), []);
+
+  useEffect(() => {
+    onIntroCompleteRef.current = onIntroComplete;
+  }, [onIntroComplete]);
 
   useEffect(() => {
     const onResize = () => setMobile(window.innerWidth < 768);
@@ -36,7 +41,6 @@ export default function HomePage({ onIntroComplete }) {
     setCarouselVisible(false);
 
     const showTimer = setTimeout(() => setShowTitle(true), 600);
-    const stagger = mobile ? 50 : 70;
     const fadeOutStart = mobile ? 4200 : 4500;
     const textFadeTimer = setTimeout(() => setHeroContentFading(true), fadeOutStart);
     const revealTimer = setTimeout(() => setCarouselVisible(true), fadeOutStart + 600);
@@ -44,7 +48,7 @@ export default function HomePage({ onIntroComplete }) {
     const doneTimer = setTimeout(() => {
       if (introDoneRef.current) return;
       introDoneRef.current = true;
-      onIntroComplete?.();
+      onIntroCompleteRef.current?.();
     }, fadeOutStart + 720);
 
     return () => {
@@ -53,7 +57,7 @@ export default function HomePage({ onIntroComplete }) {
       clearTimeout(revealTimer);
       clearTimeout(doneTimer);
     };
-  }, [mobile, onIntroComplete]);
+  }, [mobile]);
 
   useEffect(() => {
     const timer = setInterval(() => {
