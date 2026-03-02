@@ -56,7 +56,7 @@ export default function EnquiryPage() {
   return (
     <div className="bg-royal-velvet px-3 pb-20 pt-28 sm:px-6" data-testid="enquiry-page">
       <div
-        className={`mx-auto w-full max-w-4xl rounded-[24px] border border-[#C6A75E]/35 bg-[#E8D8C3] px-4 py-8 transition-opacity duration-500 sm:px-8 sm:py-10 ${
+        className={`enquiry-opening-panel mx-auto w-full max-w-3xl rounded-[24px] border border-[#C6A75E]/45 bg-[#F5EFE6] px-4 py-8 transition-opacity duration-500 sm:px-8 sm:py-10 ${
           submitted ? "opacity-85" : "opacity-100"
         }`}
         data-testid="enquiry-panel"
@@ -66,7 +66,7 @@ export default function EnquiryPage() {
           Begin Your Celebration.
         </h1>
         <div className="mx-auto mt-4 h-[1px] w-28 bg-[#C6A75E]" data-testid="enquiry-divider" />
-        <p className="mx-auto mt-6 max-w-2xl text-center text-base text-[#50332F]" data-testid="enquiry-subline">
+        <p className="mx-auto mt-6 max-w-2xl text-center text-base text-[#4C3330]" data-testid="enquiry-subline">
           Share your details, and let us craft something unforgettable.
         </p>
 
@@ -122,7 +122,7 @@ export default function EnquiryPage() {
           <Button
             type="submit"
             disabled={submitting}
-            className="h-12 rounded-full border border-[#C6A75E] bg-transparent px-7 text-xs uppercase tracking-[0.2em] text-[#5A0F1C] transition-colors hover:bg-[#5A0F1C] hover:text-[#E8D8C3]"
+            className="h-12 rounded-full border border-[#C6A75E] bg-transparent px-7 text-xs uppercase tracking-[0.2em] text-[#4B0F1B] transition-colors hover:bg-[#4B0F1B] hover:text-[#F5EFE6]"
             data-testid="enquiry-submit-button"
           >
             {submitting ? "Submitting..." : "Request Private Consultation"}
@@ -130,7 +130,7 @@ export default function EnquiryPage() {
         </form>
 
         {submitted && (
-          <div className="mt-10 rounded-2xl border border-[#C6A75E]/35 bg-[#5A0F1C]/10 p-6 text-center" data-testid="enquiry-success-message-panel">
+          <div className="mt-10 rounded-2xl border border-[#C6A75E]/35 bg-[#4B0F1B]/10 p-6 text-center" data-testid="enquiry-success-message-panel">
             <p className="serif-display text-3xl text-[#3E0B14]" data-testid="enquiry-success-title">
               Your Story Begins Here.
             </p>
