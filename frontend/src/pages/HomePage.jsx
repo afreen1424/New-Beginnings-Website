@@ -119,7 +119,7 @@ export default function HomePage({ onIntroComplete }) {
       <section className="bg-[#E8D8C3] px-5 py-20 sm:px-8 lg:px-12" data-testid="home-about-section">
         <div className="mx-auto grid w-full max-w-6xl items-center gap-12 lg:grid-cols-2">
           <RevealBlock direction="left" testId="about-text-reveal">
-            <h2 className="about-poetic-heading mt-2 text-4xl sm:text-5xl" data-testid="about-heading">
+            <h2 className="about-poetic-heading mt-4 text-4xl sm:text-5xl" data-testid="about-heading">
               Shall we set the date to forever?
             </h2>
             <p className="mt-6 max-w-xl text-base leading-relaxed text-[#50332F] sm:text-lg" data-testid="about-paragraph">
