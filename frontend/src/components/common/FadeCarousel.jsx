@@ -34,7 +34,7 @@ export default function FadeCarousel({ slides, interval = 4500, caption = false,
       {caption && (
         <>
           <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[rgba(62,11,20,0.92)] to-transparent" />
-          <div className="absolute bottom-4 right-4 z-10 text-right sm:bottom-8 sm:right-10" data-testid={`${testId}-caption`}>
+          <div className="absolute bottom-16 right-4 z-10 text-right sm:bottom-8 sm:right-10" data-testid={`${testId}-caption`}>
             <p
               key={`${slides[activeIndex].couple}-${activeIndex}`}
               className="carousel-couple-name serif-display max-w-[74vw] text-base leading-tight text-[#C6A75E] sm:max-w-none sm:text-2xl"
