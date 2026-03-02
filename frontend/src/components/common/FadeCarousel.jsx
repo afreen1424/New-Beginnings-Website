@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-export default function FadeCarousel({ slides, interval = 4500, caption = false, testId = "fade-carousel" }) {
+export default function FadeCarousel({ slides, interval = 4500, caption = false, testId = "fade-carousel", fadeDuration = 900 }) {
   const [activeIndex, setActiveIndex] = useState(0);
 
   useEffect(() => {
@@ -22,9 +22,10 @@ export default function FadeCarousel({ slides, interval = 4500, caption = false,
             src={slide.image}
             alt={slide.couple || slide.title || "Celebration visual"}
             loading="lazy"
-            className={`absolute inset-0 h-full w-full object-cover object-center transition-opacity duration-700 ${
+            className={`absolute inset-0 h-full w-full object-cover object-center transition-opacity ease-in-out ${
               activeIndex === index ? "opacity-100" : "opacity-0"
             }`}
+            style={{ transitionDuration: `${fadeDuration}ms` }}
             data-testid={`${testId}-image-${index}`}
           />
         ))}
