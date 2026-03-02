@@ -122,7 +122,7 @@ export default function HomePage({ onIntroComplete }) {
             <h2 className="about-poetic-heading mt-4 text-4xl sm:text-5xl" data-testid="about-heading">
               Shall we set the date to forever?
             </h2>
-            <p className="mt-6 max-w-xl text-base leading-relaxed text-[#50332F] sm:text-lg" data-testid="about-paragraph">
+            <p className="mt-8 max-w-xl text-base leading-relaxed text-[#50332F] sm:text-lg" data-testid="about-paragraph">
               At New Beginnings Events, we design celebrations that transcend trends and time. From refined intimate affairs to grand wedding experiences,
               every detail is curated with intention and artistry. We don&apos;t just plan events — we orchestrate moments that live on as legacy.
             </p>
