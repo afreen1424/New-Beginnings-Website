@@ -10,7 +10,7 @@ const quickLinks = [
 
 export default function SiteFooter() {
   return (
-    <footer className="bg-[#3E0B14] px-4 pb-6 pt-12 text-[#E8D8C3] sm:px-6 lg:px-8" data-testid="site-footer">
+    <footer className="bg-[#350A13] px-4 pb-6 pt-12 text-[#F5EFE6] sm:px-6 lg:px-8" data-testid="site-footer">
       <div className="mx-auto grid w-full max-w-7xl gap-12 md:grid-cols-3">
         <div data-testid="footer-brand-column">
           <img src={brandConfig.logo} alt="New Beginnings Events logo" className="mb-3 h-16 w-16 object-contain" loading="lazy" data-testid="footer-logo" />
@@ -25,7 +25,7 @@ export default function SiteFooter() {
           </h4>
           <div className="mt-4 flex flex-col gap-2">
             {quickLinks.map((link) => (
-              <Link key={link.label} to={link.path} className="w-fit text-sm text-[#E8D8C3] transition-colors hover:text-[#C6A75E]" data-testid={`footer-link-${link.label.toLowerCase()}`}>
+              <Link key={link.label} to={link.path} className="w-fit text-sm text-[#F5EFE6] transition-colors hover:text-[#C6A75E]" data-testid={`footer-link-${link.label.toLowerCase()}`}>
                 {link.label}
               </Link>
             ))}
@@ -39,10 +39,10 @@ export default function SiteFooter() {
           <p className="mt-4 text-sm leading-relaxed" data-testid="footer-address">
             {brandConfig.address}
           </p>
-          <a href={`tel:+${brandConfig.phoneRaw}`} className="mt-2 block w-fit text-sm text-[#E8D8C3] transition-colors hover:text-[#C6A75E]" data-testid="footer-phone-link">
+          <a href={`tel:+${brandConfig.phoneRaw}`} className="mt-2 block w-fit text-sm text-[#F5EFE6] transition-colors hover:text-[#C6A75E]" data-testid="footer-phone-link">
             {brandConfig.phone}
           </a>
-          <a href={`mailto:${brandConfig.email}`} className="mt-2 block w-fit text-sm text-[#E8D8C3] transition-colors hover:text-[#C6A75E]" data-testid="footer-email-link">
+          <a href={`mailto:${brandConfig.email}`} className="mt-2 block w-fit text-sm text-[#F5EFE6] transition-colors hover:text-[#C6A75E]" data-testid="footer-email-link">
             {brandConfig.email}
           </a>
         </div>
