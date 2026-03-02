@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-export default function FadeCarousel({ slides, interval = 4500, caption = false, testId = "fade-carousel", fadeDuration = 900 }) {
+export default function FadeCarousel({ slides, interval = 4500, caption = false, testId = "fade-carousel", fadeDuration = 900, fullHeight = false }) {
   const [activeIndex, setActiveIndex] = useState(0);
 
   useEffect(() => {
@@ -14,8 +14,8 @@ export default function FadeCarousel({ slides, interval = 4500, caption = false,
   if (!slides?.length) return null;
 
   return (
-    <div className="relative w-full overflow-hidden" data-testid={testId}>
-      <div className="relative aspect-[16/9] w-full sm:aspect-[21/9]">
+    <div className={`relative w-full overflow-hidden ${fullHeight ? "h-full" : ""}`} data-testid={testId}>
+      <div className={`relative w-full ${fullHeight ? "h-full" : "aspect-[16/9] sm:aspect-[21/9]"}`}>
         {slides.map((slide, index) => (
           <img
             key={`${slide.image}-${index}`}
