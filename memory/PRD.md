@@ -60,3 +60,10 @@ Build a fully functional, production-ready luxury event management website for *
 1. Integrate final branded content pack (photos, videos, copy)
 2. Add admin-authenticated content management endpoints and UI
 3. Expand enquiry workflow with lead status tracking and internal notes
+
+## Refinement Pass (Latest)
+- Applied full color-system uplift across app to Deep Royal Maroon `#4B0F1B`, Warm Ivory `#F5EFE6`, and Antique Gold `#C6A75E`
+- Updated Home hero timing/behavior: letter reveal → text fade (0.6s) → carousel visual takeover with 0.8s fade-in and 900ms crossfades
+- Refined Home About (poetic hook + divider + revised copy + pinned square image), Decor section (full-width ivory arched frame), Reviews (ivory styling), and Social hover glow
+- Upgraded Corporate/Catering/SFX hero overlays, supporting copy blocks, hover-gradient showcase cards, and centered CTAs
+- Enhanced Blog card motion/overlay styling and Enquiry panel opening animation while preserving existing routes and architecture
