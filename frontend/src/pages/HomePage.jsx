@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import FadeCarousel from "../components/common/FadeCarousel";
 import RevealBlock from "../components/common/RevealBlock";
 import {
-  brandConfig,
   coupleReviews,
   homeCarouselSlides,
   portfolioEvents,
