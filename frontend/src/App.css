@@ -3,7 +3,7 @@
     --dark-maroon: #350a13;
     --ivory: #f5efe6;
     --gold: #c6a75e;
-    --site-header-height: 76px;
+    --site-header-height: 68px;
 }
 
 * {
@@ -336,7 +336,7 @@ body {
 
 @media (max-width: 768px) {
     :root {
-        --site-header-height: 70px;
+        --site-header-height: 58px;
     }
 
     .hero-letter {

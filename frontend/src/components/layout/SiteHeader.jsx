@@ -40,10 +40,10 @@ export default function SiteHeader() {
   return (
     <>
       <header
-        className="fixed left-0 right-0 top-0 z-50 border-b border-transparent bg-[rgba(53,10,19,0.96)] shadow-[0_12px_30px_rgba(0,0,0,0.4)]"
+        className="fixed left-0 right-0 top-0 z-50 h-[var(--site-header-height)] border-b border-transparent bg-[rgba(53,10,19,0.96)] shadow-[0_12px_30px_rgba(0,0,0,0.4)]"
         data-testid="site-header"
       >
-        <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-3 py-2 sm:px-6 sm:py-3 lg:px-8" data-testid="site-header-inner">
+        <div className="mx-auto flex h-full w-full max-w-7xl items-center justify-between px-3 sm:px-6 lg:px-8" data-testid="site-header-inner">
           <Link to="/" className="flex min-w-0 flex-nowrap items-center gap-2 sm:gap-3" data-testid="header-brand-link">
             <img
               src={brandConfig.logo}
