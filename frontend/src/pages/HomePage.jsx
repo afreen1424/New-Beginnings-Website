@@ -106,19 +106,15 @@ export default function HomePage({ onIntroComplete }) {
           <div className="absolute inset-0 bg-gradient-to-b from-[rgba(75,15,27,0.38)] to-[rgba(75,15,27,0.72)]" />
         </div>
 
-        <div className="relative z-10 mx-auto max-w-5xl" data-testid="home-hero-content">
-          <img
-            src={brandConfig.logo}
-            alt="New Beginnings Events"
-            className="intro-logo mx-auto h-24 w-24 object-contain sm:h-28 sm:w-28"
-            data-testid="home-hero-logo"
-          />
+        <div
+          className={`hero-content-shell relative z-10 mx-auto max-w-5xl ${heroContentFading ? "hero-content-fade-out" : ""}`}
+          data-testid="home-hero-content"
+        >
+          <HeroLogoLineDraw />
 
           {showTitle && (
             <h1
-              className={`serif-display hero-title-gold hero-heading-shell mt-8 text-3xl font-normal sm:whitespace-nowrap sm:text-5xl lg:text-6xl ${
-                heroContentFading ? "hero-heading-fade-out" : ""
-              }`}
+              className="serif-display hero-title-gold mt-8 text-3xl font-normal sm:whitespace-nowrap sm:text-5xl lg:text-6xl"
               style={{ letterSpacing: mobile ? "0.18em" : "0.3em" }}
               data-testid="home-hero-heading"
             >
