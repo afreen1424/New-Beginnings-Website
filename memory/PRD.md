@@ -72,3 +72,8 @@ Build a fully functional, production-ready luxury event management website for *
 - Hero logo now uses a stroke-style line-drawing animation and fades out with the full hero content timeline before carousel takeover.
 - Header is now always fixed and visible from initial load with no opacity/transition fade behavior tied to hero animation.
 - Home carousel captions moved to bottom-right, now showing only couple names in antique gold serif with subtle fade-in on slide change.
+
+## Micro Refinement Pass (Hero Logo Animation Only)
+- Removed logo stroke/line-draw effect.
+- Implemented cinematic logo reveal: smooth opacity fade-in + subtle scale-in + one-time antique-gold shimmer sweep + soft gold glow.
+- Kept hero/carousel shared timeline intact so entire hero content (including logo) fades out together before carousel takeover in the same viewport.
