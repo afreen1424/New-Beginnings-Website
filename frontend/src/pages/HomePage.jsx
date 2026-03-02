@@ -37,7 +37,7 @@ export default function HomePage({ onIntroComplete }) {
 
     const showTimer = setTimeout(() => setShowTitle(true), 600);
     const stagger = mobile ? 50 : 70;
-    const fadeOutStart = 600 + HERO_TITLE.length * stagger + 260;
+    const fadeOutStart = 600 + HERO_TITLE.length * stagger + 900;
     const textFadeTimer = setTimeout(() => setHeroContentFading(true), fadeOutStart);
     const revealTimer = setTimeout(() => setCarouselVisible(true), fadeOutStart + 520);
 
