@@ -3,6 +3,7 @@
     --dark-maroon: #350a13;
     --ivory: #f5efe6;
     --gold: #c6a75e;
+    --site-header-height: 76px;
 }
 
 * {
@@ -327,6 +328,10 @@ body {
 }
 
 @media (max-width: 768px) {
+    :root {
+        --site-header-height: 70px;
+    }
+
     .hero-letter {
         animation-duration: 0.42s;
     }
