@@ -37,15 +37,15 @@ export default function HomePage({ onIntroComplete }) {
 
     const showTimer = setTimeout(() => setShowTitle(true), 600);
     const stagger = mobile ? 50 : 70;
-    const fadeOutStart = 600 + HERO_TITLE.length * stagger + 900;
+    const fadeOutStart = mobile ? 4200 : 4500;
     const textFadeTimer = setTimeout(() => setHeroContentFading(true), fadeOutStart);
-    const revealTimer = setTimeout(() => setCarouselVisible(true), fadeOutStart + 520);
+    const revealTimer = setTimeout(() => setCarouselVisible(true), fadeOutStart + 600);
 
     const doneTimer = setTimeout(() => {
       if (introDoneRef.current) return;
       introDoneRef.current = true;
       onIntroComplete?.();
-    }, fadeOutStart + 520);
+    }, fadeOutStart + 720);
 
     return () => {
       clearTimeout(showTimer);
@@ -78,6 +78,14 @@ export default function HomePage({ onIntroComplete }) {
   return (
     <div className="overflow-hidden" data-testid="home-page">
       <section className="bg-royal-velvet relative flex min-h-screen items-center justify-center px-5 text-center" data-testid="home-hero-section">
+        <div
+          className={`hero-carousel-layer absolute inset-0 ${carouselVisible ? "opacity-100" : "pointer-events-none opacity-0"}`}
+          data-testid="home-main-carousel-section"
+        >
+          <FadeCarousel slides={homeCarouselSlides} caption testId="home-main-carousel" fadeDuration={900} />
+          <div className="absolute inset-0 bg-gradient-to-b from-[rgba(75,15,27,0.38)] to-[rgba(75,15,27,0.72)]" />
+        </div>
+
         <div className="relative z-10 mx-auto max-w-5xl" data-testid="home-hero-content">
           <img
             src={brandConfig.logo}
@@ -91,7 +99,7 @@ export default function HomePage({ onIntroComplete }) {
               className={`serif-display hero-title-gold hero-heading-shell mt-8 text-3xl font-normal sm:whitespace-nowrap sm:text-5xl lg:text-6xl ${
                 heroContentFading ? "hero-heading-fade-out" : ""
               }`}
-              style={{ letterSpacing: mobile ? "0.16em" : "0.26em" }}
+              style={{ letterSpacing: mobile ? "0.18em" : "0.3em" }}
               data-testid="home-hero-heading"
             >
               {HERO_TITLE.split("").map((char, idx) => (
@@ -109,22 +117,16 @@ export default function HomePage({ onIntroComplete }) {
         </div>
       </section>
 
-      <section
-        className={`transition-opacity duration-[900ms] ease-in-out ${carouselVisible ? "opacity-100" : "pointer-events-none opacity-0"}`}
-        data-testid="home-main-carousel-section"
-      >
-        <FadeCarousel slides={homeCarouselSlides} caption testId="home-main-carousel" fadeDuration={900} />
-      </section>
-
-      <section className="bg-[#E8D8C3] px-5 py-20 sm:px-8 lg:px-12" data-testid="home-about-section">
-        <div className="mx-auto grid w-full max-w-6xl items-center gap-12 lg:grid-cols-2">
+      <section className="bg-ivory section-fade-up px-5 py-24 sm:px-8 lg:px-12" data-testid="home-about-section">
+        <div className="mx-auto grid w-full max-w-6xl items-center gap-14 lg:grid-cols-2">
           <RevealBlock direction="left" testId="about-text-reveal">
             <h2 className="about-poetic-heading mt-4 text-4xl sm:text-5xl" data-testid="about-heading">
               Shall we set the date to forever?
             </h2>
-            <p className="mt-8 max-w-xl text-base leading-relaxed text-[#50332F] sm:text-lg" data-testid="about-paragraph">
-              At New Beginnings Events, we design celebrations that transcend trends and time. From refined intimate affairs to grand wedding experiences,
-              every detail is curated with intention and artistry. We don&apos;t just plan events — we orchestrate moments that live on as legacy.
+            <div className="about-hook-divider mt-5" data-testid="about-hook-divider" />
+            <p className="mt-8 max-w-xl text-base leading-relaxed text-[#4C3330] sm:text-lg" data-testid="about-paragraph">
+              At New Beginnings Events, we design celebrations that transcend trends and time. From intimate ceremonies to grand wedding experiences,
+              every detail is curated with intention and artistry. We do not simply plan events — we orchestrate moments that live beautifully in memory.
             </p>
             <Link to="/enquiry" className="gold-outline-button mt-8 inline-flex" data-testid="about-cta-button">
               Let&apos;s Begin
@@ -148,34 +150,36 @@ export default function HomePage({ onIntroComplete }) {
         </div>
       </section>
 
-      <section ref={decorRef} className="bg-royal-velvet px-5 py-20 sm:px-8 lg:px-12" data-testid="home-decor-highlight-section">
+      <section ref={decorRef} className="bg-royal-velvet section-fade-up px-5 py-20 sm:px-8 lg:px-12" data-testid="home-decor-highlight-section">
         <div className="mx-auto w-full max-w-6xl">
-          <p className="text-center text-xs uppercase tracking-[0.24em] text-[#C6A75E]" data-testid="decor-kicker">
+          <p className="serif-display text-center text-3xl text-[#F5EFE6] sm:text-4xl" data-testid="decor-kicker">
             Every Detail Tells a Story.
           </p>
-          <div className="mx-auto mt-10 w-full max-w-2xl" data-testid="decor-arch-container">
-            <div className="arch-editorial-frame" data-testid="decor-video-wrapper">
-              <div className="arch-editorial-inner" data-testid="decor-arch-inner">
-                <video
-                  src="/assets/decor-video.webm"
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                  preload="metadata"
-                  className="h-full w-full object-cover transition-transform duration-500"
-                  style={{ transform: `scale(${decorScale})` }}
-                  data-testid="decor-highlight-video"
-                />
+          <RevealBlock direction="up" testId="decor-arch-reveal">
+            <div className="mx-auto mt-10 w-full max-w-6xl" data-testid="decor-arch-container">
+              <div className="arch-editorial-frame" data-testid="decor-video-wrapper">
+                <div className="arch-editorial-inner" data-testid="decor-arch-inner">
+                  <video
+                    src="/assets/decor-video.webm"
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    preload="metadata"
+                    className="h-full w-full object-cover transition-transform duration-500"
+                    style={{ transform: `scale(${decorScale})` }}
+                    data-testid="decor-highlight-video"
+                  />
+                </div>
               </div>
             </div>
-          </div>
+          </RevealBlock>
         </div>
       </section>
 
-      <section className="bg-[#E8D8C3] px-5 py-20 sm:px-8 lg:px-12" data-testid="home-portfolio-preview-section">
+      <section className="bg-ivory section-fade-up px-5 py-20 sm:px-8 lg:px-12" data-testid="home-portfolio-preview-section">
         <div className="mx-auto w-full max-w-7xl">
-          <h2 className="serif-display text-center text-3xl text-[#3E0B14] sm:text-4xl" data-testid="portfolio-preview-heading">
+          <h2 className="serif-display text-center text-3xl text-[#350A13] sm:text-4xl" data-testid="portfolio-preview-heading">
             Stories We&apos;ve Brought to Life.
           </h2>
 
@@ -194,12 +198,12 @@ export default function HomePage({ onIntroComplete }) {
                   className="aspect-[4/5] w-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
                   data-testid={`portfolio-preview-image-${event.id}`}
                 />
-                <div className="absolute inset-0 bg-[rgba(62,11,20,0.05)] transition-colors duration-400 group-hover:bg-[rgba(62,11,20,0.7)]" />
-                <div className="absolute inset-x-5 bottom-6 opacity-0 transition-opacity duration-300 group-hover:opacity-100" data-testid={`portfolio-preview-overlay-${event.id}`}>
+                <div className="service-card-overlay absolute inset-0 opacity-10 transition-opacity duration-500 group-hover:opacity-100" />
+                <div className="absolute inset-0 flex flex-col items-center justify-center opacity-0 transition-opacity duration-300 group-hover:opacity-100" data-testid={`portfolio-preview-overlay-${event.id}`}>
                   <p className="serif-display text-2xl text-[#E8D8C3]" data-testid={`portfolio-preview-title-${event.id}`}>
                     {event.title}
                   </p>
-                  <div className="mt-2 h-[1px] w-16 bg-[#C6A75E] transition-all duration-300 group-hover:w-24" data-testid={`portfolio-preview-underline-${event.id}`} />
+                  <div className="mt-2 h-[1px] w-12 bg-[#C6A75E] transition-all duration-300 group-hover:w-24" data-testid={`portfolio-preview-underline-${event.id}`} />
                 </div>
               </Link>
             ))}
@@ -207,13 +211,13 @@ export default function HomePage({ onIntroComplete }) {
         </div>
       </section>
 
-      <section className="bg-royal-velvet px-5 py-20 sm:px-8 lg:px-12" data-testid="home-reviews-section">
+      <section className="bg-ivory section-fade-up px-5 py-20 sm:px-8 lg:px-12" data-testid="home-reviews-section">
         <div className="mx-auto w-full max-w-4xl text-center">
-          <h2 className="serif-display text-3xl text-[#E8D8C3] sm:text-4xl" data-testid="reviews-heading">
+          <h2 className="serif-display text-3xl text-[#350A13] sm:text-4xl" data-testid="reviews-heading">
             Words from Our Couples.
           </h2>
 
-          <div className="relative mt-8 min-h-[170px]" data-testid="reviews-slider">
+          <div className="relative mt-8 min-h-[210px]" data-testid="reviews-slider">
             {coupleReviews.map((review, index) => (
               <article
                 key={review.name}
@@ -222,26 +226,28 @@ export default function HomePage({ onIntroComplete }) {
                 }`}
                 data-testid={`review-slide-${index}`}
               >
-                <div className="mb-3 flex gap-1 text-[#C6A75E]" data-testid={`review-stars-${index}`}>
-                  {Array.from({ length: 5 }).map((_, starIdx) => (
-                    <span key={starIdx}>★</span>
-                  ))}
+                <div className="rounded-2xl border border-[#C6A75E]/45 bg-white px-7 py-8 shadow-[0_18px_30px_rgba(75,15,27,0.08)]">
+                  <div className="mb-3 flex justify-center gap-1 text-[#C6A75E]" data-testid={`review-stars-${index}`}>
+                    {Array.from({ length: 5 }).map((_, starIdx) => (
+                      <span key={starIdx}>★</span>
+                    ))}
+                  </div>
+                  <p className="serif-display text-2xl text-[#350A13]" data-testid={`review-name-${index}`}>
+                    {review.name}
+                  </p>
+                  <p className="mt-3 max-w-2xl text-sm leading-relaxed text-[#50332F] sm:text-base" data-testid={`review-text-${index}`}>
+                    {review.text}
+                  </p>
                 </div>
-                <p className="serif-display text-2xl text-[#E8D8C3]" data-testid={`review-name-${index}`}>
-                  {review.name}
-                </p>
-                <p className="mt-3 max-w-2xl text-sm leading-relaxed text-[#E8D8C3]/90 sm:text-base" data-testid={`review-text-${index}`}>
-                  {review.text}
-                </p>
               </article>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="bg-[#E8D8C3] px-5 py-20 sm:px-8 lg:px-12" data-testid="home-social-section">
+      <section className="bg-ivory section-fade-up px-5 py-20 sm:px-8 lg:px-12" data-testid="home-social-section">
         <div className="mx-auto w-full max-w-6xl text-center">
-          <h2 className="serif-display text-3xl text-[#3E0B14] sm:text-4xl" data-testid="social-heading">
+          <h2 className="serif-display text-3xl text-[#350A13] sm:text-4xl" data-testid="social-heading">
             Follow the Celebration.
           </h2>
           <div className="mt-8 flex flex-wrap items-center justify-center gap-4" data-testid="social-buttons-group">
@@ -251,7 +257,7 @@ export default function HomePage({ onIntroComplete }) {
                 href={social.href}
                 target="_blank"
                 rel="noreferrer"
-                className="rounded-full border border-[#5A0F1C] px-6 py-3 text-xs font-semibold uppercase tracking-[0.18em] text-[#5A0F1C] transition-transform duration-300 hover:-translate-y-1 hover:bg-[#5A0F1C] hover:text-[#E8D8C3]"
+                className="social-gold-glow rounded-full border border-[#C6A75E] px-6 py-3 text-xs font-semibold uppercase tracking-[0.18em] text-[#4B0F1B] transition-transform duration-300 hover:-translate-y-1 hover:bg-[#4B0F1B] hover:text-[#F5EFE6]"
                 data-testid={`social-button-${social.label.toLowerCase()}`}
               >
                 {social.label}
