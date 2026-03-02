@@ -5,7 +5,7 @@ export default function BlogPage() {
   return (
     <div className="bg-[#E8D8C3] px-5 pb-20 pt-28 sm:px-8 lg:px-12" data-testid="blog-page">
       <section className="mx-auto w-full max-w-5xl text-center" data-testid="blog-hero-section">
-        <h1 className="serif-display text-4xl text-[#C6A75E] sm:text-5xl lg:text-6xl" data-testid="blog-hero-heading">
+        <h1 className="serif-display text-4xl text-[#5A0F1C] sm:text-5xl lg:text-6xl" data-testid="blog-hero-heading">
           The Forever Stories We&apos;ve Crafted.
         </h1>
         <div className="mx-auto mt-4 h-[1px] w-28 bg-[#C6A75E]" data-testid="blog-hero-divider" />

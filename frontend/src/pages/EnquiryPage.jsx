@@ -74,7 +74,7 @@ export default function EnquiryPage() {
           <Input name="full_name" value={form.full_name} onChange={updateField} required placeholder="Full Name" className="enquiry-input" data-testid="enquiry-full-name-input" />
           <Input name="email" type="email" value={form.email} onChange={updateField} required placeholder="Email" className="enquiry-input" data-testid="enquiry-email-input" />
           <Input name="phone" value={form.phone} onChange={updateField} required placeholder="Phone" className="enquiry-input" data-testid="enquiry-phone-input" />
-          <Input name="event_date" type="date" value={form.event_date} onChange={updateField} required className="enquiry-input" data-testid="enquiry-event-date-input" />
+          <Input name="event_date" type="text" value={form.event_date} onChange={updateField} required placeholder="Event Date (DD/MM/YYYY)" className="enquiry-input" data-testid="enquiry-event-date-input" />
           <Input name="event_location" value={form.event_location} onChange={updateField} required placeholder="Event Location" className="enquiry-input" data-testid="enquiry-event-location-input" />
           <Input
             name="estimated_guest_count"

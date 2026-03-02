@@ -51,7 +51,7 @@ export default function SiteHeader({ introComplete }) {
     <>
       <header
         className={`fixed left-0 right-0 top-0 z-50 border-b border-transparent transition-all duration-500 ${
-          introComplete ? "opacity-100" : "pointer-events-none opacity-0"
+          introComplete ? "opacity-100" : "opacity-0"
         } ${solidHeader ? "bg-[rgba(62,11,20,0.96)] shadow-[0_12px_30px_rgba(0,0,0,0.4)]" : "bg-transparent"}`}
         data-testid="site-header"
       >
