@@ -132,15 +132,17 @@ export default function HomePage({ onIntroComplete }) {
           </RevealBlock>
 
           <RevealBlock direction="right" testId="about-image-reveal">
-            <div className="relative mx-auto w-full max-w-[250px] overflow-hidden rounded-2xl shadow-[0_14px_30px_rgba(62,11,20,0.14)] lg:ml-auto" data-testid="about-image-wrapper">
-              <div className="absolute left-1/2 top-2 z-10 h-3 w-3 -translate-x-1/2 rounded-full bg-[#C6A75E] shadow-[0_0_6px_rgba(198,167,94,0.38)]" data-testid="about-image-pin" />
-              <img
-                src="/assets/wedding-3.webp"
-                alt="Luxury wedding portrait"
-                loading="lazy"
-                className="aspect-square w-full object-cover object-center"
-                data-testid="about-image"
-              />
+            <div className="relative mx-auto w-full max-w-[250px] lg:ml-auto" data-testid="about-image-wrapper">
+              <div className="absolute left-1/2 top-[-9px] z-10 h-4 w-4 -translate-x-1/2 rounded-full bg-[#C6A75E] shadow-[0_0_8px_rgba(198,167,94,0.42)]" data-testid="about-image-pin" />
+              <div className="overflow-hidden rounded-2xl shadow-[0_14px_30px_rgba(62,11,20,0.14)]" data-testid="about-image-inner">
+                <img
+                  src="/assets/wedding-3.webp"
+                  alt="Luxury wedding portrait"
+                  loading="lazy"
+                  className="aspect-square w-full object-cover object-center"
+                  data-testid="about-image"
+                />
+              </div>
             </div>
           </RevealBlock>
         </div>
