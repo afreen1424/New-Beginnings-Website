@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import FadeCarousel from "../components/common/FadeCarousel";
 import RevealBlock from "../components/common/RevealBlock";
 import {
+  brandConfig,
   coupleReviews,
   homeCarouselSlides,
   portfolioEvents,
@@ -11,18 +12,11 @@ import {
 
 const HERO_TITLE = "NEW BEGINNINGS EVENTS";
 
-function HeroLogoLineDraw() {
+function HeroLogoCinematic() {
   return (
-    <div className="hero-logo-draw mx-auto" data-testid="home-hero-logo">
-      <svg viewBox="0 0 120 120" role="img" aria-label="New Beginnings Events Monogram">
-        <circle className="hero-logo-stroke hero-logo-path-1" cx="60" cy="60" r="44" fill="none" />
-        <path className="hero-logo-stroke hero-logo-path-2" d="M42 84V36L74 76V36" fill="none" />
-        <path
-          className="hero-logo-stroke hero-logo-path-3"
-          d="M76 84V36H87C94 36 98.5 40.4 98.5 46.4C98.5 52 95.4 55.2 90.4 56.5C96.5 57.8 100 61.8 100 67.9C100 75.5 94.7 84 84.5 84H76Z"
-          fill="none"
-        />
-      </svg>
+    <div className="hero-logo-cinematic-wrap mx-auto" data-testid="home-hero-logo">
+      <img src={brandConfig.logo} alt="New Beginnings Events" className="hero-logo-cinematic-image" loading="eager" data-testid="home-hero-logo-image" />
+      <span className="hero-logo-shimmer" aria-hidden="true" data-testid="home-hero-logo-shimmer" />
     </div>
   );
 }
@@ -109,7 +103,7 @@ export default function HomePage({ onIntroComplete }) {
           className={`hero-content-shell relative z-10 mx-auto max-w-5xl ${heroContentFading ? "hero-content-fade-out" : ""}`}
           data-testid="home-hero-content"
         >
-          <HeroLogoLineDraw />
+          <HeroLogoCinematic />
 
           {showTitle && (
             <h1
