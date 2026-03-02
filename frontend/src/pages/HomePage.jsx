@@ -90,12 +90,19 @@ export default function HomePage({ onIntroComplete }) {
 
   return (
     <div className="overflow-hidden" data-testid="home-page">
-      <section className="bg-royal-velvet relative flex min-h-screen items-center justify-center px-5 text-center" data-testid="home-hero-section">
+      <section
+        className="bg-royal-velvet relative flex items-center justify-center overflow-hidden px-5 text-center"
+        style={{
+          marginTop: "var(--site-header-height)",
+          height: "calc(100vh - var(--site-header-height))",
+        }}
+        data-testid="home-hero-section"
+      >
         <div
           className={`hero-carousel-layer absolute inset-0 ${carouselVisible ? "opacity-100" : "pointer-events-none opacity-0"}`}
           data-testid="home-main-carousel-section"
         >
-          <FadeCarousel slides={homeCarouselSlides} caption testId="home-main-carousel" fadeDuration={900} />
+          <FadeCarousel slides={homeCarouselSlides} caption testId="home-main-carousel" fadeDuration={900} fullHeight />
           <div className="absolute inset-0 bg-gradient-to-b from-[rgba(75,15,27,0.38)] to-[rgba(75,15,27,0.72)]" />
         </div>
 
