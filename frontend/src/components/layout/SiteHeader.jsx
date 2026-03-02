@@ -52,7 +52,7 @@ export default function SiteHeader({ introComplete }) {
       <header
         className={`fixed left-0 right-0 top-0 z-50 border-b border-transparent transition-all duration-500 ${
           introComplete ? "opacity-100" : "opacity-0"
-        } ${solidHeader ? "bg-[rgba(62,11,20,0.96)] shadow-[0_12px_30px_rgba(0,0,0,0.4)]" : "bg-transparent"}`}
+        } ${solidHeader ? "bg-[rgba(53,10,19,0.96)] shadow-[0_12px_30px_rgba(0,0,0,0.4)]" : "bg-transparent"}`}
         data-testid="site-header"
       >
         <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
@@ -96,14 +96,14 @@ export default function SiteHeader({ introComplete }) {
 
               {servicesOpen && (
                 <div
-                  className="absolute right-0 top-11 w-56 rounded-xl border border-[#C6A75E]/40 bg-[#3E0B14] p-2"
+                  className="absolute right-0 top-11 w-56 rounded-xl border border-[#C6A75E]/40 bg-[#350A13] p-2"
                   data-testid="desktop-services-dropdown"
                 >
                   {serviceLinks.map((service) => (
                     <NavLink
                       key={service.label}
                       to={service.path}
-                      className="block rounded-lg px-3 py-2 text-sm text-[#E8D8C3] transition-colors hover:bg-[#5A0F1C]"
+                      className="block rounded-lg px-3 py-2 text-sm text-[#F5EFE6] transition-colors hover:bg-[#4B0F1B]"
                       data-testid={`desktop-service-link-${service.label.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`}
                     >
                       {service.label}
@@ -168,7 +168,7 @@ export default function SiteHeader({ introComplete }) {
         />
 
         <aside
-          className={`absolute right-0 top-0 flex h-full w-[82%] max-w-sm flex-col bg-[#3E0B14] px-6 py-5 transition-transform duration-[350ms] ease-in-out ${
+          className={`absolute right-0 top-0 flex h-full w-[82%] max-w-sm flex-col bg-[#350A13] px-6 py-5 transition-transform duration-[350ms] ease-in-out ${
             mobileOpen ? "translate-x-0" : "translate-x-full"
           }`}
           data-testid="mobile-slide-panel"
@@ -196,7 +196,7 @@ export default function SiteHeader({ introComplete }) {
               <NavLink
                 key={item.label}
                 to={item.path}
-                className="text-base text-[#E8D8C3]"
+                className="text-base text-[#F5EFE6]"
                 data-testid={`mobile-nav-link-${item.label.toLowerCase()}`}
               >
                 {item.label}
@@ -212,7 +212,7 @@ export default function SiteHeader({ introComplete }) {
                   <NavLink
                     key={service.label}
                     to={service.path}
-                    className="text-base text-[#E8D8C3]"
+                    className="text-base text-[#F5EFE6]"
                     data-testid={`mobile-service-link-${service.label.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`}
                   >
                     {service.label}
@@ -226,7 +226,7 @@ export default function SiteHeader({ introComplete }) {
             href={brandConfig.whatsappLink}
             target="_blank"
             rel="noreferrer"
-            className="mt-5 rounded-full bg-[#C6A75E] px-5 py-3 text-center text-xs font-semibold tracking-[0.2em] text-[#3E0B14]"
+            className="mt-5 rounded-full bg-[#C6A75E] px-5 py-3 text-center text-xs font-semibold tracking-[0.2em] text-[#350A13]"
             data-testid="mobile-panel-lets-chat-button"
           >
             LET&apos;S CHAT
