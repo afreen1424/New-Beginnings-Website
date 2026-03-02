@@ -88,7 +88,7 @@ export default function HomePage({ onIntroComplete }) {
 
           {showTitle && (
             <h1
-              className={`serif-display hero-title-gold hero-heading-shell mt-8 text-3xl font-normal sm:text-5xl lg:text-6xl ${
+              className={`serif-display hero-title-gold hero-heading-shell mt-8 text-3xl font-normal sm:whitespace-nowrap sm:text-5xl lg:text-6xl ${
                 heroContentFading ? "hero-heading-fade-out" : ""
               }`}
               style={{ letterSpacing: mobile ? "0.22em" : "0.3em" }}
