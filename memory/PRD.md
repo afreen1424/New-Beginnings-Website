@@ -77,3 +77,9 @@ Build a fully functional, production-ready luxury event management website for *
 - Removed logo stroke/line-draw effect.
 - Implemented cinematic logo reveal: smooth opacity fade-in + subtle scale-in + one-time antique-gold shimmer sweep + soft gold glow.
 - Kept hero/carousel shared timeline intact so entire hero content (including logo) fades out together before carousel takeover in the same viewport.
+
+## Micro Refinement Pass (Mobile + Carousel Editability)
+- Mobile header optimized for single-line brand display (no wrapping), reduced small-screen padding, and maintained hamburger navigation below 1024px.
+- Enforced global no-horizontal-scroll behavior (`html`, `body`, `#root` overflow-x hidden).
+- Carousel caption remains data-driven from slide array (`homeCarouselSlides` with `couple` field), so names are editable via data only.
+- Mobile carousel caption spacing and typography adjusted for readable bottom-right placement while preserving desktop structure.
