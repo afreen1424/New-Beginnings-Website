@@ -62,7 +62,7 @@ export default function EnquiryPage() {
         data-testid="enquiry-panel"
       >
         <img src={brandConfig.logo} alt="New Beginnings Events" className="mx-auto h-16 w-16 object-contain" loading="lazy" data-testid="enquiry-logo" />
-        <h1 className="serif-display mt-4 text-center text-4xl text-[#3E0B14] sm:text-5xl" data-testid="enquiry-heading">
+        <h1 className="serif-display mt-4 text-center text-4xl text-[#350A13] sm:text-5xl" data-testid="enquiry-heading">
           Begin Your Celebration.
         </h1>
         <div className="mx-auto mt-4 h-[1px] w-28 bg-[#C6A75E]" data-testid="enquiry-divider" />
