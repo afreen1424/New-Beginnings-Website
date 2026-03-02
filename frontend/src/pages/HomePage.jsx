@@ -78,10 +78,7 @@ export default function HomePage({ onIntroComplete }) {
   return (
     <div className="overflow-hidden" data-testid="home-page">
       <section className="bg-royal-velvet relative flex min-h-screen items-center justify-center px-5 text-center" data-testid="home-hero-section">
-        <div
-          className={`hero-content-shell relative z-10 mx-auto max-w-5xl ${heroContentFading ? "hero-content-fade-out" : ""}`}
-          data-testid="home-hero-content"
-        >
+        <div className="relative z-10 mx-auto max-w-5xl" data-testid="home-hero-content">
           <img
             src={brandConfig.logo}
             alt="New Beginnings Events"
@@ -91,7 +88,9 @@ export default function HomePage({ onIntroComplete }) {
 
           {showTitle && (
             <h1
-              className="serif-display hero-title-gold mt-8 text-3xl font-normal sm:text-5xl lg:text-6xl"
+              className={`serif-display hero-title-gold hero-heading-shell mt-8 text-3xl font-normal sm:text-5xl lg:text-6xl ${
+                heroContentFading ? "hero-heading-fade-out" : ""
+              }`}
               style={{ letterSpacing: mobile ? "0.22em" : "0.3em" }}
               data-testid="home-hero-heading"
             >
