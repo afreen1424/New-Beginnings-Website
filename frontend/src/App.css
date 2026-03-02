@@ -70,6 +70,13 @@ body {
     opacity: 0;
     transform: translateY(6px);
     animation: letterReveal 0.55s ease forwards;
+    background: linear-gradient(180deg, #e2c27a 0%, #c6a75e 52%, #a8843f 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow:
+        0 0 8px rgba(198, 167, 94, 0.15),
+        0 0 18px rgba(198, 167, 94, 0.08);
 }
 
 .hero-title-gold {
@@ -109,7 +116,7 @@ body {
         inset 0 2px 12px rgba(90, 15, 28, 0.18),
         0 18px 35px rgba(0, 0, 0, 0.2);
     overflow: hidden;
-    padding: 12px;
+    padding: 6px;
 }
 
 .arch-editorial-inner {
@@ -196,7 +203,7 @@ body {
 
     .arch-editorial-frame {
         border-radius: 190px 190px 18px 18px / 140px 140px 18px 18px;
-        padding: 10px;
+        padding: 5px;
     }
 
     .arch-editorial-inner {
