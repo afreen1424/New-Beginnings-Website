@@ -200,7 +200,7 @@ export default function HomePage({ onIntroComplete }) {
                 />
                 <div className="service-card-overlay absolute inset-0 opacity-10 transition-opacity duration-500 group-hover:opacity-100" />
                 <div className="absolute inset-0 flex flex-col items-center justify-center opacity-0 transition-opacity duration-300 group-hover:opacity-100" data-testid={`portfolio-preview-overlay-${event.id}`}>
-                  <p className="serif-display text-2xl text-[#E8D8C3]" data-testid={`portfolio-preview-title-${event.id}`}>
+                  <p className="serif-display text-2xl text-[#F5EFE6]" data-testid={`portfolio-preview-title-${event.id}`}>
                     {event.title}
                   </p>
                   <div className="mt-2 h-[1px] w-12 bg-[#C6A75E] transition-all duration-300 group-hover:w-24" data-testid={`portfolio-preview-underline-${event.id}`} />
