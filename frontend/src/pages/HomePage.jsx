@@ -79,8 +79,8 @@ export default function HomePage({ onIntroComplete }) {
 
           {showTitle && (
             <h1
-              className="serif-display mt-8 text-4xl text-[#E8D8C3] sm:text-5xl lg:text-6xl"
-              style={{ letterSpacing: mobile ? "0.18em" : "0.42em" }}
+              className="serif-display mt-8 text-3xl text-[#E8D8C3] sm:text-5xl lg:text-6xl"
+              style={{ letterSpacing: mobile ? "0.12em" : "0.42em" }}
               data-testid="home-hero-heading"
             >
               {HERO_TITLE.split("").map((char, idx) => (
