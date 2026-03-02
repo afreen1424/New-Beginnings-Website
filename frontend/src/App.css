@@ -10,6 +10,13 @@
     box-sizing: border-box;
 }
 
+html,
+body,
+#root {
+    overflow-x: hidden;
+    width: 100%;
+}
+
 body {
     overflow-x: hidden;
 }
