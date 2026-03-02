@@ -31,7 +31,7 @@ export default function CateringPage() {
           />
         </RevealBlock>
         <RevealBlock direction="right" testId="catering-veg-text-reveal">
-          <h2 className="serif-display text-3xl text-[#3E0B14]" data-testid="catering-veg-title">
+          <h2 className="serif-display text-3xl text-[#350A13]" data-testid="catering-veg-title">
             {cateringService.veg.title}
           </h2>
           <p className="mt-4 text-base leading-relaxed text-[#50332F]" data-testid="catering-veg-text">
@@ -42,7 +42,7 @@ export default function CateringPage() {
 
       <section className="mx-auto mt-16 grid w-full max-w-6xl gap-12 px-5 sm:px-8 lg:grid-cols-2 lg:items-center" data-testid="catering-nonveg-section">
         <RevealBlock direction="left" testId="catering-nonveg-text-reveal">
-          <h2 className="serif-display text-3xl text-[#3E0B14]" data-testid="catering-nonveg-title">
+          <h2 className="serif-display text-3xl text-[#350A13]" data-testid="catering-nonveg-title">
             {cateringService.nonVeg.title}
           </h2>
           <p className="mt-4 text-base leading-relaxed text-[#50332F]" data-testid="catering-nonveg-text">
