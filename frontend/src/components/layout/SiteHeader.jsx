@@ -43,17 +43,17 @@ export default function SiteHeader() {
         className="fixed left-0 right-0 top-0 z-50 border-b border-transparent bg-[rgba(53,10,19,0.96)] shadow-[0_12px_30px_rgba(0,0,0,0.4)]"
         data-testid="site-header"
       >
-        <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
-          <Link to="/" className="flex items-center gap-3" data-testid="header-brand-link">
+        <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-3 py-2 sm:px-6 sm:py-3 lg:px-8" data-testid="site-header-inner">
+          <Link to="/" className="flex min-w-0 flex-nowrap items-center gap-2 sm:gap-3" data-testid="header-brand-link">
             <img
               src={brandConfig.logo}
               alt="New Beginnings Events Logo"
-              className="h-11 w-11 object-contain"
+              className="h-9 w-9 object-contain sm:h-11 sm:w-11"
               loading="eager"
               data-testid="header-brand-logo"
             />
             <span
-              className="serif-display hidden text-sm tracking-[0.18em] text-[#C6A75E] sm:inline-block"
+              className="serif-display max-w-[170px] truncate whitespace-nowrap text-[9px] tracking-[0.12em] text-[#C6A75E] sm:max-w-none sm:text-xs sm:tracking-[0.14em] lg:text-sm lg:tracking-[0.18em]"
               data-testid="header-brand-name"
             >
               NEW BEGINNINGS EVENTS
@@ -123,12 +123,12 @@ export default function SiteHeader() {
             </a>
           </div>
 
-          <div className="flex items-center gap-2 lg:hidden">
+          <div className="flex items-center gap-1.5 lg:hidden" data-testid="mobile-header-actions">
             <a
               href={brandConfig.whatsappLink}
               target="_blank"
               rel="noreferrer"
-              className="rounded-full border border-[#C6A75E] px-3 py-2 text-[10px] font-semibold tracking-[0.2em] text-[#C6A75E]"
+              className="rounded-full border border-[#C6A75E] px-2.5 py-1.5 text-[9px] font-semibold tracking-[0.14em] whitespace-nowrap text-[#C6A75E]"
               data-testid="mobile-header-lets-chat-button"
             >
               LET&apos;S CHAT
@@ -136,11 +136,11 @@ export default function SiteHeader() {
             <button
               type="button"
               onClick={() => setMobileOpen(true)}
-              className="rounded-full border border-[#C6A75E] p-2 text-[#C6A75E]"
+              className="rounded-full border border-[#C6A75E] p-1.5 text-[#C6A75E]"
               aria-label="Open Menu"
               data-testid="mobile-menu-open-button"
             >
-              <Menu size={20} />
+              <Menu size={18} />
             </button>
           </div>
         </div>
