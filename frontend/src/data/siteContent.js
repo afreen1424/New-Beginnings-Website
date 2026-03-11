@@ -29,11 +29,11 @@ export const socialLinks = [
 ];
 
 export const homeCarouselSlides = [
-  { image: "/assets/home/carousel_1.webp", couple: "" },
-  { image: "/assets/home/carousel_2.webp", couple: "" },
-  { image: "/assets/home/carousel_3.webp", couple: "" },
-  { image: "/assets/home/carousel_4.webp", couple: "" },
-  { image: "/assets/home/carousel_5.webp", couple: "" },
+  { image: "/assets/home/carousel_latest_1.webp", couple: "" },
+  { image: "/assets/home/carousel_latest_2.webp", couple: "" },
+  { image: "/assets/home/carousel_latest_3.webp", couple: "" },
+  { image: "/assets/home/carousel_latest_4.webp", couple: "" },
+  { image: "/assets/home/carousel_latest_5.webp", couple: "" },
 ];
 
 export const portfolioEvents = {

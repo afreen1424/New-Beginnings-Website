@@ -96,3 +96,8 @@ Build a fully functional, production-ready luxury event management website for *
 - Updated desktop dropdown background to `rgba(60,5,24,0.65)` while preserving square-corner layout and existing interactions.
 - Corrected hero carousel image rendering for clean viewport fill (`height: 100vh`, object-fit cover, centered) with seamless infinite slide logic retained.
 - Refined About spacing (left text width + wider text/image separation), replaced About image source only, and simplified Video section to clean full-width cinematic playback (70vh desktop / 50vh mobile) without decorative overlays.
+
+## Micro Pass (Header Text + Carousel Scaling)
+- Updated header center brand text color to `#DEA937` and adjusted desktop script size to requested refined value while preserving alignment/layout.
+- Replaced hero carousel image set with newly uploaded 5 images (1920×1080) and preserved transitions/height/spacing.
+- Ensured carousel slide images maintain proportion with `object-fit: cover`, centered framing, and no distortion/stretching.
