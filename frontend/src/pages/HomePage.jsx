@@ -163,12 +163,18 @@ export default function HomePage({ onIntroComplete }) {
               Shall we set the date to forever?
             </h2>
             <div className="about-hook-divider mt-5" data-testid="about-hook-divider" />
-            <p className={`about-seq-item text-base leading-relaxed text-[#3C0518] sm:text-lg ${aboutVisible ? "is-visible" : ""}`} style={{ transitionDelay: "130ms" }} data-testid="about-paragraph-1">
+            <p className={`about-seq-item text-[16px] leading-relaxed text-[#3C0518] sm:text-[17px] ${aboutVisible ? "is-visible" : ""}`} style={{ transitionDelay: "130ms" }} data-testid="about-paragraph-1">
               At New Beginnings Events, we believe weddings are the beginning of something timeless — the moment where love becomes a promise for forever. Every couple carries a dream of how their day should feel, and it is our joy to turn that dream into something real, beautiful, and deeply meaningful. With an eye for detail and a heart for celebration, we craft weddings that feel personal, effortless, and filled with moments that linger long after the day is over.
             </p>
-            <p className={`about-seq-item text-base leading-relaxed text-[#3C0518] sm:text-lg ${aboutVisible ? "is-visible" : ""}`} style={{ transitionDelay: "260ms" }} data-testid="about-paragraph-2">
+            <p className={`about-seq-item text-[16px] leading-relaxed text-[#3C0518] sm:text-[17px] ${aboutVisible ? "is-visible" : ""}`} style={{ transitionDelay: "260ms" }} data-testid="about-paragraph-2">
               What we create goes beyond décor and planning — it is the atmosphere, the emotion, and the quiet magic woven into every detail. Each celebration is thoughtfully designed so that couples can be fully present in the moments that matter most. Alongside weddings, we also curate memorable events, always with the same care and artistry that define the stories we bring to life. Because some moments deserve to be remembered not just beautifully, but forever.
             </p>
+
+            <div className="pt-2" data-testid="about-cta-wrap">
+              <Link to="/enquiry" className="about-cta-button" data-testid="about-cta-button">
+                Let&apos;s Begin Your Forever
+              </Link>
+            </div>
           </div>
 
           <div className={`about-frame-animate ${aboutVisible ? "is-visible" : ""}`} data-testid="about-image-reveal">
@@ -178,11 +184,6 @@ export default function HomePage({ onIntroComplete }) {
           </div>
         </div>
 
-        <div className="mt-12 flex justify-center" data-testid="about-cta-wrap">
-          <Link to="/enquiry" className="about-cta-button" data-testid="about-cta-button">
-            Let&apos;s Begin Your Forever
-          </Link>
-        </div>
       </section>
 
       <section ref={videoRef} className="bg-ivory px-5 pb-16 pt-12 sm:px-8 lg:px-12" data-testid="home-decor-highlight-section">

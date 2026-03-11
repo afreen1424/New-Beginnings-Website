@@ -101,3 +101,9 @@ Build a fully functional, production-ready luxury event management website for *
 - Updated header center brand text color to `#DEA937` and adjusted desktop script size to requested refined value while preserving alignment/layout.
 - Replaced hero carousel image set with newly uploaded 5 images (1920×1080) and preserved transitions/height/spacing.
 - Ensured carousel slide images maintain proportion with `object-fit: cover`, centered framing, and no distortion/stretching.
+
+## About Section Micro Pass
+- Replaced About image source with latest uploaded asset while keeping section layout/alignment intact.
+- Reduced About paragraph body size to ~16–17px for lighter editorial balance.
+- Moved About CTA placement to align neatly under left text content within the About container (no overflow).
+- Removed rounded corners from About right image container for a clean rectangular presentation.
