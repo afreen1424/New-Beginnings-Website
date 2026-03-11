@@ -157,8 +157,8 @@ export default function HomePage({ onIntroComplete }) {
       </section>
 
       <section ref={aboutRef} className="bg-ivory px-5 py-24 sm:px-8 lg:px-12" data-testid="home-about-section">
-        <div className="mx-auto grid w-full max-w-7xl items-center gap-12 lg:grid-cols-[minmax(0,560px)_minmax(0,1fr)] lg:gap-[100px]">
-          <div className="space-y-6 lg:max-w-[560px]" data-testid="about-text-reveal">
+        <div className="mx-auto grid w-full max-w-7xl items-center gap-12 lg:grid-cols-[minmax(0,620px)_minmax(0,1fr)] lg:gap-[76px]">
+          <div className="space-y-6 lg:max-w-[620px]" data-testid="about-text-reveal">
             <h2 className={`about-poetic-heading about-seq-item text-[3.3rem] leading-none sm:text-[5.1rem] ${aboutVisible ? "is-visible" : ""}`} data-testid="about-heading">
               Shall we set the date to forever?
             </h2>
@@ -170,7 +170,7 @@ export default function HomePage({ onIntroComplete }) {
               What we create goes beyond décor and planning — it is the atmosphere, the emotion, and the quiet magic woven into every detail. Each celebration is thoughtfully designed so that couples can be fully present in the moments that matter most. Alongside weddings, we also curate memorable events, always with the same care and artistry that define the stories we bring to life. Because some moments deserve to be remembered not just beautifully, but forever.
             </p>
 
-            <div className="pt-2" data-testid="about-cta-wrap">
+            <div className="flex justify-center pt-2" data-testid="about-cta-wrap">
               <Link to="/enquiry" className="about-cta-button" data-testid="about-cta-button">
                 Let&apos;s Begin Your Forever
               </Link>
