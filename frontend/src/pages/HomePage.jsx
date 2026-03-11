@@ -187,7 +187,7 @@ export default function HomePage({ onIntroComplete }) {
         <div className="w-full">
           <AnimatedHeading text="Every Detail Tells A Story" active={videoVisible} testId="decor-kicker" className="text-center text-3xl text-[#3C0518] sm:text-4xl" />
 
-          <div className={`video-mask-stage mt-6 w-full ${videoVisible ? "is-visible" : ""}`} data-testid="decor-arch-container">
+          <div className={`video-mask-stage mt-14 w-full ${videoVisible ? "is-visible" : ""}`} data-testid="decor-arch-container">
             <div className="video-mask-inner" data-testid="decor-video-wrapper">
               <video autoPlay muted loop playsInline preload="metadata" className="video-mask-video" data-testid="decor-highlight-video">
                 <source src={homeMedia.videoInside} type="video/mp4" />
