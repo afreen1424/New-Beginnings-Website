@@ -89,3 +89,10 @@ Build a fully functional, production-ready luxury event management website for *
 - Reworked homepage hero/header choreography (logo + Tangerine script intro, upward lift, delayed header/nav reveal, slide-based hero carousel without captions).
 - Wired newly provided assets: 5 carousel images, final about image, and updated social/contact details.
 - Added transparent burgundy desktop dropdown styling, refined section typography/animations, Google reviews CTA link, and compact single-line home footer with provided contact metadata.
+
+## Final Instruction Pass (Precision Tweaks)
+- Hero brand name animation now uses elegant letter-by-letter reveal (`0.35s`, `0.06s` stagger, `translateY(8px→0)`, opacity fade) while preserving intro timeline.
+- Set homepage/header brand-name color to logo-extracted gold (`#DB9A17`) and aligned center header logo/text visual heights.
+- Updated desktop dropdown background to `rgba(60,5,24,0.65)` while preserving square-corner layout and existing interactions.
+- Corrected hero carousel image rendering for clean viewport fill (`height: 100vh`, object-fit cover, centered) with seamless infinite slide logic retained.
+- Refined About spacing (left text width + wider text/image separation), replaced About image source only, and simplified Video section to clean full-width cinematic playback (70vh desktop / 50vh mobile) without decorative overlays.

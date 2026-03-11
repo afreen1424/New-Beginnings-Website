@@ -79,10 +79,7 @@ export default function SiteHeader({ introComplete = true, isHome = false }) {
               </button>
 
               {servicesOpen && (
-                <div
-                  className="header-dropdown-panel absolute left-0 top-11 w-56 overflow-hidden rounded-none"
-                  data-testid="desktop-services-dropdown"
-                >
+                <div className="header-dropdown-panel absolute left-0 top-11 w-56 overflow-hidden rounded-none" data-testid="desktop-services-dropdown">
                   {serviceLinks.map((service) => (
                     <NavLink
                       key={service.label}
@@ -104,9 +101,9 @@ export default function SiteHeader({ introComplete = true, isHome = false }) {
             ))}
           </div>
 
-          <Link to="/" className="header-brand-center hidden min-w-0 flex-nowrap items-center justify-center gap-2 lg:flex" data-testid="header-brand-link">
-            <img src={brandConfig.logo} alt="New Beginnings Events Logo" className="h-10 w-10 object-contain" loading="eager" data-testid="header-brand-logo" />
-            <span className="signature-script whitespace-nowrap text-5xl leading-none text-[#F5EFE6]" data-testid="header-brand-name">
+          <Link to="/" className="header-brand-center hidden min-w-0 flex-nowrap items-center justify-center gap-[11px] lg:flex" data-testid="header-brand-link">
+            <img src={brandConfig.logo} alt="New Beginnings Events Logo" className="h-9 w-9 object-contain" loading="eager" data-testid="header-brand-logo" />
+            <span className="header-brand-script signature-script whitespace-nowrap" data-testid="header-brand-name">
               New Beginnings Events
             </span>
           </Link>
@@ -134,9 +131,9 @@ export default function SiteHeader({ introComplete = true, isHome = false }) {
               <Menu size={18} />
             </button>
 
-            <Link to="/" className="absolute left-1/2 flex -translate-x-1/2 items-center gap-2" data-testid="mobile-header-center-brand">
+            <Link to="/" className="absolute left-1/2 flex -translate-x-1/2 items-center gap-[10px]" data-testid="mobile-header-center-brand">
               <img src={brandConfig.logo} alt="NB Logo" className="h-8 w-8 object-contain" loading="eager" data-testid="mobile-header-brand-logo" />
-              <span className="signature-script max-w-[146px] truncate whitespace-nowrap text-3xl leading-none text-[#F5EFE6]" data-testid="mobile-header-brand-name">
+              <span className="header-brand-script-mobile signature-script max-w-[146px] truncate whitespace-nowrap" data-testid="mobile-header-brand-name">
                 New Beginnings Events
               </span>
             </Link>
@@ -166,7 +163,7 @@ export default function SiteHeader({ introComplete = true, isHome = false }) {
           <div className="mb-8 flex items-center justify-between">
             <Link to="/" className="flex items-center gap-2" data-testid="mobile-panel-logo-link">
               <img src={brandConfig.logo} alt="NB Logo" className="h-10 w-10 object-contain" loading="lazy" data-testid="mobile-panel-logo" />
-              <span className="signature-script text-3xl leading-none text-[#F5EFE6]" data-testid="mobile-panel-brand-name">
+              <span className="signature-script text-3xl leading-none text-[var(--logo-gold)]" data-testid="mobile-panel-brand-name">
                 NEW BEGINNINGS EVENTS
               </span>
             </Link>

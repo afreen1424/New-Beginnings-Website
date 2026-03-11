@@ -78,7 +78,7 @@ export default function HomePage({ onIntroComplete }) {
     setCarouselVisible(false);
     introDoneRef.current = false;
 
-    const showTimer = setTimeout(() => setShowTitle(true), 600);
+    const showTimer = setTimeout(() => setShowTitle(true), 1200);
     const liftStart = mobile ? 4000 : 4300;
     const fadeOutStart = mobile ? 4500 : 4800;
     const liftTimer = setTimeout(() => setHeroLift(true), liftStart);
@@ -140,16 +140,25 @@ export default function HomePage({ onIntroComplete }) {
           <HeroLogoCinematic />
 
           {showTitle && (
-            <h1 className="hero-signature-name mt-8 text-[#C6A75E]" style={{ letterSpacing: mobile ? "0.06em" : "0.09em" }} data-testid="home-hero-heading">
-              {HERO_TITLE}
+            <h1 className="hero-signature-name mt-8" style={{ letterSpacing: mobile ? "0.06em" : "0.09em" }} data-testid="home-hero-heading">
+              {HERO_TITLE.split("").map((char, idx) => (
+                <span
+                  key={`hero-signature-${idx}`}
+                  className="hero-signature-letter"
+                  style={{ animationDelay: `${idx * 0.06}s` }}
+                  data-testid={`home-hero-signature-letter-${idx}`}
+                >
+                  {char === " " ? "\u00A0" : char}
+                </span>
+              ))}
             </h1>
           )}
         </div>
       </section>
 
       <section ref={aboutRef} className="bg-ivory px-5 py-24 sm:px-8 lg:px-12" data-testid="home-about-section">
-        <div className="mx-auto grid w-full max-w-6xl items-center gap-12 lg:grid-cols-[1.22fr_1fr]">
-          <div className="space-y-6" data-testid="about-text-reveal">
+        <div className="mx-auto grid w-full max-w-7xl items-center gap-12 lg:grid-cols-[minmax(0,560px)_minmax(0,1fr)] lg:gap-[100px]">
+          <div className="space-y-6 lg:max-w-[560px]" data-testid="about-text-reveal">
             <h2 className={`about-poetic-heading about-seq-item text-[3.3rem] leading-none sm:text-[5.1rem] ${aboutVisible ? "is-visible" : ""}`} data-testid="about-heading">
               Shall we set the date to forever?
             </h2>
@@ -176,17 +185,16 @@ export default function HomePage({ onIntroComplete }) {
         </div>
       </section>
 
-      <section ref={videoRef} className="bg-ivory px-5 py-20 sm:px-8 lg:px-12" data-testid="home-decor-highlight-section">
-        <div className="mx-auto w-full max-w-6xl">
+      <section ref={videoRef} className="bg-ivory px-5 pb-16 pt-12 sm:px-8 lg:px-12" data-testid="home-decor-highlight-section">
+        <div className="mx-auto w-full">
           <AnimatedHeading text="Every Detail Tells A Story" active={videoVisible} testId="decor-kicker" className="text-center text-3xl text-[#3C0518] sm:text-4xl" />
 
-          <div className={`video-mask-stage mx-auto mt-10 w-full max-w-5xl ${videoVisible ? "is-visible" : ""}`} data-testid="decor-arch-container">
+          <div className={`video-mask-stage mt-6 w-full ${videoVisible ? "is-visible" : ""}`} data-testid="decor-arch-container">
             <div className="video-mask-inner" data-testid="decor-video-wrapper">
               <video autoPlay muted loop playsInline preload="metadata" className="video-mask-video" data-testid="decor-highlight-video">
                 <source src={homeMedia.videoInside} type="video/mp4" />
                 <source src="/assets/decor-video.webm" type="video/webm" />
               </video>
-              <img src={homeMedia.videoMaskOverlay} alt="Curved video mask" className="video-mask-overlay" loading="lazy" data-testid="decor-mask-overlay" />
             </div>
           </div>
         </div>

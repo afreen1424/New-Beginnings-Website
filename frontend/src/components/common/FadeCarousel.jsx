@@ -65,8 +65,8 @@ export default function FadeCarousel({
   if (!slides?.length) return null;
 
   return (
-    <div className={`relative w-full overflow-hidden ${fullHeight ? "h-full" : ""}`} data-testid={testId}>
-      <div className={`relative w-full ${fullHeight ? "h-full" : "aspect-[16/9] sm:aspect-[21/9]"}`}>
+    <div className={`relative w-full overflow-hidden ${fullHeight ? "h-screen" : ""}`} data-testid={testId}>
+      <div className={`relative w-full ${fullHeight ? "h-screen" : "aspect-[16/9] sm:aspect-[21/9]"}`}>
         {transitionType === "slide" ? (
           <div
             className="flex h-full w-full"
@@ -83,6 +83,7 @@ export default function FadeCarousel({
                 alt={slide.couple || slide.title || "Celebration visual"}
                 loading="lazy"
                 className="h-full w-full shrink-0 object-cover object-center"
+                style={fullHeight ? { height: "100vh", width: "100%", objectFit: "cover", objectPosition: "center" } : undefined}
                 data-testid={`${testId}-image-${index}`}
               />
             ))}
@@ -97,7 +98,7 @@ export default function FadeCarousel({
               className={`absolute inset-0 h-full w-full object-cover object-center transition-opacity ease-in-out ${
                 activeIndex === index ? "opacity-100" : "opacity-0"
               }`}
-              style={{ transitionDuration: `${fadeDuration}ms` }}
+              style={fullHeight ? { transitionDuration: `${fadeDuration}ms`, height: "100vh", width: "100%", objectFit: "cover", objectPosition: "center" } : { transitionDuration: `${fadeDuration}ms` }}
               data-testid={`${testId}-image-${index}`}
             />
           ))
