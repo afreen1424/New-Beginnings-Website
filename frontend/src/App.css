@@ -247,13 +247,14 @@ body {
     overflow: hidden;
     border-radius: 0;
     box-shadow: none;
-    height: 70vh;
+    width: 100%;
 }
 
 .video-mask-video {
     width: 100%;
-    height: 100%;
+    height: auto;
     object-fit: cover;
+    display: block;
 }
 
 .about-final-image-shell {
@@ -641,10 +642,6 @@ body {
 
     .video-mask-video {
         min-height: 0;
-    }
-
-    .video-mask-inner {
-        height: 50vh;
     }
 
     .hero-signature-name {
