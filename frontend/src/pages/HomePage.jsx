@@ -23,17 +23,8 @@ function HeroLogoCinematic() {
 
 function AnimatedHeading({ text, active, testId, className = "" }) {
   return (
-    <h2 className={`serif-display ${className}`} data-testid={testId}>
-      {text.split("").map((char, idx) => (
-        <span
-          key={`${text}-${idx}`}
-          className={`heading-letter ${active ? "is-visible" : ""}`}
-          style={{ transitionDelay: `${idx * 26}ms` }}
-          data-testid={`${testId}-letter-${idx}`}
-        >
-          {char === " " ? "\u00A0" : char}
-        </span>
-      ))}
+    <h2 className={`serif-display section-heading-slide ${active ? "is-visible" : ""} ${className}`} data-testid={testId}>
+      {text}
     </h2>
   );
 }
@@ -192,7 +183,7 @@ export default function HomePage({ onIntroComplete }) {
 
       </section>
 
-      <section ref={videoRef} className="bg-ivory px-5 pb-16 pt-12 sm:px-8 lg:px-12" data-testid="home-decor-highlight-section">
+      <section ref={videoRef} className="bg-ivory px-5 pb-16 pt-5 sm:px-8 sm:pt-6 lg:px-12" data-testid="home-decor-highlight-section">
         <div className="mx-auto w-full">
           <AnimatedHeading text="Every Detail Tells A Story" active={videoVisible} testId="decor-kicker" className="text-center text-3xl text-[#3C0518] sm:text-4xl" />
 

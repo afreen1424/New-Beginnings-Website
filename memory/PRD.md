@@ -107,3 +107,7 @@ Build a fully functional, production-ready luxury event management website for *
 - Reduced About paragraph body size to ~16–17px for lighter editorial balance.
 - Moved About CTA placement to align neatly under left text content within the About container (no overflow).
 - Removed rounded corners from About right image container for a clean rectangular presentation.
+
+## Video Section + Lower Heading Animation Micro Pass
+- Updated only the “Every Detail Tells A Story” section: reduced top spacing, replaced video source with newly uploaded file, and rendered video as full-width section media (no frame/mask), responsive with `object-fit: cover`.
+- Retained heading style/colors/background while updating heading entrance behavior from this section onward to subtle slide-up + fade-in on viewport entry.
