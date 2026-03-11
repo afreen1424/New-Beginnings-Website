@@ -26,7 +26,7 @@ function AppLayout() {
 
   return (
     <div className="min-h-screen bg-[#F5EFE6]" data-testid="app-layout">
-      <SiteHeader introComplete={introComplete} />
+      <SiteHeader introComplete={introComplete} isHome={location.pathname === "/"} />
       <main data-testid="app-main-content">
         <Routes>
           <Route path="/" element={<HomePage onIntroComplete={() => setIntroComplete(true)} />} />

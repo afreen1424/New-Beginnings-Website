@@ -1,6 +1,14 @@
 import { useEffect, useState } from "react";
 
-export default function FadeCarousel({ slides, interval = 4500, caption = false, testId = "fade-carousel", fadeDuration = 900, fullHeight = false }) {
+export default function FadeCarousel({
+  slides,
+  interval = 4500,
+  caption = false,
+  testId = "fade-carousel",
+  fadeDuration = 900,
+  fullHeight = false,
+  transitionType = "fade",
+}) {
   const [activeIndex, setActiveIndex] = useState(0);
 
   useEffect(() => {
@@ -16,19 +24,41 @@ export default function FadeCarousel({ slides, interval = 4500, caption = false,
   return (
     <div className={`relative w-full overflow-hidden ${fullHeight ? "h-full" : ""}`} data-testid={testId}>
       <div className={`relative w-full ${fullHeight ? "h-full" : "aspect-[16/9] sm:aspect-[21/9]"}`}>
-        {slides.map((slide, index) => (
-          <img
-            key={`${slide.image}-${index}`}
-            src={slide.image}
-            alt={slide.couple || slide.title || "Celebration visual"}
-            loading="lazy"
-            className={`absolute inset-0 h-full w-full object-cover object-center transition-opacity ease-in-out ${
-              activeIndex === index ? "opacity-100" : "opacity-0"
-            }`}
-            style={{ transitionDuration: `${fadeDuration}ms` }}
-            data-testid={`${testId}-image-${index}`}
-          />
-        ))}
+        {transitionType === "slide" ? (
+          <div
+            className="flex h-full w-full"
+            style={{
+              transform: `translateX(-${activeIndex * 100}%)`,
+              transition: `transform ${fadeDuration}ms ease-in-out`,
+            }}
+            data-testid={`${testId}-slide-track`}
+          >
+            {slides.map((slide, index) => (
+              <img
+                key={`${slide.image}-${index}`}
+                src={slide.image}
+                alt={slide.couple || slide.title || "Celebration visual"}
+                loading="lazy"
+                className="h-full w-full shrink-0 object-cover object-center"
+                data-testid={`${testId}-image-${index}`}
+              />
+            ))}
+          </div>
+        ) : (
+          slides.map((slide, index) => (
+            <img
+              key={`${slide.image}-${index}`}
+              src={slide.image}
+              alt={slide.couple || slide.title || "Celebration visual"}
+              loading="lazy"
+              className={`absolute inset-0 h-full w-full object-cover object-center transition-opacity ease-in-out ${
+                activeIndex === index ? "opacity-100" : "opacity-0"
+              }`}
+              style={{ transitionDuration: `${fadeDuration}ms` }}
+              data-testid={`${testId}-image-${index}`}
+            />
+          ))
+        )}
       </div>
 
       {caption && (

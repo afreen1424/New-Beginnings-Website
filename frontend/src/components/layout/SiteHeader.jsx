@@ -3,7 +3,17 @@ import { ChevronDown, Menu, X } from "lucide-react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { brandConfig } from "../../data/siteContent";
 
-const mainLinks = [
+const leftDesktopLinks = [
+  { label: "Home", path: "/" },
+  { label: "Portfolio", path: "/portfolio" },
+];
+
+const rightDesktopLinks = [
+  { label: "Blog", path: "/blog" },
+  { label: "Enquiry", path: "/enquiry" },
+];
+
+const mobileMainLinks = [
   { label: "Home", path: "/" },
   { label: "Portfolio", path: "/portfolio" },
   { label: "Blog", path: "/blog" },
@@ -16,7 +26,7 @@ const serviceLinks = [
   { label: "SFX & Entries", path: "/services/sfx-entries" },
 ];
 
-export default function SiteHeader() {
+export default function SiteHeader({ introComplete = true, isHome = false }) {
   const [servicesOpen, setServicesOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const location = useLocation();
@@ -37,37 +47,23 @@ export default function SiteHeader() {
     return () => document.removeEventListener("mousedown", handleOutsideClick);
   }, []);
 
+  const homeHeaderVisible = !isHome || introComplete;
+  const headerClassName = isHome
+    ? `absolute left-0 right-0 top-0 z-40 border-b border-[rgba(198,167,94,0.22)] bg-[rgba(245,239,230,0.86)] backdrop-blur-md transition-all duration-700 ${homeHeaderVisible ? "translate-y-0 opacity-100" : "pointer-events-none -translate-y-6 opacity-0"}`
+    : "fixed left-0 right-0 top-0 z-50 h-[var(--site-header-height)] border-b border-transparent bg-[rgba(53,10,19,0.96)] shadow-[0_12px_30px_rgba(0,0,0,0.4)]";
+
+  const desktopNavClass = isHome ? "nav-link-home" : "nav-link";
+
   return (
     <>
-      <header
-        className="fixed left-0 right-0 top-0 z-50 h-[var(--site-header-height)] border-b border-transparent bg-[rgba(53,10,19,0.96)] shadow-[0_12px_30px_rgba(0,0,0,0.4)]"
-        data-testid="site-header"
-      >
-        <div className="mx-auto flex h-full w-full max-w-7xl items-center justify-between px-3 sm:px-6 lg:px-8" data-testid="site-header-inner">
-          <Link to="/" className="flex min-w-0 flex-nowrap items-center gap-2 sm:gap-3" data-testid="header-brand-link">
-            <img
-              src={brandConfig.logo}
-              alt="New Beginnings Events Logo"
-              className="h-9 w-9 object-contain sm:h-11 sm:w-11"
-              loading="eager"
-              data-testid="header-brand-logo"
-            />
-            <span
-              className="serif-display max-w-[170px] truncate whitespace-nowrap text-[9px] tracking-[0.12em] text-[#C6A75E] sm:max-w-none sm:text-xs sm:tracking-[0.14em] lg:text-sm lg:tracking-[0.18em]"
-              data-testid="header-brand-name"
-            >
-              NEW BEGINNINGS EVENTS
-            </span>
-          </Link>
-
-          <div className="hidden items-center gap-7 lg:flex">
-            {mainLinks.slice(0, 1).map((item) => (
-              <NavLink
-                key={item.label}
-                to={item.path}
-                className="nav-link"
-                data-testid={`nav-link-${item.label.toLowerCase()}`}
-              >
+      <header className={headerClassName} data-testid="site-header">
+        <div
+          className={`mx-auto flex w-full max-w-7xl items-center justify-between px-3 sm:px-6 lg:px-8 ${isHome ? "h-[72px]" : "h-[var(--site-header-height)]"}`}
+          data-testid="site-header-inner"
+        >
+          <div className="hidden min-w-0 flex-1 items-center gap-6 lg:flex" data-testid="header-left-cluster">
+            {leftDesktopLinks.slice(0, 1).map((item) => (
+              <NavLink key={item.label} to={item.path} className={desktopNavClass} data-testid={`nav-link-${item.label.toLowerCase()}`}>
                 {item.label}
               </NavLink>
             ))}
@@ -76,7 +72,7 @@ export default function SiteHeader() {
               <button
                 type="button"
                 onClick={() => setServicesOpen((prev) => !prev)}
-                className="nav-link inline-flex items-center gap-1"
+                className={`${desktopNavClass} inline-flex items-center gap-1`}
                 data-testid="nav-link-other-services"
               >
                 Other Services <ChevronDown size={15} className={`transition-transform ${servicesOpen ? "rotate-180" : ""}`} />
@@ -84,14 +80,14 @@ export default function SiteHeader() {
 
               {servicesOpen && (
                 <div
-                  className="absolute right-0 top-11 w-56 rounded-xl border border-[#C6A75E]/40 bg-[#350A13] p-2"
+                  className="header-dropdown-panel absolute left-0 top-11 w-56 overflow-hidden rounded-xl"
                   data-testid="desktop-services-dropdown"
                 >
                   {serviceLinks.map((service) => (
                     <NavLink
                       key={service.label}
                       to={service.path}
-                      className="block rounded-lg px-3 py-2 text-sm text-[#F5EFE6] transition-colors hover:bg-[#4B0F1B]"
+                      className="block px-3 py-2 text-sm text-[#4A0D18] transition-colors hover:bg-[rgba(90,15,31,0.08)]"
                       data-testid={`desktop-service-link-${service.label.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`}
                     >
                       {service.label}
@@ -101,38 +97,33 @@ export default function SiteHeader() {
               )}
             </div>
 
-            {mainLinks.slice(1).map((item) => (
-              <NavLink
-                key={item.label}
-                to={item.path}
-                className="nav-link"
-                data-testid={`nav-link-${item.label.toLowerCase()}`}
-              >
+            {leftDesktopLinks.slice(1).map((item) => (
+              <NavLink key={item.label} to={item.path} className={desktopNavClass} data-testid={`nav-link-${item.label.toLowerCase()}`}>
+                {item.label}
+              </NavLink>
+            ))}
+          </div>
+
+          <Link to="/" className="header-brand-center hidden min-w-0 flex-nowrap items-center justify-center gap-2 lg:flex" data-testid="header-brand-link">
+            <img src={brandConfig.logo} alt="New Beginnings Events Logo" className="h-10 w-10 object-contain" loading="eager" data-testid="header-brand-logo" />
+            <span className="serif-display max-w-[190px] truncate whitespace-nowrap text-[10px] tracking-[0.12em] text-[#C6A75E] sm:text-xs sm:tracking-[0.14em]" data-testid="header-brand-name">
+              NEW BEGINNINGS EVENTS
+            </span>
+          </Link>
+
+          <div className="hidden min-w-0 flex-1 items-center justify-end gap-6 lg:flex" data-testid="header-right-cluster">
+            {rightDesktopLinks.map((item) => (
+              <NavLink key={item.label} to={item.path} className={desktopNavClass} data-testid={`nav-link-${item.label.toLowerCase()}`}>
                 {item.label}
               </NavLink>
             ))}
 
-            <a
-              href={brandConfig.whatsappLink}
-              target="_blank"
-              rel="noreferrer"
-              className="gold-outline-button"
-              data-testid="header-lets-chat-button"
-            >
+            <a href={brandConfig.whatsappLink} target="_blank" rel="noreferrer" className="gold-outline-button" data-testid="header-lets-chat-button">
               LET&apos;S CHAT
             </a>
           </div>
 
-          <div className="flex items-center gap-1.5 lg:hidden" data-testid="mobile-header-actions">
-            <a
-              href={brandConfig.whatsappLink}
-              target="_blank"
-              rel="noreferrer"
-              className="rounded-full border border-[#C6A75E] px-2.5 py-1.5 text-[9px] font-semibold tracking-[0.14em] whitespace-nowrap text-[#C6A75E]"
-              data-testid="mobile-header-lets-chat-button"
-            >
-              LET&apos;S CHAT
-            </a>
+          <div className="flex w-full items-center justify-between lg:hidden" data-testid="mobile-header-actions">
             <button
               type="button"
               onClick={() => setMobileOpen(true)}
@@ -142,6 +133,17 @@ export default function SiteHeader() {
             >
               <Menu size={18} />
             </button>
+
+            <Link to="/" className="absolute left-1/2 flex -translate-x-1/2 items-center gap-2" data-testid="mobile-header-center-brand">
+              <img src={brandConfig.logo} alt="NB Logo" className="h-8 w-8 object-contain" loading="eager" data-testid="mobile-header-brand-logo" />
+              <span className="serif-display max-w-[128px] truncate whitespace-nowrap text-[9px] tracking-[0.12em] text-[#C6A75E]" data-testid="mobile-header-brand-name">
+                NEW BEGINNINGS EVENTS
+              </span>
+            </Link>
+
+            <a href={brandConfig.whatsappLink} target="_blank" rel="noreferrer" className="rounded-full border border-[#C6A75E] px-2.5 py-1.5 text-[9px] font-semibold tracking-[0.14em] whitespace-nowrap text-[#C6A75E]" data-testid="mobile-header-lets-chat-button">
+              CHAT
+            </a>
           </div>
         </div>
       </header>
@@ -180,7 +182,7 @@ export default function SiteHeader() {
           </div>
 
           <nav className="flex flex-1 flex-col gap-4" data-testid="mobile-nav-links">
-            {mainLinks.map((item) => (
+            {mobileMainLinks.map((item) => (
               <NavLink
                 key={item.label}
                 to={item.path}

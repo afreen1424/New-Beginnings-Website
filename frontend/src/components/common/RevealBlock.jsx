@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 
-export default function RevealBlock({ children, direction = "up", delay = 0, testId = "reveal-block" }) {
+export default function RevealBlock({ children, direction = "up", delay = 0, testId = "reveal-block", repeat = false }) {
   const [visible, setVisible] = useState(false);
   const blockRef = useRef(null);
 
@@ -9,7 +9,11 @@ export default function RevealBlock({ children, direction = "up", delay = 0, tes
       ([entry]) => {
         if (entry.isIntersecting) {
           setVisible(true);
-          observer.disconnect();
+          if (!repeat) {
+            observer.disconnect();
+          }
+        } else if (repeat) {
+          setVisible(false);
         }
       },
       { threshold: 0.2 },
@@ -17,7 +21,7 @@ export default function RevealBlock({ children, direction = "up", delay = 0, tes
 
     if (blockRef.current) observer.observe(blockRef.current);
     return () => observer.disconnect();
-  }, []);
+  }, [repeat]);
 
   return (
     <div

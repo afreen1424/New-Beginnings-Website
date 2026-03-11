@@ -8,7 +8,18 @@ const quickLinks = [
   { label: "Enquiry", path: "/enquiry" },
 ];
 
-export default function SiteFooter() {
+export default function SiteFooter({ isHome = false }) {
+  if (isHome) {
+    return (
+      <footer className="bg-[#350A13] px-4 py-7 text-[#F5EFE6]" data-testid="site-footer">
+        <div className="mx-auto h-[1px] w-full max-w-6xl bg-[#C6A75E]/50" data-testid="footer-divider" />
+        <p className="serif-display mx-auto mt-5 max-w-6xl text-center text-sm leading-relaxed text-[#F5EFE6]" data-testid="footer-compact-line">
+          © 2026 New Beginnings Events — All Rights Reserved | Chennai, Tamil Nadu | +91 81229 13183
+        </p>
+      </footer>
+    );
+  }
+
   return (
     <footer className="bg-[#350A13] px-4 pb-6 pt-12 text-[#F5EFE6] sm:px-6 lg:px-8" data-testid="site-footer">
       <div className="mx-auto grid w-full max-w-7xl gap-12 md:grid-cols-3">

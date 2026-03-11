@@ -5,7 +5,14 @@ export const brandConfig = {
   phoneRaw: "918122913183",
   email: "hello@newbeginnings.events",
   address: "Chennai, Tamil Nadu, India",
-  logo: "/assets/logo-nb.webp",
+  logo: "/assets/home/logo_new.png",
+};
+
+export const homeMedia = {
+  aboutFrameOverlay: "/assets/home/about_frame_overlay.png",
+  aboutFrameInside: "/assets/home/about_frame_inside.jpg",
+  videoMaskOverlay: "/assets/home/video_mask.png",
+  videoInside: "/assets/home/video_inside.mp4",
 };
 
 export const socialLinks = [
