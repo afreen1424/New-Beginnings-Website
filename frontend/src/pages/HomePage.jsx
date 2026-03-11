@@ -170,7 +170,7 @@ export default function HomePage({ onIntroComplete }) {
               What we create goes beyond décor and planning — it is the atmosphere, the emotion, and the quiet magic woven into every detail. Each celebration is thoughtfully designed so that couples can be fully present in the moments that matter most. Alongside weddings, we also curate memorable events, always with the same care and artistry that define the stories we bring to life. Because some moments deserve to be remembered not just beautifully, but forever.
             </p>
 
-            <div className="flex justify-center pt-2 lg:hidden" data-testid="about-cta-wrap">
+            <div className="flex justify-center px-1 pt-2 lg:hidden" data-testid="about-cta-wrap">
               <Link to="/enquiry" className="about-cta-button" data-testid="about-cta-button">
                 Let&apos;s Begin Your Forever
               </Link>
@@ -183,7 +183,7 @@ export default function HomePage({ onIntroComplete }) {
             </div>
           </div>
 
-          <div className="hidden lg:order-3 lg:col-span-2 lg:flex lg:justify-center lg:pt-2" data-testid="about-cta-wrap-desktop">
+          <div className="hidden px-1 lg:order-3 lg:col-span-2 lg:flex lg:justify-center lg:pt-2" data-testid="about-cta-wrap-desktop">
             <Link to="/enquiry" className="about-cta-button" data-testid="about-cta-button-desktop">
               Let&apos;s Begin Your Forever
             </Link>

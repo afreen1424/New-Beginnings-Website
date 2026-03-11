@@ -373,6 +373,12 @@ body {
     letter-spacing: 0.16em;
     padding: 0.9rem 1.8rem;
     text-transform: uppercase;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 100%;
+    text-align: center;
+    white-space: normal;
     transition:
         transform 0.25s ease,
         box-shadow 0.25s ease,
@@ -634,5 +640,11 @@ body {
 
     .social-icon-button {
         margin-inline: auto;
+    }
+
+    .about-cta-button {
+        padding: 0.82rem 1.35rem;
+        font-size: 0.68rem;
+        letter-spacing: 0.12em;
     }
 }
