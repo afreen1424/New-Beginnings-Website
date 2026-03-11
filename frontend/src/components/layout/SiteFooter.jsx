@@ -13,7 +13,7 @@ export default function SiteFooter({ isHome = false }) {
     return (
       <footer className="bg-[#3C0518] px-4 py-[18px] text-[#F5EFE6]" data-testid="site-footer">
         <div className="mx-auto h-[1px] w-full max-w-6xl bg-[#C6A75E]/50" data-testid="footer-divider" />
-        <p className="serif-display mx-auto mt-5 max-w-6xl text-center text-sm leading-relaxed text-[#F5EFE6]" data-testid="footer-compact-line">
+        <p className="mx-auto mt-5 max-w-6xl text-center text-sm leading-relaxed text-[#F5EFE6]" data-testid="footer-compact-line">
           © New Beginnings Events 2026 | {brandConfig.address} | {brandConfig.email} | {brandConfig.phone}
         </p>
       </footer>
