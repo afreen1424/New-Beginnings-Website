@@ -145,7 +145,7 @@ export default function HomePage({ onIntroComplete }) {
                 <span
                   key={`hero-signature-${idx}`}
                   className="hero-signature-letter"
-                  style={{ animationDelay: `${idx * 0.06}s` }}
+                  style={{ animationDelay: `${idx * 0.05}s` }}
                   data-testid={`home-hero-signature-letter-${idx}`}
                 >
                   {char === " " ? "\u00A0" : char}

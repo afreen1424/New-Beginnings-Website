@@ -148,14 +148,15 @@ body {
     font-size: clamp(2.8rem, 8vw, 6rem);
     font-weight: 700;
     line-height: 1;
-    color: var(--logo-gold);
+    color: #dea937;
 }
 
 .hero-signature-letter {
     display: inline-block;
     opacity: 0;
     transform: translateY(8px);
-    animation: heroSignatureLetterReveal 0.35s ease-out forwards;
+    animation: heroSignatureLetterReveal 0.56s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    will-change: opacity, transform;
 }
 
 .hero-letter {
