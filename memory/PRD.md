@@ -83,3 +83,9 @@ Build a fully functional, production-ready luxury event management website for *
 - Enforced global no-horizontal-scroll behavior (`html`, `body`, `#root` overflow-x hidden).
 - Carousel caption remains data-driven from slide array (`homeCarouselSlides` with `couple` field), so names are editable via data only.
 - Mobile carousel caption spacing and typography adjusted for readable bottom-right placement while preserving desktop structure.
+
+## Final Homepage Refinement (Luxury Iteration)
+- Updated homepage-only visual system to exact core palette with primary burgundy `#3C0518`, ivory `#F5EFE6`, and gold `#C6A75E` accents.
+- Reworked homepage hero/header choreography (logo + Tangerine script intro, upward lift, delayed header/nav reveal, slide-based hero carousel without captions).
+- Wired newly provided assets: 5 carousel images, final about image, and updated social/contact details.
+- Added transparent burgundy desktop dropdown styling, refined section typography/animations, Google reviews CTA link, and compact single-line home footer with provided contact metadata.

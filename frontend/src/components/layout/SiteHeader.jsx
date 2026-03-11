@@ -49,8 +49,8 @@ export default function SiteHeader({ introComplete = true, isHome = false }) {
 
   const homeHeaderVisible = !isHome || introComplete;
   const headerClassName = isHome
-    ? `absolute left-0 right-0 top-0 z-40 border-b border-[rgba(198,167,94,0.22)] bg-[rgba(245,239,230,0.86)] backdrop-blur-md transition-all duration-700 ${homeHeaderVisible ? "translate-y-0 opacity-100" : "pointer-events-none -translate-y-6 opacity-0"}`
-    : "fixed left-0 right-0 top-0 z-50 h-[var(--site-header-height)] border-b border-transparent bg-[rgba(53,10,19,0.96)] shadow-[0_12px_30px_rgba(0,0,0,0.4)]";
+    ? `absolute left-0 right-0 top-0 z-40 border-b border-[rgba(198,167,94,0.18)] bg-[rgba(60,5,24,0.98)] transition-all duration-700 ${homeHeaderVisible ? "translate-y-0 opacity-100" : "pointer-events-none -translate-y-6 opacity-0"}`
+    : "fixed left-0 right-0 top-0 z-50 h-[var(--site-header-height)] border-b border-transparent bg-[rgba(60,5,24,0.96)] shadow-[0_12px_30px_rgba(0,0,0,0.4)]";
 
   const desktopNavClass = isHome ? "nav-link-home" : "nav-link";
 
@@ -61,7 +61,7 @@ export default function SiteHeader({ introComplete = true, isHome = false }) {
           className={`mx-auto flex w-full max-w-7xl items-center justify-between px-3 sm:px-6 lg:px-8 ${isHome ? "h-[72px]" : "h-[var(--site-header-height)]"}`}
           data-testid="site-header-inner"
         >
-          <div className="hidden min-w-0 flex-1 items-center gap-6 lg:flex" data-testid="header-left-cluster">
+          <div className={`hidden min-w-0 flex-1 items-center gap-6 transition-all duration-700 lg:flex ${homeHeaderVisible ? "translate-y-0 opacity-100" : "-translate-y-8 opacity-0"}`} data-testid="header-left-cluster">
             {leftDesktopLinks.slice(0, 1).map((item) => (
               <NavLink key={item.label} to={item.path} className={desktopNavClass} data-testid={`nav-link-${item.label.toLowerCase()}`}>
                 {item.label}
@@ -80,14 +80,14 @@ export default function SiteHeader({ introComplete = true, isHome = false }) {
 
               {servicesOpen && (
                 <div
-                  className="header-dropdown-panel absolute left-0 top-11 w-56 overflow-hidden rounded-xl"
+                  className="header-dropdown-panel absolute left-0 top-11 w-56 overflow-hidden rounded-none"
                   data-testid="desktop-services-dropdown"
                 >
                   {serviceLinks.map((service) => (
                     <NavLink
                       key={service.label}
                       to={service.path}
-                      className="block px-3 py-2 text-sm text-[#4A0D18] transition-colors hover:bg-[rgba(90,15,31,0.08)]"
+                      className="block px-3 py-2 text-sm text-[#F5EFE6] transition-colors hover:text-[#C6A75E]"
                       data-testid={`desktop-service-link-${service.label.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`}
                     >
                       {service.label}
@@ -106,12 +106,12 @@ export default function SiteHeader({ introComplete = true, isHome = false }) {
 
           <Link to="/" className="header-brand-center hidden min-w-0 flex-nowrap items-center justify-center gap-2 lg:flex" data-testid="header-brand-link">
             <img src={brandConfig.logo} alt="New Beginnings Events Logo" className="h-10 w-10 object-contain" loading="eager" data-testid="header-brand-logo" />
-            <span className="serif-display max-w-[190px] truncate whitespace-nowrap text-[10px] tracking-[0.12em] text-[#C6A75E] sm:text-xs sm:tracking-[0.14em]" data-testid="header-brand-name">
-              NEW BEGINNINGS EVENTS
+            <span className="signature-script whitespace-nowrap text-5xl leading-none text-[#F5EFE6]" data-testid="header-brand-name">
+              New Beginnings Events
             </span>
           </Link>
 
-          <div className="hidden min-w-0 flex-1 items-center justify-end gap-6 lg:flex" data-testid="header-right-cluster">
+          <div className={`hidden min-w-0 flex-1 items-center justify-end gap-6 transition-all duration-700 lg:flex ${homeHeaderVisible ? "translate-y-0 opacity-100" : "-translate-y-8 opacity-0"}`} data-testid="header-right-cluster">
             {rightDesktopLinks.map((item) => (
               <NavLink key={item.label} to={item.path} className={desktopNavClass} data-testid={`nav-link-${item.label.toLowerCase()}`}>
                 {item.label}
@@ -136,8 +136,8 @@ export default function SiteHeader({ introComplete = true, isHome = false }) {
 
             <Link to="/" className="absolute left-1/2 flex -translate-x-1/2 items-center gap-2" data-testid="mobile-header-center-brand">
               <img src={brandConfig.logo} alt="NB Logo" className="h-8 w-8 object-contain" loading="eager" data-testid="mobile-header-brand-logo" />
-              <span className="serif-display max-w-[128px] truncate whitespace-nowrap text-[9px] tracking-[0.12em] text-[#C6A75E]" data-testid="mobile-header-brand-name">
-                NEW BEGINNINGS EVENTS
+              <span className="signature-script max-w-[146px] truncate whitespace-nowrap text-3xl leading-none text-[#F5EFE6]" data-testid="mobile-header-brand-name">
+                New Beginnings Events
               </span>
             </Link>
 
@@ -158,7 +158,7 @@ export default function SiteHeader({ introComplete = true, isHome = false }) {
         />
 
         <aside
-          className={`absolute right-0 top-0 flex h-full w-[82%] max-w-sm flex-col bg-[#350A13] px-6 py-5 transition-transform duration-[350ms] ease-in-out ${
+          className={`absolute right-0 top-0 flex h-full w-[82%] max-w-sm flex-col bg-[#3C0518] px-6 py-5 transition-transform duration-[350ms] ease-in-out ${
             mobileOpen ? "translate-x-0" : "translate-x-full"
           }`}
           data-testid="mobile-slide-panel"
@@ -166,7 +166,7 @@ export default function SiteHeader({ introComplete = true, isHome = false }) {
           <div className="mb-8 flex items-center justify-between">
             <Link to="/" className="flex items-center gap-2" data-testid="mobile-panel-logo-link">
               <img src={brandConfig.logo} alt="NB Logo" className="h-10 w-10 object-contain" loading="lazy" data-testid="mobile-panel-logo" />
-              <span className="serif-display text-xs tracking-[0.16em] text-[#C6A75E]" data-testid="mobile-panel-brand-name">
+              <span className="signature-script text-3xl leading-none text-[#F5EFE6]" data-testid="mobile-panel-brand-name">
                 NEW BEGINNINGS EVENTS
               </span>
             </Link>
@@ -216,7 +216,7 @@ export default function SiteHeader({ introComplete = true, isHome = false }) {
             href={brandConfig.whatsappLink}
             target="_blank"
             rel="noreferrer"
-            className="mt-5 rounded-full bg-[#C6A75E] px-5 py-3 text-center text-xs font-semibold tracking-[0.2em] text-[#350A13]"
+            className="mt-5 rounded-full bg-[#C6A75E] px-5 py-3 text-center text-xs font-semibold tracking-[0.2em] text-[#3C0518]"
             data-testid="mobile-panel-lets-chat-button"
           >
             LET&apos;S CHAT

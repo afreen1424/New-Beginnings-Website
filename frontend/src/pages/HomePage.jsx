@@ -2,9 +2,9 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { Facebook, Instagram, MessageCircle, Youtube } from "lucide-react";
 import FadeCarousel from "../components/common/FadeCarousel";
-import { brandConfig, coupleReviews, homeCarouselSlides, homeMedia, portfolioEvents, socialLinks } from "../data/siteContent";
+import { brandConfig, coupleReviews, externalLinks, homeCarouselSlides, homeMedia, portfolioEvents, socialLinks } from "../data/siteContent";
 
-const HERO_TITLE = "NEW BEGINNINGS EVENTS";
+const HERO_TITLE = "New Beginnings Events";
 const SOCIAL_ICON_MAP = {
   Instagram,
   YouTube: Youtube,
@@ -140,12 +140,8 @@ export default function HomePage({ onIntroComplete }) {
           <HeroLogoCinematic />
 
           {showTitle && (
-            <h1 className="serif-display hero-title-gold mt-8 text-3xl font-normal sm:whitespace-nowrap sm:text-5xl lg:text-6xl" style={{ letterSpacing: mobile ? "0.18em" : "0.3em" }} data-testid="home-hero-heading">
-              {HERO_TITLE.split("").map((char, idx) => (
-                <span key={`${char}-${idx}`} className="hero-letter" style={{ animationDelay: `${idx * (mobile ? 0.05 : 0.07)}s` }} data-testid={`hero-letter-${idx}`}>
-                  {char === " " ? "\u00A0" : char}
-                </span>
-              ))}
+            <h1 className="hero-signature-name mt-8 text-[#C6A75E]" style={{ letterSpacing: mobile ? "0.06em" : "0.09em" }} data-testid="home-hero-heading">
+              {HERO_TITLE}
             </h1>
           )}
         </div>
@@ -154,24 +150,21 @@ export default function HomePage({ onIntroComplete }) {
       <section ref={aboutRef} className="bg-ivory px-5 py-24 sm:px-8 lg:px-12" data-testid="home-about-section">
         <div className="mx-auto grid w-full max-w-6xl items-center gap-12 lg:grid-cols-[1.22fr_1fr]">
           <div className="space-y-6" data-testid="about-text-reveal">
-            <h2 className={`about-poetic-heading about-seq-item text-4xl sm:text-5xl ${aboutVisible ? "is-visible" : ""}`} data-testid="about-heading">
+            <h2 className={`about-poetic-heading about-seq-item text-[3.3rem] leading-none sm:text-[5.1rem] ${aboutVisible ? "is-visible" : ""}`} data-testid="about-heading">
               Shall we set the date to forever?
             </h2>
             <div className="about-hook-divider mt-5" data-testid="about-hook-divider" />
-            <p className={`about-seq-item text-base leading-relaxed text-[#4A0D18] sm:text-lg ${aboutVisible ? "is-visible" : ""}`} style={{ transitionDelay: "130ms" }} data-testid="about-paragraph-1">
+            <p className={`about-seq-item text-base leading-relaxed text-[#3C0518] sm:text-lg ${aboutVisible ? "is-visible" : ""}`} style={{ transitionDelay: "130ms" }} data-testid="about-paragraph-1">
               At New Beginnings Events, we believe weddings are the beginning of something timeless — the moment where love becomes a promise for forever. Every couple carries a dream of how their day should feel, and it is our joy to turn that dream into something real, beautiful, and deeply meaningful. With an eye for detail and a heart for celebration, we craft weddings that feel personal, effortless, and filled with moments that linger long after the day is over.
             </p>
-            <p className={`about-seq-item text-base leading-relaxed text-[#4A0D18] sm:text-lg ${aboutVisible ? "is-visible" : ""}`} style={{ transitionDelay: "260ms" }} data-testid="about-paragraph-2">
+            <p className={`about-seq-item text-base leading-relaxed text-[#3C0518] sm:text-lg ${aboutVisible ? "is-visible" : ""}`} style={{ transitionDelay: "260ms" }} data-testid="about-paragraph-2">
               What we create goes beyond décor and planning — it is the atmosphere, the emotion, and the quiet magic woven into every detail. Each celebration is thoughtfully designed so that couples can be fully present in the moments that matter most. Alongside weddings, we also curate memorable events, always with the same care and artistry that define the stories we bring to life. Because some moments deserve to be remembered not just beautifully, but forever.
             </p>
           </div>
 
           <div className={`about-frame-animate ${aboutVisible ? "is-visible" : ""}`} data-testid="about-image-reveal">
-            <div className="about-frame-shell relative mx-auto w-full max-w-[470px]" data-testid="about-image-wrapper">
-              <div className="about-frame-photo-wrap" data-testid="about-image-inner">
-                <img src={homeMedia.aboutFrameInside} alt="About celebration visual" loading="lazy" className="h-full w-full object-cover object-center" data-testid="about-image" />
-              </div>
-              <img src={homeMedia.aboutFrameOverlay} alt="Decorative about frame" loading="lazy" className="about-frame-overlay" data-testid="about-frame-overlay" />
+            <div className="about-final-image-shell relative mx-auto w-full max-w-[520px]" data-testid="about-image-wrapper">
+              <img src={homeMedia.aboutFinal} alt="About celebration visual" loading="lazy" className="h-full w-full object-cover object-center" data-testid="about-image" />
             </div>
           </div>
         </div>
@@ -183,13 +176,16 @@ export default function HomePage({ onIntroComplete }) {
         </div>
       </section>
 
-      <section ref={videoRef} className="bg-royal-velvet px-5 py-20 sm:px-8 lg:px-12" data-testid="home-decor-highlight-section">
+      <section ref={videoRef} className="bg-ivory px-5 py-20 sm:px-8 lg:px-12" data-testid="home-decor-highlight-section">
         <div className="mx-auto w-full max-w-6xl">
-          <AnimatedHeading text="Every Detail Tells A Story" active={videoVisible} testId="decor-kicker" className="text-center text-3xl text-[#F5EFE6] sm:text-4xl" />
+          <AnimatedHeading text="Every Detail Tells A Story" active={videoVisible} testId="decor-kicker" className="text-center text-3xl text-[#3C0518] sm:text-4xl" />
 
           <div className={`video-mask-stage mx-auto mt-10 w-full max-w-5xl ${videoVisible ? "is-visible" : ""}`} data-testid="decor-arch-container">
             <div className="video-mask-inner" data-testid="decor-video-wrapper">
-              <video src={homeMedia.videoInside} autoPlay muted loop playsInline preload="metadata" className="video-mask-video" data-testid="decor-highlight-video" />
+              <video autoPlay muted loop playsInline preload="metadata" className="video-mask-video" data-testid="decor-highlight-video">
+                <source src={homeMedia.videoInside} type="video/mp4" />
+                <source src="/assets/decor-video.webm" type="video/webm" />
+              </video>
               <img src={homeMedia.videoMaskOverlay} alt="Curved video mask" className="video-mask-overlay" loading="lazy" data-testid="decor-mask-overlay" />
             </div>
           </div>
@@ -198,9 +194,9 @@ export default function HomePage({ onIntroComplete }) {
 
       <section ref={portfolioRef} className="bg-ivory px-5 py-20 sm:px-8 lg:px-12" data-testid="home-portfolio-preview-section">
         <div className="mx-auto w-full max-w-7xl">
-          <AnimatedHeading text="Stories We've Brought to Life." active={portfolioVisible} testId="portfolio-preview-heading" className="text-center text-3xl text-[#350A13] sm:text-4xl" />
+          <AnimatedHeading text="Stories We've Brought to Life." active={portfolioVisible} testId="portfolio-preview-heading" className="text-center text-3xl text-[#3C0518] sm:text-4xl" />
 
-          <div className="mt-10 grid grid-cols-2 gap-4 lg:grid-cols-4" data-testid="portfolio-preview-grid">
+          <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4" data-testid="portfolio-preview-grid">
             {portfolioPreview.map((event, index) => (
               <div key={event.id} className={`portfolio-card-seq ${portfolioVisible ? "is-visible" : ""}`} style={{ transitionDelay: `${index * 150}ms` }} data-testid={`portfolio-card-animation-wrap-${event.id}`}>
                 <Link to={`/portfolio/weddings/${event.id}`} className="group relative overflow-hidden rounded-2xl" data-testid={`portfolio-preview-card-${event.id}`}>
@@ -219,7 +215,7 @@ export default function HomePage({ onIntroComplete }) {
         </div>
       </section>
 
-      <section ref={reviewsRef} className="bg-[#5A0F1F] px-5 py-20 sm:px-8 lg:px-12" data-testid="home-reviews-section">
+      <section ref={reviewsRef} className="bg-[#3C0518] px-5 py-20 sm:px-8 lg:px-12" data-testid="home-reviews-section">
         <div className="mx-auto w-full max-w-4xl text-center">
           <AnimatedHeading text="Words from Our Couples." active={reviewsVisible} testId="reviews-heading" className="text-3xl text-[#F5EFE6] sm:text-4xl" />
 
@@ -242,12 +238,22 @@ export default function HomePage({ onIntroComplete }) {
               </article>
             ))}
           </div>
+
+          <a
+            href={externalLinks.googleReviews}
+            target="_blank"
+            rel="noreferrer"
+            className="serif-display mt-8 inline-flex text-base text-[#C6A75E] underline-offset-4 transition-colors hover:text-[#F5EFE6] hover:underline"
+            data-testid="home-google-reviews-link"
+          >
+            Read our reviews on Google →
+          </a>
         </div>
       </section>
 
       <section ref={socialRef} className="bg-ivory px-5 py-20 sm:px-8 lg:px-12" data-testid="home-social-section">
         <div className="mx-auto w-full max-w-6xl text-center">
-          <AnimatedHeading text="Follow the Celebration." active={socialVisible} testId="social-heading" className="text-3xl text-[#350A13] sm:text-4xl" />
+          <AnimatedHeading text="Follow the Celebration." active={socialVisible} testId="social-heading" className="text-3xl text-[#3C0518] sm:text-4xl" />
 
           <div className="mx-auto mt-10 grid max-w-md grid-cols-2 gap-5 sm:flex sm:max-w-none sm:items-center sm:justify-center" data-testid="social-buttons-group">
             {socialLinks.map((social, index) => {

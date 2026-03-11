@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 export default function FadeCarousel({
   slides,
@@ -10,14 +10,57 @@ export default function FadeCarousel({
   transitionType = "fade",
 }) {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [slideIndex, setSlideIndex] = useState(1);
+  const [disableSlideTransition, setDisableSlideTransition] = useState(false);
+
+  const slideTrackItems = useMemo(() => {
+    if (!slides?.length || transitionType !== "slide") return slides || [];
+    return [slides[slides.length - 1], ...slides, slides[0]];
+  }, [slides, transitionType]);
+
+  useEffect(() => {
+    if (transitionType === "slide") {
+      setSlideIndex(1);
+      setDisableSlideTransition(false);
+    } else {
+      setActiveIndex(0);
+    }
+  }, [slides, transitionType]);
 
   useEffect(() => {
     if (!slides?.length) return undefined;
     const timer = setInterval(() => {
-      setActiveIndex((prev) => (prev + 1) % slides.length);
+      if (transitionType === "slide") {
+        setDisableSlideTransition(false);
+        setSlideIndex((prev) => prev + 1);
+      } else {
+        setActiveIndex((prev) => (prev + 1) % slides.length);
+      }
     }, interval);
     return () => clearInterval(timer);
-  }, [slides, interval]);
+  }, [slides, interval, transitionType]);
+
+  useEffect(() => {
+    if (transitionType !== "slide" || !slides?.length) return;
+
+    if (slideIndex === slides.length + 1) {
+      const timer = setTimeout(() => {
+        setDisableSlideTransition(true);
+        setSlideIndex(1);
+      }, fadeDuration);
+      return () => clearTimeout(timer);
+    }
+
+    if (slideIndex === 0) {
+      const timer = setTimeout(() => {
+        setDisableSlideTransition(true);
+        setSlideIndex(slides.length);
+      }, fadeDuration);
+      return () => clearTimeout(timer);
+    }
+
+    return undefined;
+  }, [slideIndex, slides, transitionType, fadeDuration]);
 
   if (!slides?.length) return null;
 
@@ -28,12 +71,12 @@ export default function FadeCarousel({
           <div
             className="flex h-full w-full"
             style={{
-              transform: `translateX(-${activeIndex * 100}%)`,
-              transition: `transform ${fadeDuration}ms ease-in-out`,
+              transform: `translateX(-${slideIndex * 100}%)`,
+              transition: disableSlideTransition ? "none" : `transform ${fadeDuration}ms ease-in-out`,
             }}
             data-testid={`${testId}-slide-track`}
           >
-            {slides.map((slide, index) => (
+            {slideTrackItems.map((slide, index) => (
               <img
                 key={`${slide.image}-${index}`}
                 src={slide.image}

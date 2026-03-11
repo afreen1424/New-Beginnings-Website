@@ -11,17 +11,17 @@ const quickLinks = [
 export default function SiteFooter({ isHome = false }) {
   if (isHome) {
     return (
-      <footer className="bg-[#350A13] px-4 py-7 text-[#F5EFE6]" data-testid="site-footer">
+      <footer className="bg-[#3C0518] px-4 py-[18px] text-[#F5EFE6]" data-testid="site-footer">
         <div className="mx-auto h-[1px] w-full max-w-6xl bg-[#C6A75E]/50" data-testid="footer-divider" />
         <p className="serif-display mx-auto mt-5 max-w-6xl text-center text-sm leading-relaxed text-[#F5EFE6]" data-testid="footer-compact-line">
-          © 2026 New Beginnings Events — All Rights Reserved | Chennai, Tamil Nadu | +91 81229 13183
+          © New Beginnings Events 2026 | {brandConfig.address} | {brandConfig.email} | {brandConfig.phone}
         </p>
       </footer>
     );
   }
 
   return (
-    <footer className="bg-[#350A13] px-4 pb-6 pt-12 text-[#F5EFE6] sm:px-6 lg:px-8" data-testid="site-footer">
+    <footer className="bg-[#3C0518] px-4 pb-6 pt-12 text-[#F5EFE6] sm:px-6 lg:px-8" data-testid="site-footer">
       <div className="mx-auto grid w-full max-w-7xl gap-12 md:grid-cols-3">
         <div data-testid="footer-brand-column">
           <img src={brandConfig.logo} alt="New Beginnings Events logo" className="mb-3 h-16 w-16 object-contain" loading="lazy" data-testid="footer-logo" />

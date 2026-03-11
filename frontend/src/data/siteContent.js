@@ -3,31 +3,37 @@ export const brandConfig = {
   whatsappLink: "https://wa.me/918122913183",
   phone: "+91 81229 13183",
   phoneRaw: "918122913183",
-  email: "hello@newbeginnings.events",
-  address: "Chennai, Tamil Nadu, India",
+  email: "bookings@newbeginningsevents.in",
+  address: "63rd St, Sidco Nagar, Villivakkam, Chennai, Tamil Nadu 600049",
   logo: "/assets/home/logo_new.png",
 };
 
 export const homeMedia = {
   aboutFrameOverlay: "/assets/home/about_frame_overlay.png",
   aboutFrameInside: "/assets/home/about_frame_inside.jpg",
+  aboutFinal: "/assets/home/about_final.webp",
   videoMaskOverlay: "/assets/home/video_mask.png",
   videoInside: "/assets/home/video_inside.mp4",
 };
 
+export const externalLinks = {
+  googleReviews:
+    "https://www.google.com/search?q=new+beginnings+events&oq=new+beginnings+events&gs_lcrp=EgZjaHJvbWUqDggAEEUYJxg7GIAEGIoFMg4IABBFGCcYOxiABBiKBTINCAEQABiDARixAxiABDINCAIQABiDARixAxiABDIHCAMQABiABDIKCAQQLhixAxiABDIGCAUQRRg8MgYIBhBFGDwyBggHEEUYPNIBCDIxMDNqMGo3qAIAsAIA&sourceid=chrome&ie=UTF-8",
+};
+
 export const socialLinks = [
-  { label: "Instagram", href: "https://www.instagram.com/new._.beginnings._?igsh=MWs2a293MmVwM3N3eQ==" },
-  { label: "YouTube", href: "https://youtube.com/@newbeginnings-l2v?si=IKs3Ugf87biLM5Tb" },
-  { label: "Facebook", href: "https://facebook.com/newbeginnings.events" },
+  { label: "Instagram", href: "https://www.instagram.com/_newbeginningsevents_/" },
+  { label: "YouTube", href: "https://www.youtube.com/@Newbeginningsevents" },
+  { label: "Facebook", href: "https://www.facebook.com/profile.php?id=61580788463795" },
   { label: "WhatsApp", href: "https://wa.me/918122913183" },
 ];
 
 export const homeCarouselSlides = [
-  { image: "/assets/wedding-1.webp", couple: "Aarav & Meera", theme: "Regal" },
-  { image: "/assets/wedding-2.webp", couple: "Rishi & Kavya", theme: "Timeless" },
-  { image: "/assets/wedding-3.webp", couple: "Aditya & Ishani", theme: "Grand" },
-  { image: "/assets/wedding-4.webp", couple: "Viraj & Naina", theme: "Royal" },
-  { image: "/assets/wedding-6.webp", couple: "Dev & Tara", theme: "Elegant" },
+  { image: "/assets/home/carousel_1.webp", couple: "" },
+  { image: "/assets/home/carousel_2.webp", couple: "" },
+  { image: "/assets/home/carousel_3.webp", couple: "" },
+  { image: "/assets/home/carousel_4.webp", couple: "" },
+  { image: "/assets/home/carousel_5.webp", couple: "" },
 ];
 
 export const portfolioEvents = {

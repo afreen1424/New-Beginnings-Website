@@ -41,7 +41,7 @@ function AppLayout() {
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </main>
-      <SiteFooter />
+      <SiteFooter isHome={location.pathname === "/"} />
     </div>
   );
 }
