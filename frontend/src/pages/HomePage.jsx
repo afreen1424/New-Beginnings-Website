@@ -183,7 +183,7 @@ export default function HomePage({ onIntroComplete }) {
             </div>
           </div>
 
-          <div className="hidden px-1 lg:order-3 lg:col-span-2 lg:flex lg:justify-center lg:pt-1" data-testid="about-cta-wrap-desktop">
+          <div className="hidden px-1 lg:order-3 lg:col-span-2 lg:-mt-6 lg:flex lg:justify-center lg:pt-0" data-testid="about-cta-wrap-desktop">
             <Link to="/enquiry" className="about-cta-button" data-testid="about-cta-button-desktop">
               Let&apos;s Begin Your Forever
             </Link>
