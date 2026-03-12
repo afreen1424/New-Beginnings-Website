@@ -4,20 +4,20 @@ import RevealBlock from "../../components/common/RevealBlock";
 import { brandConfig } from "../../data/siteContent";
 
 const heroSlides = [
-  { image: "/assets/sfx-1.webp", couple: "" },
-  { image: "/assets/sfx-2.webp", couple: "" },
-  { image: "/assets/sfx-4.webp", couple: "" },
-  { image: "/assets/sfx-3.webp", couple: "" },
-  { image: "/assets/sfx-1.webp", couple: "" },
+  { image: "/assets/sfx_custom/sfx_hero_1.webp", couple: "" },
+  { image: "/assets/sfx_custom/sfx_hero_2.webp", couple: "" },
+  { image: "/assets/sfx_custom/sfx_hero_3.webp", couple: "" },
+  { image: "/assets/sfx_custom/sfx_hero_4.webp", couple: "" },
+  { image: "/assets/sfx_custom/sfx_hero_5.webp", couple: "" },
 ];
 
 const sfxGridItems = [
-  { title: "Cold Pyros", image: "/assets/sfx-2.webp" },
-  { title: "Fog Effects", image: "/assets/sfx-4.webp" },
-  { title: "Cracker Show", image: "/assets/sfx-3.webp" },
-  { title: "CO2 Jet Effect", image: "/assets/sfx-1.webp" },
-  { title: "Fan Blower", image: "/assets/sfx-2.webp" },
-  { title: "Colour Bomb", image: "/assets/sfx-4.webp" },
+  { title: "Cold Pyros", image: "/assets/sfx_custom/sfx_hero_1.webp" },
+  { title: "Fog Effects", image: "/assets/sfx_custom/sfx_hero_2.webp" },
+  { title: "Cracker Show", image: "/assets/sfx_custom/sfx_hero_3.webp" },
+  { title: "CO2 Jet Effect", image: "/assets/sfx_custom/sfx_hero_4.webp" },
+  { title: "Fan Blower", image: "/assets/sfx_custom/sfx_hero_5.webp" },
+  { title: "Colour Bomb", image: "/assets/sfx_custom/sfx_colour_bomb.webp" },
 ];
 
 export default function SfxEntriesPage() {
