@@ -130,3 +130,10 @@ Build a fully functional, production-ready luxury event management website for *
 - Kept post-carousel heading section structure and styling; set heading text to `Curated Culinary Experiences`.
 - Updated only first/second content section headings + descriptions to requested Vegetarian/Non-Veg menu copy, without layout or spacing alterations.
 - Removed thin gold divider above CTA while preserving CTA styling/alignment/hover behavior and applied Home footer variant on catering page.
+
+## SFX & Entries Page Refinement Pass
+- Disabled sticky header only on `/services/sfx-entries` (header now scrolls naturally) with no visual redesign.
+- Replaced SFX hero with Home-style full-width/full-height slide carousel (auto + infinite + same transition), showing exactly 5 images without overlays/captions/buttons.
+- Added post-carousel section heading `For Moments That Begin with Magic` plus provided paragraph content, using Home heading styling language.
+- Preserved existing 6-card grid structure/layout while adding staggered fade-up entrance animation and Home-like hover/cursor behavior (labels appear only on hover with underline reveal).
+- Kept existing CTA unchanged and matched SFX footer to Home footer variant.

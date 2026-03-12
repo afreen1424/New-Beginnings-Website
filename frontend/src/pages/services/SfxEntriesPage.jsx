@@ -1,41 +1,86 @@
+import { useEffect, useRef, useState } from "react";
 import FadeCarousel from "../../components/common/FadeCarousel";
 import RevealBlock from "../../components/common/RevealBlock";
-import { brandConfig, sfxService } from "../../data/siteContent";
+import { brandConfig } from "../../data/siteContent";
+
+const heroSlides = [
+  { image: "/assets/sfx-1.webp", couple: "" },
+  { image: "/assets/sfx-2.webp", couple: "" },
+  { image: "/assets/sfx-4.webp", couple: "" },
+  { image: "/assets/sfx-3.webp", couple: "" },
+  { image: "/assets/sfx-1.webp", couple: "" },
+];
+
+const sfxGridItems = [
+  { title: "Cold Pyros", image: "/assets/sfx-2.webp" },
+  { title: "Fog Effects", image: "/assets/sfx-4.webp" },
+  { title: "Cracker Show", image: "/assets/sfx-3.webp" },
+  { title: "CO2 Jet Effect", image: "/assets/sfx-1.webp" },
+  { title: "Fan Blower", image: "/assets/sfx-2.webp" },
+  { title: "Colour Bomb", image: "/assets/sfx-4.webp" },
+];
 
 export default function SfxEntriesPage() {
-  const slides = sfxService.slides.map((image) => ({ image, couple: "", theme: "" }));
+  const [introVisible, setIntroVisible] = useState(false);
+  const introSectionRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIntroVisible(entry.isIntersecting);
+      },
+      { threshold: 0.28 },
+    );
+
+    if (introSectionRef.current) {
+      observer.observe(introSectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
 
   return (
-    <div className="bg-ivory pb-20 pt-20" data-testid="sfx-service-page">
-      <section className="relative" data-testid="sfx-carousel-section">
-        <FadeCarousel slides={slides} testId="sfx-service-carousel" fadeDuration={900} />
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-[rgba(75,15,27,0.2)] to-[rgba(75,15,27,0.8)]" data-testid="sfx-carousel-overlay" />
-        <div className="absolute inset-0 flex flex-col items-center justify-center px-5 text-center" data-testid="sfx-heading-section">
-          <h1 className="serif-display text-4xl text-[#F5EFE6] sm:text-5xl" data-testid="sfx-heading">
-            Make an Entrance They&apos;ll Never Forget.
-          </h1>
-          <p className="mt-4 max-w-3xl text-sm leading-relaxed text-[rgba(245,239,230,0.92)] sm:text-base" data-testid="sfx-hero-paragraph">
-            From cinematic walk-ins to precision-timed special effects, each entrance is engineered to create a lasting first moment with elegance and impact.
-          </p>
-        </div>
+    <div className="bg-ivory pb-20" data-testid="sfx-service-page">
+      <section data-testid="sfx-carousel-section">
+        <FadeCarousel
+          slides={heroSlides}
+          testId="sfx-service-carousel"
+          fadeDuration={850}
+          interval={4700}
+          transitionType="slide"
+          fullHeight
+          caption={false}
+        />
+      </section>
+
+      <section ref={introSectionRef} className="mx-auto mt-12 w-full max-w-6xl px-5 text-center sm:px-8" data-testid="sfx-intro-section">
+        <h1 className={`serif-display section-heading-slide text-3xl text-[#3C0518] sm:text-4xl ${introVisible ? "is-visible" : ""}`} data-testid="sfx-heading">
+          For Moments That Begin with Magic
+        </h1>
+        <p className="mx-auto mt-6 max-w-4xl text-base leading-relaxed text-[#4C3330] sm:text-lg" data-testid="sfx-description">
+          Every celebration deserves a moment that captures attention and sets the stage for what follows. From cold pyros and fog effects to cracker shows, CO₂ jets, fan blowers, and colour bombs, we design breathtaking special effects that transform entrances into unforgettable highlights. Each effect is carefully timed to create a magical atmosphere that leaves a lasting impression.
+        </p>
       </section>
 
       <section className="mx-auto mt-12 w-full max-w-6xl px-5 sm:px-8" data-testid="sfx-grid-section">
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3" data-testid="sfx-grid">
-          {sfxService.showcases.map((item, index) => (
-            <RevealBlock key={item.title} direction={index % 2 === 0 ? "left" : "right"} delay={index * 80} testId={`sfx-card-reveal-${index}`}>
-              <article className="group relative overflow-hidden rounded-2xl" data-testid={`sfx-card-${index}`}>
+          {sfxGridItems.map((item, index) => (
+            <RevealBlock key={item.title} direction="up" delay={index * 110} testId={`sfx-card-reveal-${index}`}>
+              <article className="group relative cursor-pointer overflow-hidden rounded-2xl" data-testid={`sfx-card-${index}`}>
                 <img
                   src={item.image}
                   alt={item.title}
                   loading="lazy"
-                  className="aspect-[5/4] w-full object-cover object-center"
+                  className="aspect-[5/4] w-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
                   data-testid={`sfx-card-image-${index}`}
                 />
-                <div className="service-card-overlay absolute inset-0 opacity-25 transition-opacity duration-500 group-hover:opacity-100" data-testid={`sfx-card-overlay-${index}`} />
-                <h2 className="serif-display absolute inset-0 flex items-center justify-center px-4 text-center text-xl text-[#F5EFE6]" data-testid={`sfx-card-title-${index}`}>
-                  {item.title}
-                </h2>
+                <div className="service-card-overlay absolute inset-0 opacity-10 transition-opacity duration-500 group-hover:opacity-100" data-testid={`sfx-card-overlay-${index}`} />
+                <div className="absolute inset-0 flex flex-col items-center justify-center opacity-0 transition-opacity duration-300 group-hover:opacity-100" data-testid={`sfx-card-title-wrap-${index}`}>
+                  <h2 className="serif-display px-4 text-center text-xl text-[#F5EFE6]" data-testid={`sfx-card-title-${index}`}>
+                    {item.title}
+                  </h2>
+                  <div className="mt-2 h-[1px] w-12 bg-[#C6A75E] transition-all duration-300 group-hover:w-24" data-testid={`sfx-card-underline-${index}`} />
+                </div>
               </article>
             </RevealBlock>
           ))}
