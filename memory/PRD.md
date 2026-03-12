@@ -137,3 +137,8 @@ Build a fully functional, production-ready luxury event management website for *
 - Added post-carousel section heading `For Moments That Begin with Magic` plus provided paragraph content, using Home heading styling language.
 - Preserved existing 6-card grid structure/layout while adding staggered fade-up entrance animation and Home-like hover/cursor behavior (labels appear only on hover with underline reveal).
 - Kept existing CTA unchanged and matched SFX footer to Home footer variant.
+
+## SFX Image-Only Update Pass
+- Updated SFX hero carousel with newly provided 5 images only (no behavior/style/layout changes).
+- Updated SFX 6-grid images with requested mapping, including newly provided Colour Bomb image.
+- Preserved all existing spacing, hover interactions, animations, responsiveness, CTA, and footer styling.

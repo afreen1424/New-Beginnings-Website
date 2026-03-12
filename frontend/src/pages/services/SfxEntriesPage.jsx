@@ -12,12 +12,12 @@ const heroSlides = [
 ];
 
 const sfxGridItems = [
-  { title: "Cold Pyros", image: "/assets/sfx_custom/sfx_hero_1.webp" },
-  { title: "Fog Effects", image: "/assets/sfx_custom/sfx_hero_2.webp" },
-  { title: "Cracker Show", image: "/assets/sfx_custom/sfx_hero_3.webp" },
+  { title: "Fan Wheel", image: "/assets/sfx_custom/sfx_hero_5.webp" },
   { title: "CO2 Jet Effect", image: "/assets/sfx_custom/sfx_hero_4.webp" },
-  { title: "Fan Blower", image: "/assets/sfx_custom/sfx_hero_5.webp" },
-  { title: "Colour Bomb", image: "/assets/sfx_custom/sfx_colour_bomb.webp" },
+  { title: "Cracker Show", image: "/assets/sfx_custom/sfx_hero_3.webp" },
+  { title: "Fog Effect", image: "/assets/sfx_custom/sfx_hero_2.webp" },
+  { title: "Cold Pyros", image: "/assets/sfx_custom/sfx_hero_1.webp" },
+  { title: "Colour Bombs", image: "/assets/sfx_custom/sfx_colour_bomb.webp" },
 ];
 
 export default function SfxEntriesPage() {
@@ -58,7 +58,7 @@ export default function SfxEntriesPage() {
           For Moments That Begin with Magic
         </h1>
         <p className="mx-auto mt-6 max-w-4xl text-base leading-relaxed text-[#4C3330] sm:text-lg" data-testid="sfx-description">
-          Every celebration deserves a moment that captures attention and sets the stage for what follows. From cold pyros and fog effects to cracker shows, CO₂ jets, fan blowers, and colour bombs, we design breathtaking special effects that transform entrances into unforgettable highlights. Each effect is carefully timed to create a magical atmosphere that leaves a lasting impression.
+          Every celebration deserves a moment that captures attention and sets the stage for what follows. From cold pyros and fog effects to cracker shows, CO₂ jets, fan wheels, and colour bombs, we design breathtaking special effects that transform entrances into unforgettable highlights. Each effect is carefully timed to create a magical atmosphere that leaves a lasting impression.
         </p>
       </section>
 
