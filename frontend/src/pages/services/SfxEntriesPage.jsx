@@ -12,12 +12,12 @@ const heroSlides = [
 ];
 
 const sfxGridItems = [
-  { title: "Fan Wheel", image: "/assets/sfx_custom/sfx_hero_5.webp" },
-  { title: "CO2 Jet Effect", image: "/assets/sfx_custom/sfx_hero_4.webp" },
+  { title: "Cold Pyros", image: "/assets/sfx_custom/sfx_hero_5.webp" },
+  { title: "Fog Effects", image: "/assets/sfx_custom/sfx_hero_4.webp" },
   { title: "Cracker Show", image: "/assets/sfx_custom/sfx_hero_3.webp" },
-  { title: "Fog Effect", image: "/assets/sfx_custom/sfx_hero_2.webp" },
-  { title: "Cold Pyros", image: "/assets/sfx_custom/sfx_hero_1.webp" },
-  { title: "Colour Bombs", image: "/assets/sfx_custom/sfx_colour_bomb.webp" },
+  { title: "Jet Effect", image: "/assets/sfx_custom/sfx_hero_2.webp" },
+  { title: "Fan Wheel", image: "/assets/sfx_custom/sfx_hero_1.webp" },
+  { title: "Colour Bomb", image: "/assets/sfx_custom/sfx_colour_bomb.webp" },
 ];
 
 export default function SfxEntriesPage() {
