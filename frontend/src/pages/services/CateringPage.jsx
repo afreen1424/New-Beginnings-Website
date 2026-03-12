@@ -3,21 +3,26 @@ import FadeCarousel from "../../components/common/FadeCarousel";
 import RevealBlock from "../../components/common/RevealBlock";
 
 export default function CateringPage() {
-  const slides = cateringService.slides.map((image) => ({ image, couple: "", theme: "" }));
+  const slides = [{ image: cateringService.slides[0], couple: "" }];
 
   return (
-    <div className="bg-ivory pb-20 pt-20" data-testid="catering-service-page">
-      <section className="relative" data-testid="catering-carousel-section">
-        <FadeCarousel slides={slides} testId="catering-service-carousel" fadeDuration={900} />
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-[rgba(75,15,27,0.2)] to-[rgba(75,15,27,0.78)]" data-testid="catering-carousel-overlay" />
-        <div className="absolute inset-0 flex flex-col items-center justify-center px-5 text-center" data-testid="catering-heading-section">
-          <h1 className="serif-display text-4xl text-[#F5EFE6] sm:text-5xl" data-testid="catering-heading">
-            Curated Culinary Experiences.
-          </h1>
-          <p className="mt-4 max-w-3xl text-sm leading-relaxed text-[rgba(245,239,230,0.92)] sm:text-base" data-testid="catering-hero-paragraph">
-            Refined menu design, seamless service, and elevated presentation come together to create dining that feels as memorable as the celebration itself.
-          </p>
-        </div>
+    <div className="bg-ivory pb-20" data-testid="catering-service-page">
+      <section data-testid="catering-carousel-section">
+        <FadeCarousel
+          slides={slides}
+          testId="catering-service-carousel"
+          fadeDuration={850}
+          interval={4700}
+          transitionType="slide"
+          fullHeight
+          caption={false}
+        />
+      </section>
+
+      <section className="mx-auto w-full max-w-6xl px-5 pt-14 text-center sm:px-8" data-testid="catering-heading-section">
+        <h1 className="serif-display text-4xl text-[#3C0518] sm:text-5xl" data-testid="catering-heading">
+          Curated Culinary Experiences
+        </h1>
       </section>
 
       <section className="mx-auto mt-12 grid w-full max-w-6xl gap-12 px-5 sm:px-8 lg:grid-cols-2 lg:items-center" data-testid="catering-veg-section">
@@ -32,10 +37,10 @@ export default function CateringPage() {
         </RevealBlock>
         <RevealBlock direction="right" testId="catering-veg-text-reveal">
           <h2 className="serif-display text-3xl text-[#350A13]" data-testid="catering-veg-title">
-            {cateringService.veg.title}
+            Vegetarian Menu
           </h2>
           <p className="mt-4 text-base leading-relaxed text-[#50332F]" data-testid="catering-veg-text">
-            {cateringService.veg.text}
+            We curate an extensive range of vegetarian cuisine that celebrates the richness of both South Indian and North Indian traditions. From comforting classics to refined regional specialties, every dish is crafted to deliver exceptional flavor and presentation. Our team works closely with you to design a menu that perfectly reflects your taste and the spirit of your celebration.
           </p>
         </RevealBlock>
       </section>
@@ -43,10 +48,10 @@ export default function CateringPage() {
       <section className="mx-auto mt-16 grid w-full max-w-6xl gap-12 px-5 sm:px-8 lg:grid-cols-2 lg:items-center" data-testid="catering-nonveg-section">
         <RevealBlock direction="left" testId="catering-nonveg-text-reveal">
           <h2 className="serif-display text-3xl text-[#350A13]" data-testid="catering-nonveg-title">
-            {cateringService.nonVeg.title}
+            Non-Veg Menu
           </h2>
           <p className="mt-4 text-base leading-relaxed text-[#50332F]" data-testid="catering-nonveg-text">
-            {cateringService.nonVeg.text}
+            Our non-vegetarian menus are designed to bring together bold flavors, premium ingredients, and refined culinary techniques. From traditional favorites to contemporary preparations, every dish is thoughtfully curated to create a memorable dining experience. Each menu is tailored to complement your event while ensuring exceptional taste and presentation.
           </p>
         </RevealBlock>
         <RevealBlock direction="right" testId="catering-nonveg-image-reveal">
@@ -59,8 +64,6 @@ export default function CateringPage() {
           />
         </RevealBlock>
       </section>
-
-      <div className="mx-auto mt-14 h-[1px] w-full max-w-5xl bg-[#C6A75E]/55" data-testid="catering-section-divider" />
 
       <section className="mx-auto mt-16 w-full max-w-6xl px-5 text-center sm:px-8" data-testid="catering-cta-section">
         <a href={brandConfig.whatsappLink} target="_blank" rel="noreferrer" className="gold-outline-button inline-flex" data-testid="catering-whatsapp-cta-button">

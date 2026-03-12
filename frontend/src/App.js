@@ -17,6 +17,8 @@ function AppLayout() {
   const location = useLocation();
   const [introComplete, setIntroComplete] = useState(location.pathname !== "/");
   const isCorporatePage = location.pathname === "/services/corporate-events";
+  const isCateringPage = location.pathname === "/services/catering";
+  const nonStickyHeaderPage = isCorporatePage || isCateringPage;
 
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: "instant" });
@@ -27,7 +29,7 @@ function AppLayout() {
 
   return (
     <div className="min-h-screen bg-[#F5EFE6]" data-testid="app-layout">
-      <SiteHeader introComplete={introComplete} isHome={location.pathname === "/"} nonSticky={isCorporatePage} />
+      <SiteHeader introComplete={introComplete} isHome={location.pathname === "/"} nonSticky={nonStickyHeaderPage} />
       <main data-testid="app-main-content">
         <Routes>
           <Route path="/" element={<HomePage onIntroComplete={() => setIntroComplete(true)} />} />
@@ -42,7 +44,7 @@ function AppLayout() {
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </main>
-      <SiteFooter isHome={location.pathname === "/" || isCorporatePage} />
+      <SiteFooter isHome={location.pathname === "/" || isCorporatePage || isCateringPage} />
     </div>
   );
 }

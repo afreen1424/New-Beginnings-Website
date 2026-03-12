@@ -123,3 +123,10 @@ Build a fully functional, production-ready luxury event management website for *
 - Updated “Crafted for Scale, Led with Precision.” section typography to match Home heading style and replaced description text with provided copy (same width/alignment/spacing).
 - Kept existing 2x2 grid layout intact, mapped uploaded images to requested category order, retained layout dimensions, added left/right entrance reveals, and matched Home “Stories” hover interaction pattern.
 - Applied Home footer variant specifically on corporate page to match requested footer consistency.
+
+## Catering Page Refinement Pass
+- Disabled sticky header only on `/services/catering` while preserving header visual design.
+- Replaced catering hero with Home-style full-width slide carousel behavior using exactly one image (no overlays/captions/controls), matching Home transition settings.
+- Kept post-carousel heading section structure and styling; set heading text to `Curated Culinary Experiences`.
+- Updated only first/second content section headings + descriptions to requested Vegetarian/Non-Veg menu copy, without layout or spacing alterations.
+- Removed thin gold divider above CTA while preserving CTA styling/alignment/hover behavior and applied Home footer variant on catering page.
