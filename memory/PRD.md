@@ -116,3 +116,10 @@ Build a fully functional, production-ready luxury event management website for *
 - Removed width-limiting paddings around the “Every Detail Tells A Story” media block so video spans full section width edge-to-edge.
 - Kept heading centered and unchanged in font/color while positioning video directly below heading.
 - Updated video rendering to block-level responsive media (`width:100%`, `height:auto`, `object-fit:cover`) without card/frame wrappers.
+
+## Corporate Events Page Refinement Pass
+- Disabled sticky header behavior only on `/services/corporate-events` so header scrolls naturally while preserving header design/layout.
+- Replaced corporate hero with Home-style full-width, full-height slide carousel (auto + infinite + same smooth transition), using newly uploaded 4 images with no overlays/captions/buttons.
+- Updated “Crafted for Scale, Led with Precision.” section typography to match Home heading style and replaced description text with provided copy (same width/alignment/spacing).
+- Kept existing 2x2 grid layout intact, mapped uploaded images to requested category order, retained layout dimensions, added left/right entrance reveals, and matched Home “Stories” hover interaction pattern.
+- Applied Home footer variant specifically on corporate page to match requested footer consistency.

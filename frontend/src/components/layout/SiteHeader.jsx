@@ -26,7 +26,7 @@ const serviceLinks = [
   { label: "SFX & Entries", path: "/services/sfx-entries" },
 ];
 
-export default function SiteHeader({ introComplete = true, isHome = false }) {
+export default function SiteHeader({ introComplete = true, isHome = false, nonSticky = false }) {
   const [servicesOpen, setServicesOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const location = useLocation();
@@ -48,9 +48,13 @@ export default function SiteHeader({ introComplete = true, isHome = false }) {
   }, []);
 
   const homeHeaderVisible = !isHome || introComplete;
+  const standardHeaderClass = nonSticky
+    ? "relative z-50 h-[var(--site-header-height)] border-b border-transparent bg-[rgba(60,5,24,0.96)] shadow-[0_12px_30px_rgba(0,0,0,0.4)]"
+    : "fixed left-0 right-0 top-0 z-50 h-[var(--site-header-height)] border-b border-transparent bg-[rgba(60,5,24,0.96)] shadow-[0_12px_30px_rgba(0,0,0,0.4)]";
+
   const headerClassName = isHome
     ? `absolute left-0 right-0 top-0 z-40 border-b border-[rgba(198,167,94,0.18)] bg-[rgba(60,5,24,0.98)] transition-all duration-700 ${homeHeaderVisible ? "translate-y-0 opacity-100" : "pointer-events-none -translate-y-6 opacity-0"}`
-    : "fixed left-0 right-0 top-0 z-50 h-[var(--site-header-height)] border-b border-transparent bg-[rgba(60,5,24,0.96)] shadow-[0_12px_30px_rgba(0,0,0,0.4)]";
+    : standardHeaderClass;
 
   const desktopNavClass = isHome ? "nav-link-home" : "nav-link";
 

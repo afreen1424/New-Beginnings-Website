@@ -16,6 +16,7 @@ import EnquiryPage from "./pages/EnquiryPage";
 function AppLayout() {
   const location = useLocation();
   const [introComplete, setIntroComplete] = useState(location.pathname !== "/");
+  const isCorporatePage = location.pathname === "/services/corporate-events";
 
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: "instant" });
@@ -26,7 +27,7 @@ function AppLayout() {
 
   return (
     <div className="min-h-screen bg-[#F5EFE6]" data-testid="app-layout">
-      <SiteHeader introComplete={introComplete} isHome={location.pathname === "/"} />
+      <SiteHeader introComplete={introComplete} isHome={location.pathname === "/"} nonSticky={isCorporatePage} />
       <main data-testid="app-main-content">
         <Routes>
           <Route path="/" element={<HomePage onIntroComplete={() => setIntroComplete(true)} />} />
@@ -41,7 +42,7 @@ function AppLayout() {
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </main>
-      <SiteFooter isHome={location.pathname === "/"} />
+      <SiteFooter isHome={location.pathname === "/" || isCorporatePage} />
     </div>
   );
 }
