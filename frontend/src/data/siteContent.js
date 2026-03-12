@@ -185,15 +185,15 @@ export const corporateService = {
 };
 
 export const cateringService = {
-  slides: ["/assets/catering-1.webp", "/assets/catering-2.webp", "/assets/catering-3.webp"],
+  slides: ["/assets/catering/catering_hero_new.webp", "/assets/catering-2.webp", "/assets/catering-3.webp"],
   veg: {
     title: "Vegetarian Culinary Curation",
-    image: "/assets/catering-1.webp",
+    image: "/assets/catering/catering_veg_new.webp",
     text: "Seasonal ingredients, plated elegance, and regional authenticity presented with modern finesse.",
   },
   nonVeg: {
     title: "Non-Veg Signature Experiences",
-    image: "/assets/catering-3.webp",
+    image: "/assets/catering/catering_nonveg_new.webp",
     text: "Chef-led menus blending rich flavors and premium presentation for immersive dining journeys.",
   },
 };
