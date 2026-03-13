@@ -122,7 +122,7 @@ export default function HomePage({ onIntroComplete }) {
 
   return (
     <div className="overflow-hidden" data-testid="home-page">
-      <section className="bg-royal-velvet relative flex min-h-screen items-center justify-center overflow-hidden px-5 text-center" data-testid="home-hero-section">
+      <section className="bg-royal-velvet relative flex min-h-screen items-center justify-center overflow-hidden px-0 text-center sm:px-5" data-testid="home-hero-section">
         <div className={`hero-carousel-layer absolute inset-0 ${carouselVisible ? "opacity-100" : "pointer-events-none opacity-0"}`} data-testid="home-main-carousel-section">
           <FadeCarousel slides={homeCarouselSlides} caption={false} testId="home-main-carousel" fadeDuration={850} interval={4700} transitionType="slide" fullHeight />
         </div>
@@ -139,7 +139,7 @@ export default function HomePage({ onIntroComplete }) {
                   style={{ animationDelay: `${idx * 0.05}s` }}
                   data-testid={`home-hero-signature-letter-${idx}`}
                 >
-                  {char === " " ? "\u00A0" : char}
+                  {char}
                 </span>
               ))}
             </h1>

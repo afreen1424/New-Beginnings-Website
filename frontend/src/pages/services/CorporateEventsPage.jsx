@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import FadeCarousel from "../../components/common/FadeCarousel";
 import RevealBlock from "../../components/common/RevealBlock";
+import { brandConfig } from "../../data/siteContent";
 
 const corporateMedia = [
   { title: "Fashion Shows", image: "/assets/corporate/corp_custom_1.webp", direction: "left" },
@@ -14,7 +15,7 @@ export default function CorporateEventsPage() {
 
   return (
     <div className="bg-ivory pb-20" data-testid="corporate-service-page">
-      <section data-testid="corporate-carousel-section">
+      <section className="relative" data-testid="corporate-carousel-section">
         <FadeCarousel
           slides={slides}
           testId="corporate-service-carousel"
@@ -23,6 +24,12 @@ export default function CorporateEventsPage() {
           transitionType="slide"
           fullHeight
         />
+        <div className="mobile-hero-brand-overlay lg:hidden" data-testid="corporate-mobile-hero-brand-overlay">
+          <img src={brandConfig.logo} alt="New Beginnings Events" className="mobile-hero-brand-logo" loading="eager" data-testid="corporate-mobile-hero-brand-logo" />
+          <p className="mobile-hero-brand-name signature-script" data-testid="corporate-mobile-hero-brand-name">
+            New Beginnings Events
+          </p>
+        </div>
       </section>
 
       <section className="section-fade-up mx-auto w-full max-w-6xl px-5 pt-14 text-center sm:px-8" data-testid="corporate-about-section">

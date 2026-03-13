@@ -155,3 +155,8 @@ Build a fully functional, production-ready luxury event management website for *
 - Matched footer variant to Home footer on Blog, Blog detail, and Enquiry pages (no homepage footer changes).
 - Updated footer phone number references to `9677390867` (formatted as `+91 96773 90867`).
 - Updated WhatsApp destination links to `https://wa.me/919677390867` for header Let’s Chat, Home social WhatsApp icon, Catering CTA, and SFX CTA.
+
+## Mobile Hero Refinement Pass
+- Applied mobile-only hero balancing updates to Home, Corporate, Catering, and SFX pages: full-viewport visual treatment, centered framing, and improved title fit behavior.
+- Added centered mobile hero brand overlay (logo + brand name) on Corporate/Catering/SFX hero sections without altering desktop hero layout.
+- Kept desktop behavior/layout unchanged while preserving existing animation systems and responsive structure.

@@ -151,6 +151,9 @@ body {
     font-weight: 400;
     line-height: 1;
     color: #dea937;
+    max-width: 92vw;
+    margin-inline: auto;
+    text-wrap: balance;
 }
 
 .hero-signature-letter {
@@ -159,6 +162,33 @@ body {
     transform: translateY(8px);
     animation: heroSignatureLetterReveal 0.52s cubic-bezier(0.22, 1, 0.36, 1) forwards;
     will-change: opacity, transform;
+}
+
+.mobile-hero-brand-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.7rem;
+    pointer-events: none;
+    text-align: center;
+}
+
+.mobile-hero-brand-logo {
+    width: 82px;
+    height: 82px;
+    object-fit: contain;
+}
+
+.mobile-hero-brand-name {
+    color: #dea937;
+    font-size: clamp(2.35rem, 11vw, 3.2rem);
+    line-height: 0.84;
+    max-width: 88vw;
+    text-wrap: balance;
 }
 
 .hero-letter {
@@ -647,7 +677,18 @@ body {
     }
 
     .hero-signature-name {
-        font-size: clamp(2.6rem, 12vw, 3.25rem);
+        font-size: clamp(2.2rem, 10.8vw, 3rem);
+        max-width: 90vw;
+    }
+
+    .mobile-hero-brand-logo {
+        width: 72px;
+        height: 72px;
+    }
+
+    .mobile-hero-brand-name {
+        font-size: clamp(2rem, 11.4vw, 2.75rem);
+        max-width: 90vw;
     }
 
     .social-icon-button {
