@@ -27,9 +27,10 @@ export default function EventDetailPage() {
   return (
     <div className="bg-[#F5EFE6] px-5 pb-20 pt-28 sm:px-8 lg:px-12" data-testid="event-detail-page">
       <div className="mx-auto w-full max-w-7xl">
-        <h1 className="serif-display text-4xl text-[#350A13] sm:text-5xl" data-testid="event-detail-title">
+        <h1 className="serif-display text-center text-4xl text-[#350A13] sm:text-5xl" data-testid="event-detail-title">
           {event.title}
         </h1>
+        <div className="mx-auto mt-3 h-[1px] w-36 bg-[#C6A75E]" data-testid="event-detail-title-underline" />
 
         <img
           src={event.cover}
