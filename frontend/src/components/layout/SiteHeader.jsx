@@ -165,10 +165,10 @@ export default function SiteHeader({ introComplete = true, isHome = false, nonSt
           data-testid="mobile-slide-panel"
         >
           <div className="mb-8 flex items-center justify-between">
-            <Link to="/" className="flex items-center gap-2" data-testid="mobile-panel-logo-link">
+            <Link to="/" className="flex items-center gap-2.5" data-testid="mobile-panel-logo-link">
               <img src={brandConfig.logo} alt="NB Logo" className="h-10 w-10 object-contain" loading="lazy" data-testid="mobile-panel-logo" />
-              <span className="signature-script text-3xl leading-none text-[var(--logo-gold)]" data-testid="mobile-panel-brand-name">
-                NEW BEGINNINGS EVENTS
+              <span className="signature-script whitespace-nowrap text-[2.2rem] leading-none text-[var(--logo-gold)]" data-testid="mobile-panel-brand-name">
+                New Beginnings Events
               </span>
             </Link>
             <button
