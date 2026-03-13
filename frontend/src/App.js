@@ -19,7 +19,8 @@ function AppLayout() {
   const isCorporatePage = location.pathname === "/services/corporate-events";
   const isCateringPage = location.pathname === "/services/catering";
   const isSfxPage = location.pathname === "/services/sfx-entries";
-  const nonStickyHeaderPage = isCorporatePage || isCateringPage || isSfxPage;
+  const isPortfolioPage = location.pathname.startsWith("/portfolio");
+  const nonStickyHeaderPage = isCorporatePage || isCateringPage || isSfxPage || isPortfolioPage;
 
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: "instant" });
@@ -45,7 +46,7 @@ function AppLayout() {
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </main>
-      <SiteFooter isHome={location.pathname === "/" || isCorporatePage || isCateringPage || isSfxPage} />
+      <SiteFooter isHome={location.pathname === "/" || isCorporatePage || isCateringPage || isSfxPage || isPortfolioPage} />
     </div>
   );
 }

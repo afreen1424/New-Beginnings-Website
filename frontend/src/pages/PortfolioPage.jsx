@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { useMemo, useState } from "react";
+import RevealBlock from "../components/common/RevealBlock";
 import { Tabs, TabsList, TabsTrigger } from "../components/ui/tabs";
 import { portfolioEvents } from "../data/siteContent";
 
@@ -37,30 +38,30 @@ export default function PortfolioPage() {
       </section>
 
       <section className="mx-auto mt-12 w-full max-w-7xl" key={activeTab} data-testid="portfolio-grid-section">
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3" data-testid="portfolio-grid">
-          {activeEvents.map((event) => (
-            <Link
-              key={event.id}
-              to={`/portfolio/${activeTab}/${event.id}`}
-              className="group overflow-hidden rounded-2xl border border-[#4B0F1B]/10 bg-white"
-              data-testid={`portfolio-card-${event.id}`}
-            >
-              <img
-                src={event.cover}
-                alt={event.title}
-                loading="lazy"
-                className="aspect-[5/4] w-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
-                data-testid={`portfolio-card-image-${event.id}`}
-              />
-              <div className="p-6">
-                <h2 className="serif-display text-2xl text-[#350A13]" data-testid={`portfolio-card-title-${event.id}`}>
-                  {event.title}
-                </h2>
-                <p className="mt-2 text-sm text-[#4B0F1B]" data-testid={`portfolio-card-subtitle-${event.id}`}>
-                  {event.subtitle}
-                </p>
-              </div>
-            </Link>
+        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4" data-testid="portfolio-grid">
+          {activeEvents.map((event, index) => (
+            <RevealBlock key={event.id} direction="up" delay={index * 120} testId={`portfolio-card-reveal-${event.id}`}>
+              <Link
+                to={`/portfolio/${activeTab}/${event.id}`}
+                className="group relative cursor-pointer overflow-hidden rounded-2xl"
+                data-testid={`portfolio-card-${event.id}`}
+              >
+                <img
+                  src={event.cover}
+                  alt={event.title}
+                  loading="lazy"
+                  className="aspect-[4/5] w-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
+                  data-testid={`portfolio-card-image-${event.id}`}
+                />
+                <div className="service-card-overlay absolute inset-0 opacity-10 transition-opacity duration-500 group-hover:opacity-100" />
+                <div className="absolute inset-0 flex flex-col items-center justify-center opacity-0 transition-opacity duration-300 group-hover:opacity-100" data-testid={`portfolio-card-overlay-${event.id}`}>
+                  <h2 className="serif-display text-2xl text-[#F5EFE6]" data-testid={`portfolio-card-title-${event.id}`}>
+                    {event.title}
+                  </h2>
+                  <div className="mt-2 h-[1px] w-12 bg-[#C6A75E] transition-all duration-300 group-hover:w-24" data-testid={`portfolio-card-underline-${event.id}`} />
+                </div>
+              </Link>
+            </RevealBlock>
           ))}
         </div>
       </section>

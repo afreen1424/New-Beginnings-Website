@@ -142,3 +142,10 @@ Build a fully functional, production-ready luxury event management website for *
 - Updated SFX hero carousel with newly provided 5 images only (no behavior/style/layout changes).
 - Updated SFX 6-grid images with requested mapping, including newly provided Colour Bomb image.
 - Preserved all existing spacing, hover interactions, animations, responsiveness, CTA, and footer styling.
+
+## Portfolio Pages Refinement Pass
+- Disabled sticky header behavior on `/portfolio` and `/portfolio/:category/:eventId` so header scrolls naturally while keeping existing header styling.
+- Updated Portfolio main page cards to match Home “Stories We’ve Brought to Life” grid behavior/style (same image ratio, hover reveal treatment, cursor behavior), while preserving tab structure.
+- Added elegant staggered fade-up entrance for portfolio cards on scroll.
+- Simplified portfolio project pages to clean structure: heading → large featured image → 4-image gallery (auto-filled to 4 when fewer images available), with staggered entrance animation.
+- Centered “Begin Your Celebration” CTA and applied Home footer variant on portfolio pages.
