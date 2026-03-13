@@ -1,8 +1,8 @@
 export const brandConfig = {
   name: "New Beginnings Events",
-  whatsappLink: "https://wa.me/918122913183",
-  phone: "+91 81229 13183",
-  phoneRaw: "918122913183",
+  whatsappLink: "https://wa.me/919677390867",
+  phone: "+91 96773 90867",
+  phoneRaw: "919677390867",
   email: "bookings@newbeginningsevents.in",
   address: "63rd St, Sidco Nagar, Villivakkam, Chennai, Tamil Nadu 600049",
   logo: "/assets/home/logo_new.png",
@@ -25,7 +25,7 @@ export const socialLinks = [
   { label: "Instagram", href: "https://www.instagram.com/_newbeginningsevents_/" },
   { label: "YouTube", href: "https://www.youtube.com/@Newbeginningsevents" },
   { label: "Facebook", href: "https://www.facebook.com/profile.php?id=61580788463795" },
-  { label: "WhatsApp", href: "https://wa.me/918122913183" },
+  { label: "WhatsApp", href: "https://wa.me/919677390867" },
 ];
 
 export const homeCarouselSlides = [

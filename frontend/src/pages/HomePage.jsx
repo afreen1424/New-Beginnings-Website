@@ -69,7 +69,7 @@ export default function HomePage({ onIntroComplete }) {
     setCarouselVisible(false);
     introDoneRef.current = false;
 
-    const showTimer = setTimeout(() => setShowTitle(true), 1200);
+    const showTimer = setTimeout(() => setShowTitle(true), 1300);
     const liftStart = mobile ? 4000 : 4300;
     const fadeOutStart = mobile ? 4500 : 4800;
     const liftTimer = setTimeout(() => setHeroLift(true), liftStart);

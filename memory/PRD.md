@@ -149,3 +149,9 @@ Build a fully functional, production-ready luxury event management website for *
 - Added elegant staggered fade-up entrance for portfolio cards on scroll.
 - Simplified portfolio project pages to clean structure: heading → large featured image → 4-image gallery (auto-filled to 4 when fewer images available), with staggered entrance animation.
 - Centered “Begin Your Celebration” CTA and applied Home footer variant on portfolio pages.
+
+## Global Consistency Micro Pass
+- Optimized homepage hero logo/name animation timing/easing for smoother rendering while preserving existing font, color, size, and structure.
+- Matched footer variant to Home footer on Blog, Blog detail, and Enquiry pages (no homepage footer changes).
+- Updated footer phone number references to `9677390867` (formatted as `+91 96773 90867`).
+- Updated WhatsApp destination links to `https://wa.me/919677390867` for header Let’s Chat, Home social WhatsApp icon, Catering CTA, and SFX CTA.

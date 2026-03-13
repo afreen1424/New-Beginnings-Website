@@ -20,6 +20,8 @@ function AppLayout() {
   const isCateringPage = location.pathname === "/services/catering";
   const isSfxPage = location.pathname === "/services/sfx-entries";
   const isPortfolioPage = location.pathname.startsWith("/portfolio");
+  const isBlogPage = location.pathname.startsWith("/blog");
+  const isEnquiryPage = location.pathname === "/enquiry";
   const nonStickyHeaderPage = isCorporatePage || isCateringPage || isSfxPage || isPortfolioPage;
 
   useEffect(() => {
@@ -46,7 +48,7 @@ function AppLayout() {
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </main>
-      <SiteFooter isHome={location.pathname === "/" || isCorporatePage || isCateringPage || isSfxPage || isPortfolioPage} />
+      <SiteFooter isHome={location.pathname === "/" || isCorporatePage || isCateringPage || isSfxPage || isPortfolioPage || isBlogPage || isEnquiryPage} />
     </div>
   );
 }

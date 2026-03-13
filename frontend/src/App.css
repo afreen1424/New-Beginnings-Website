@@ -121,9 +121,10 @@ body {
     height: 112px;
     width: 112px;
     opacity: 0;
-    transform: scale(0.95);
-    animation: logoCinematicReveal 1.2s ease forwards;
-    filter: drop-shadow(0 0 10px rgba(198, 167, 94, 0.2));
+    transform: translate3d(0, 0, 0) scale(0.95);
+    animation: logoCinematicReveal 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    will-change: transform, opacity;
+    backface-visibility: hidden;
 }
 
 .hero-logo-cinematic-image {
@@ -137,10 +138,11 @@ body {
     inset: 6% 8%;
     width: 34%;
     background: linear-gradient(110deg, rgba(198, 167, 94, 0) 0%, rgba(226, 194, 122, 0.58) 52%, rgba(198, 167, 94, 0) 100%);
-    transform: translateX(-180%) skewX(-18deg);
+    transform: translate3d(-180%, 0, 0) skewX(-18deg);
     opacity: 0;
     pointer-events: none;
-    animation: logoShimmerSweep 1.4s ease 1.05s 1 forwards;
+    animation: logoShimmerSweep 1.2s ease 0.95s 1 forwards;
+    will-change: transform, opacity;
 }
 
 .hero-signature-name {
@@ -155,7 +157,7 @@ body {
     display: inline-block;
     opacity: 0;
     transform: translateY(8px);
-    animation: heroSignatureLetterReveal 0.56s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    animation: heroSignatureLetterReveal 0.52s cubic-bezier(0.22, 1, 0.36, 1) forwards;
     will-change: opacity, transform;
 }
 
