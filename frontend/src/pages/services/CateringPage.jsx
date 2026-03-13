@@ -17,12 +17,6 @@ export default function CateringPage() {
           fullHeight
           caption={false}
         />
-        <div className="mobile-hero-brand-overlay lg:hidden" data-testid="catering-mobile-hero-brand-overlay">
-          <img src={brandConfig.logo} alt="New Beginnings Events" className="mobile-hero-brand-logo" loading="eager" data-testid="catering-mobile-hero-brand-logo" />
-          <p className="mobile-hero-brand-name signature-script" data-testid="catering-mobile-hero-brand-name">
-            New Beginnings Events
-          </p>
-        </div>
       </section>
 
       <section className="mx-auto w-full max-w-6xl px-5 pt-14 text-center sm:px-8" data-testid="catering-heading-section">

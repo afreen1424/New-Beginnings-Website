@@ -51,12 +51,6 @@ export default function SfxEntriesPage() {
           fullHeight
           caption={false}
         />
-        <div className="mobile-hero-brand-overlay lg:hidden" data-testid="sfx-mobile-hero-brand-overlay">
-          <img src={brandConfig.logo} alt="New Beginnings Events" className="mobile-hero-brand-logo" loading="eager" data-testid="sfx-mobile-hero-brand-logo" />
-          <p className="mobile-hero-brand-name signature-script" data-testid="sfx-mobile-hero-brand-name">
-            New Beginnings Events
-          </p>
-        </div>
       </section>
 
       <section ref={introSectionRef} className="mx-auto mt-12 w-full max-w-6xl px-5 text-center sm:px-8" data-testid="sfx-intro-section">
