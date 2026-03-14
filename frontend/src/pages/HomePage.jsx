@@ -16,7 +16,6 @@ function HeroLogoCinematic() {
   return (
     <div className="hero-logo-cinematic-wrap mx-auto" data-testid="home-hero-logo">
       <img src={brandConfig.logo} alt="New Beginnings Events" className="hero-logo-cinematic-image" loading="eager" data-testid="home-hero-logo-image" />
-      <span className="hero-logo-shimmer" aria-hidden="true" data-testid="home-hero-logo-shimmer" />
     </div>
   );
 }
@@ -136,7 +135,7 @@ export default function HomePage({ onIntroComplete }) {
                 <span
                   key={`hero-signature-${idx}`}
                   className="hero-signature-letter"
-                  style={{ animationDelay: `${idx * 0.05}s` }}
+                  style={{ animationDelay: `${idx * 0.08}s` }}
                   data-testid={`home-hero-signature-letter-${idx}`}
                 >
                   {char}

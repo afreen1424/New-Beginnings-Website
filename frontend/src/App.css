@@ -80,7 +80,7 @@ body {
 
 .header-brand-script-mobile {
     color: #dea937;
-    font-size: 1.9rem;
+    font-size: 1.55rem;
     line-height: 0.76;
 }
 
@@ -121,8 +121,8 @@ body {
     height: 112px;
     width: 112px;
     opacity: 0;
-    transform: translate3d(0, 0, 0) scale(0.95);
-    animation: logoCinematicReveal 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    transform: translate3d(0, 24px, 0) scale(0.97);
+    animation: logoCinematicReveal 1.6s ease-out forwards;
     will-change: transform, opacity;
     backface-visibility: hidden;
 }
@@ -131,18 +131,6 @@ body {
     height: 100%;
     width: 100%;
     object-fit: contain;
-}
-
-.hero-logo-shimmer {
-    position: absolute;
-    inset: 6% 8%;
-    width: 34%;
-    background: linear-gradient(110deg, rgba(198, 167, 94, 0) 0%, rgba(226, 194, 122, 0.58) 52%, rgba(198, 167, 94, 0) 100%);
-    transform: translate3d(-180%, 0, 0) skewX(-18deg);
-    opacity: 0;
-    pointer-events: none;
-    animation: logoShimmerSweep 1.2s ease 0.95s 1 forwards;
-    will-change: transform, opacity;
 }
 
 .hero-signature-name {
@@ -160,7 +148,7 @@ body {
     display: inline-block;
     opacity: 0;
     transform: translateY(8px);
-    animation: heroSignatureLetterReveal 0.52s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    animation: heroSignatureLetterReveal 0.7s ease-out forwards;
     will-change: opacity, transform;
 }
 
@@ -479,28 +467,11 @@ body {
 @keyframes logoCinematicReveal {
     from {
         opacity: 0;
-        transform: scale(0.95);
+        transform: translateY(24px) scale(0.97);
     }
     to {
         opacity: 1;
-        transform: scale(1);
-    }
-}
-
-@keyframes logoShimmerSweep {
-    0% {
-        opacity: 0;
-        transform: translateX(-180%) skewX(-18deg);
-    }
-    20% {
-        opacity: 0.42;
-    }
-    70% {
-        opacity: 0.3;
-    }
-    100% {
-        opacity: 0;
-        transform: translateX(315%) skewX(-18deg);
+        transform: translateY(0) scale(1);
     }
 }
 
@@ -707,14 +678,14 @@ body {
 .enquiry-card-bg {
   background-size: contain;
   background-position: center;
-  padding: 16% 14%;
-  min-height: 540px;
+  padding: 14% 13%;
+  min-height: 580px;
 }
 
 @media (max-width: 767px) {
   .enquiry-card-bg {
     background-size: 100% 100%;
-    padding: 22% 18%;
+    padding: 14% 13%;
     min-height: 0;
   }
 }

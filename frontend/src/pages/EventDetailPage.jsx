@@ -7,8 +7,8 @@ export default function EventDetailPage() {
   const event = categoryEvents.find((item) => item.id === eventId);
   const galleryImages = [...(event?.gallery || [])];
 
-  while (galleryImages.length < 4 && galleryImages.length > 0) {
-    galleryImages.push(galleryImages[galleryImages.length - 1]);
+  while (galleryImages.length < 8 && galleryImages.length > 0) {
+    galleryImages.push(galleryImages[galleryImages.length % galleryImages.length]);
   }
 
   if (!event) {
@@ -25,7 +25,7 @@ export default function EventDetailPage() {
   }
 
   return (
-    <div className="bg-[#F5EFE6] px-5 pb-20 pt-28 sm:px-8 lg:px-12" data-testid="event-detail-page">
+    <div className="bg-[#F5EFE6] px-5 pb-20 pt-20 sm:px-8 lg:px-12" data-testid="event-detail-page">
       <div className="mx-auto w-full max-w-7xl">
         <h1 className="serif-display text-center text-4xl text-[#350A13] sm:text-5xl" data-testid="event-detail-title">
           {event.title}
@@ -36,18 +36,18 @@ export default function EventDetailPage() {
           src={event.cover}
           alt={event.title}
           loading="eager"
-          className="mt-8 aspect-[16/8] w-full rounded-3xl object-cover object-center"
+          className="mt-8 aspect-[16/8] w-full object-cover object-center"
           data-testid="event-detail-hero-image"
         />
 
-        <div className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2" data-testid="event-detail-gallery">
-          {galleryImages.slice(0, 4).map((image, index) => (
-            <div key={`${image}-${index}`} className="section-fade-up" style={{ animationDelay: `${index * 120}ms` }} data-testid={`event-detail-gallery-wrap-${index}`}>
+        <div className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-4" data-testid="event-detail-gallery">
+          {galleryImages.slice(0, 8).map((image, index) => (
+            <div key={`${image}-${index}`} className="section-fade-up" style={{ animationDelay: `${index * 100}ms` }} data-testid={`event-detail-gallery-wrap-${index}`}>
               <img
                 src={image}
                 alt={`${event.title} gallery ${index + 1}`}
                 loading="lazy"
-                className="aspect-[4/3] w-full rounded-2xl object-cover object-center"
+                className="aspect-[4/3] w-full object-cover object-center"
                 data-testid={`event-detail-gallery-image-${index}`}
               />
             </div>

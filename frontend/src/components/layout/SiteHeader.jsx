@@ -137,7 +137,7 @@ export default function SiteHeader({ introComplete = true, isHome = false, nonSt
 
             <Link to="/" className="absolute left-1/2 flex -translate-x-1/2 items-center gap-[10px]" data-testid="mobile-header-center-brand">
               <img src={brandConfig.logo} alt="NB Logo" className="h-8 w-8 object-contain" loading="eager" data-testid="mobile-header-brand-logo" />
-              <span className="header-brand-script-mobile signature-script max-w-[146px] truncate whitespace-nowrap" data-testid="mobile-header-brand-name">
+              <span className="header-brand-script-mobile signature-script whitespace-nowrap" data-testid="mobile-header-brand-name">
                 New Beginnings Events
               </span>
             </Link>
@@ -159,51 +159,43 @@ export default function SiteHeader({ introComplete = true, isHome = false, nonSt
         />
 
         <aside
-          className={`absolute right-0 top-0 flex h-full w-[82%] max-w-sm flex-col bg-[#3C0518] px-6 py-5 transition-transform duration-[350ms] ease-in-out ${
-            mobileOpen ? "translate-x-0" : "translate-x-full"
+          className={`absolute inset-0 flex flex-col items-center justify-center bg-[#3C0518] px-6 py-5 transition-transform duration-[350ms] ease-in-out ${
+            mobileOpen ? "translate-y-0" : "-translate-y-full"
           }`}
           data-testid="mobile-slide-panel"
         >
-          <div className="mb-8 flex items-center justify-between">
-            <Link to="/" className="flex items-center gap-2.5" data-testid="mobile-panel-logo-link">
-              <img src={brandConfig.logo} alt="NB Logo" className="h-10 w-10 object-contain" loading="lazy" data-testid="mobile-panel-logo" />
-              <span className="signature-script whitespace-nowrap text-[2.2rem] leading-none text-[var(--logo-gold)]" data-testid="mobile-panel-brand-name">
-                New Beginnings Events
-              </span>
-            </Link>
-            <button
-              type="button"
-              onClick={() => setMobileOpen(false)}
-              className="rounded-full border border-[#C6A75E] p-2 text-[#C6A75E]"
-              aria-label="Close Menu"
-              data-testid="mobile-menu-close-button"
-            >
-              <X size={18} />
-            </button>
-          </div>
+          <button
+            type="button"
+            onClick={() => setMobileOpen(false)}
+            className="absolute right-5 top-5 rounded-full border border-[#C6A75E] p-2 text-[#C6A75E]"
+            aria-label="Close Menu"
+            data-testid="mobile-menu-close-button"
+          >
+            <X size={18} />
+          </button>
 
-          <nav className="flex flex-1 flex-col gap-4" data-testid="mobile-nav-links">
+          <nav className="flex flex-col items-center gap-6" data-testid="mobile-nav-links">
             {mobileMainLinks.map((item) => (
               <NavLink
                 key={item.label}
                 to={item.path}
-                className="text-base text-[#F5EFE6]"
+                className="text-lg uppercase tracking-[0.16em] text-[#F5EFE6]"
                 data-testid={`mobile-nav-link-${item.label.toLowerCase()}`}
               >
                 {item.label}
               </NavLink>
             ))}
 
-            <div className="mt-2 border-t border-[#C6A75E]/30 pt-4" data-testid="mobile-services-section">
-              <p className="mb-3 text-xs uppercase tracking-[0.24em] text-[#C6A75E]" data-testid="mobile-services-heading">
+            <div className="mt-4 border-t border-[#C6A75E]/30 pt-5 text-center" data-testid="mobile-services-section">
+              <p className="mb-4 text-xs uppercase tracking-[0.24em] text-[#C6A75E]" data-testid="mobile-services-heading">
                 Other Services
               </p>
-              <div className="flex flex-col gap-3">
+              <div className="flex flex-col items-center gap-4">
                 {serviceLinks.map((service) => (
                   <NavLink
                     key={service.label}
                     to={service.path}
-                    className="text-base text-[#F5EFE6]"
+                    className="text-base uppercase tracking-[0.12em] text-[#F5EFE6]"
                     data-testid={`mobile-service-link-${service.label.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`}
                   >
                     {service.label}
@@ -217,7 +209,7 @@ export default function SiteHeader({ introComplete = true, isHome = false, nonSt
             href={brandConfig.whatsappLink}
             target="_blank"
             rel="noreferrer"
-            className="mt-5 rounded-full bg-[#C6A75E] px-5 py-3 text-center text-xs font-semibold tracking-[0.2em] text-[#3C0518]"
+            className="mt-8 rounded-full bg-[#C6A75E] px-6 py-3 text-center text-xs font-semibold tracking-[0.2em] text-[#3C0518]"
             data-testid="mobile-panel-lets-chat-button"
           >
             LET&apos;S CHAT

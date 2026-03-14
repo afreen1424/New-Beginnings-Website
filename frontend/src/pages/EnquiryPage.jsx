@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { brandConfig } from "../data/siteContent";
 
 const GOOGLE_FORM_URL =
@@ -39,6 +39,14 @@ export default function EnquiryPage() {
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState("");
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
   const updateField = (event) => {
     const { name, value } = event.target;
@@ -73,13 +81,15 @@ export default function EnquiryPage() {
   };
 
   return (
-    <div className="bg-[#f5efe8] pb-16 pt-24" data-testid="enquiry-page">
-      <div className="mx-auto w-full max-w-[1100px] px-4" data-testid="enquiry-hero-wrapper">
+    <div className="bg-[#f5efe8] pb-8 pt-16 sm:pb-12 sm:pt-20" data-testid="enquiry-page">
+      <div className="mx-auto w-full max-w-[1200px] px-2 sm:px-4" data-testid="enquiry-hero-wrapper">
         {/* Card container with background image */}
         <div
           className="enquiry-card-bg relative flex items-center justify-center bg-no-repeat"
           style={{
-            backgroundImage: "url(/assets/enquiry-card.png)",
+            backgroundImage: isMobile
+              ? "url(/assets/enquiry-card-mobile.png)"
+              : "url(/assets/enquiry-card.png)",
           }}
           data-testid="enquiry-card-container"
         >
@@ -101,7 +111,7 @@ export default function EnquiryPage() {
                 </h1>
 
                 <form
-                  className="mt-3 w-full max-w-full space-y-3 pl-1 sm:mt-4 sm:space-y-4 sm:pl-0 md:space-y-5"
+                  className="mt-4 w-full max-w-full space-y-4 pl-1 sm:mt-5 sm:space-y-5 sm:pl-0 md:space-y-6"
                   onSubmit={handleSubmit}
                   data-testid="enquiry-form"
                 >

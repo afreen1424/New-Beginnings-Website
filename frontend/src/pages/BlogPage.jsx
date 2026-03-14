@@ -83,7 +83,7 @@ function EditorialRow({ post, imageLeft }) {
     <RevealBlock direction={direction} delay={0} testId={`blog-editorial-reveal-${post.slug}`}>
       <Link
         to={`/blog/${post.slug}`}
-        className="group grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-10"
+        className="group grid grid-cols-1 gap-6 md:grid-cols-2 md:items-center md:gap-10"
         data-testid={`blog-editorial-row-${post.slug}`}
       >
         {imageLeft ? (
@@ -129,7 +129,7 @@ export default function BlogPage() {
   const remainingPosts = visiblePosts.slice(1);
 
   return (
-    <div className="bg-[#F5EFE6] px-5 pb-20 pt-28 sm:px-8 lg:px-12" data-testid="blog-page">
+    <div className="min-h-screen bg-[#F5EFE6] px-5 pb-20 pt-28 sm:px-8 lg:px-12" data-testid="blog-page">
       <section className="section-fade-up mx-auto w-full max-w-5xl text-center" data-testid="blog-hero-section">
         <h1 className="serif-display text-4xl text-[#350A13] sm:text-5xl lg:text-6xl" data-testid="blog-hero-heading">
           The Forever Stories We&apos;ve Crafted.

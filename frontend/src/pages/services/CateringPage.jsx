@@ -1,22 +1,19 @@
 import { brandConfig, cateringService } from "../../data/siteContent";
-import FadeCarousel from "../../components/common/FadeCarousel";
 import RevealBlock from "../../components/common/RevealBlock";
 
 export default function CateringPage() {
-  const slides = [{ image: cateringService.slides[0], couple: "" }];
-
   return (
     <div className="bg-ivory pb-20" data-testid="catering-service-page">
-      <section className="relative" data-testid="catering-carousel-section">
-        <FadeCarousel
-          slides={slides}
-          testId="catering-service-carousel"
-          fadeDuration={850}
-          interval={4700}
-          transitionType="slide"
-          fullHeight
-          caption={false}
-        />
+      <section className="relative" data-testid="catering-hero-section">
+        <div className="relative h-[70vh] min-h-[400px] w-full overflow-hidden">
+          <img
+            src={cateringService.slides[0]}
+            alt="Curated Culinary Experiences"
+            className="h-full w-full object-cover object-center"
+            loading="eager"
+            data-testid="catering-hero-image"
+          />
+        </div>
       </section>
 
       <section className="mx-auto w-full max-w-6xl px-5 pt-14 text-center sm:px-8" data-testid="catering-heading-section">
