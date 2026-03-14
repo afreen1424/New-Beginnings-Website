@@ -22,9 +22,10 @@ function AppLayout() {
   const isSfxPage = location.pathname === "/services/sfx-entries";
   const isPortfolioPage = location.pathname.startsWith("/portfolio");
   const isBlogPage = location.pathname.startsWith("/blog");
+  const isBlogDetailPage = isBlogPage && location.pathname !== "/blog";
   const isEnquiryPage = location.pathname === "/enquiry";
   const isAdminPage = location.pathname === "/admin";
-  const nonStickyHeaderPage = isCorporatePage || isCateringPage || isSfxPage || isPortfolioPage;
+  const nonStickyHeaderPage = isCorporatePage || isCateringPage || isSfxPage || isPortfolioPage || isBlogDetailPage;
 
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: "instant" });
