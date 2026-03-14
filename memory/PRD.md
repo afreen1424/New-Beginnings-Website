@@ -46,6 +46,27 @@ Build a fully functional, production-ready luxury event management website for "
 - **Auto CTA** - "Planning something unforgettable?" section at end of each blog post
 - Header/footer hidden on admin page for clean admin experience
 
+### Phase 3: Blog Redesign - Editorial Layout (Complete - Feb 2026)
+- **Blog Listing Page** redesigned with luxury editorial magazine layout:
+  - Hero feature post at top (wide cinematic image + metadata)
+  - Alternating editorial rows (image left/text right, then text left/image right)
+  - Scroll-triggered animations (slide-in from correct direction + fade)
+  - Entire row clickable (image, title, text) opens blog detail
+- **Blog Detail Page** restructured:
+  - Full-width cinematic hero image (edge-to-edge, no rounded corners)
+  - Title, category, author, date below hero
+  - Rich content blocks (paragraph, full_image, two_image_grid, quote)
+  - 4-image gallery grid
+  - CTA section: "Begin Your Celebration" (no duplicate button, no rounded container)
+- **Removed all rounded corners** from blog images, containers, galleries
+- **Non-sticky header** on blog detail pages
+- **5 sample blog posts** with rich editorial content:
+  - Designing a Regal Wedding Experience
+  - Creating an Unforgettable Sangeet Night
+  - The Art of Luxury Wedding Decor
+  - Planning a Grand South Indian Wedding
+  - Curating the Perfect Wedding Entrance
+
 ### Backend API Endpoints
 - `GET /api/blog/categories` - List all categories
 - `POST /api/blog/categories` - Create category (auth required)
