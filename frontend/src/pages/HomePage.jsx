@@ -261,7 +261,7 @@ export default function HomePage({ onIntroComplete }) {
         <div className="mx-auto w-full max-w-6xl text-center">
           <AnimatedHeading text="Follow the Celebration." active={socialVisible} testId="social-heading" className="text-3xl text-[#3C0518] sm:text-4xl" />
 
-          <div className="mx-auto mt-10 grid max-w-md grid-cols-2 gap-5 sm:flex sm:max-w-none sm:items-center sm:justify-center" data-testid="social-buttons-group">
+          <div className="mx-auto mt-10 flex max-w-full items-center justify-center gap-3 sm:gap-5" data-testid="social-buttons-group">
             {socialLinks.map((social, index) => {
               const Icon = SOCIAL_ICON_MAP[social.label] || MessageCircle;
               return (
