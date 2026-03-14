@@ -39,8 +39,10 @@ Build a fully functional, production-ready luxury event management website for "
   - Flexible content blocks: Paragraph, Full-width Image, Two Image Grid, Three Image Grid, Quote
   - Drag-and-drop block reordering
   - Gallery images section
+  - **Publish/Draft toggle** - New posts default to Draft, only Published posts visible on public blog
+  - Draft/Published status badge on each post in admin sidebar
 - **Server-side Image Upload** - `/api/upload` endpoint stores to `/assets/uploads/`
-- **Dynamic Public Pages** - `/blog` and `/blog/:slug` fetch from backend APIs
+- **Dynamic Public Pages** - `/blog` and `/blog/:slug` fetch from backend APIs (only published posts)
 - **Auto CTA** - "Planning something unforgettable?" section at end of each blog post
 - Header/footer hidden on admin page for clean admin experience
 
