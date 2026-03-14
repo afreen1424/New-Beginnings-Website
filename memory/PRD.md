@@ -86,7 +86,16 @@ Build a fully functional, production-ready luxury event management website for "
 - **blog_categories:** id, name, created_at
 - **enquiries:** id, full_name, email, phone, event_date, event_location, estimated_guest_count, event_type, referral_source, vision, submitted_at
 
-## Backlog / Remaining Tasks
+### Phase 4: Enquiry Page Redesign - Invitation Card (Complete - Feb 2026)
+- **Luxury invitation card** design: card image (enquiry-card.png) as background with form overlaid
+- Logo + "GET IN TOUCH WITH US" heading in gold serif centered at top
+- **Form structure**: 4 rows — 3col (name/email/phone), 3col (date/location/guests), 2col (event type/referral dropdowns), textarea (vision)
+- Transparent inputs with gold bottom borders, no rounded corners
+- "BEGIN YOUR CELEBRATION" button: gold border, hover → gold bg + burgundy text
+- **Google Form POST** integration (no redirect, shows success message)
+- Non-sticky header on enquiry page
+- Responsive: 3col desktop → 2col tablet → 1col mobile
+- Card stretches on mobile (`100% 100%`) to contain form within card boundaries
 
 ### P2 - Refinements
 - Hero animation smoothness on homepage (recurring refinement item)
