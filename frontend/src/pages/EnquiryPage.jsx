@@ -1,9 +1,20 @@
 import { useState } from "react";
-import { API_BASE } from "../services/api";
 import { brandConfig } from "../data/siteContent";
-import { Button } from "../components/ui/button";
-import { Input } from "../components/ui/input";
-import { Textarea } from "../components/ui/textarea";
+
+const GOOGLE_FORM_URL =
+  "https://docs.google.com/forms/d/e/1FAIpQLScfTdPIwsmXpDap4KSER1GL_0KZPjYCeLAXBBW9ZUYe4WkDEg/formResponse";
+
+const ENTRY_IDS = {
+  full_name: "entry.827195904",
+  email: "entry.1873800378",
+  phone: "entry.1724362707",
+  event_date: "entry.634533857",
+  event_location: "entry.848190616",
+  estimated_guest_count: "entry.1517076950",
+  event_type: "entry.934301364",
+  referral_source: "entry.1294170504",
+  vision: "entry.1964823167",
+};
 
 const initialForm = {
   full_name: "",
@@ -12,10 +23,16 @@ const initialForm = {
   event_date: "",
   event_location: "",
   estimated_guest_count: "",
-  event_type: "Wedding",
-  referral_source: "Instagram",
+  event_type: "",
+  referral_source: "",
   vision: "",
 };
+
+const inputBase =
+  "w-full border-0 border-b border-[#C6A75E]/50 bg-transparent px-0 py-2 text-sm text-[#3C0518] placeholder-[#C6A75E]/60 outline-none transition-colors focus:border-[#C6A75E] focus:ring-0";
+
+const selectBase =
+  "w-full appearance-none border-0 border-b border-[#C6A75E]/50 bg-transparent px-0 py-2 text-sm text-[#3C0518] outline-none transition-colors focus:border-[#C6A75E] focus:ring-0";
 
 export default function EnquiryPage() {
   const [form, setForm] = useState(initialForm);
@@ -34,111 +51,214 @@ export default function EnquiryPage() {
     setError("");
 
     try {
-      const response = await fetch(`${API_BASE}/enquiries`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
+      const formData = new URLSearchParams();
+      Object.entries(ENTRY_IDS).forEach(([key, entryId]) => {
+        formData.append(entryId, form[key]);
       });
 
-      if (!response.ok) {
-        throw new Error("Unable to submit your enquiry right now.");
-      }
+      await fetch(GOOGLE_FORM_URL, {
+        method: "POST",
+        mode: "no-cors",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: formData.toString(),
+      });
 
       setSubmitted(true);
       setForm(initialForm);
-    } catch (submitError) {
-      setError(submitError.message);
+    } catch (_submitError) {
+      setError("Unable to submit your enquiry right now. Please try again.");
     } finally {
       setSubmitting(false);
     }
   };
 
   return (
-    <div className="bg-royal-velvet px-3 pb-20 pt-28 sm:px-6" data-testid="enquiry-page">
-      <div
-        className={`enquiry-opening-panel mx-auto w-full max-w-3xl rounded-[24px] border border-[#C6A75E]/45 bg-[#F5EFE6] px-4 py-8 transition-opacity duration-500 sm:px-8 sm:py-10 ${
-          submitted ? "opacity-85" : "opacity-100"
-        }`}
-        data-testid="enquiry-panel"
-      >
-        <img src={brandConfig.logo} alt="New Beginnings Events" className="mx-auto h-16 w-16 object-contain" loading="lazy" data-testid="enquiry-logo" />
-        <h1 className="serif-display mt-4 text-center text-4xl text-[#350A13] sm:text-5xl" data-testid="enquiry-heading">
-          Begin Your Celebration.
-        </h1>
-        <div className="mx-auto mt-4 h-[1px] w-28 bg-[#C6A75E]" data-testid="enquiry-divider" />
-        <p className="mx-auto mt-6 max-w-2xl text-center text-base text-[#4C3330]" data-testid="enquiry-subline">
-          Share your details, and let us craft something unforgettable.
-        </p>
+    <div className="bg-[#f5efe8] pb-16 pt-24" data-testid="enquiry-page">
+      <div className="mx-auto w-full max-w-[1100px] px-4" data-testid="enquiry-hero-wrapper">
+        {/* Card container with background image */}
+        <div
+          className="enquiry-card-bg relative flex items-center justify-center bg-no-repeat"
+          style={{
+            backgroundImage: "url(/assets/enquiry-card.png)",
+          }}
+          data-testid="enquiry-card-container"
+        >
+          <div className="flex w-full flex-col items-center justify-center">
+            {!submitted ? (
+              <>
+                <img
+                  src={brandConfig.logo}
+                  alt="New Beginnings Events"
+                  className="h-10 w-10 object-contain sm:h-14 sm:w-14"
+                  loading="eager"
+                  data-testid="enquiry-logo"
+                />
+                <h1
+                  className="serif-display mt-2 text-center text-lg text-[#C6A75E] sm:mt-3 sm:text-xl md:text-2xl lg:text-3xl"
+                  data-testid="enquiry-heading"
+                >
+                  GET IN TOUCH WITH US
+                </h1>
 
-        <form className="mt-10 space-y-6" onSubmit={handleSubmit} data-testid="enquiry-form">
-          <Input name="full_name" value={form.full_name} onChange={updateField} required placeholder="Full Name" className="enquiry-input" data-testid="enquiry-full-name-input" />
-          <Input name="email" type="email" value={form.email} onChange={updateField} required placeholder="Email" className="enquiry-input" data-testid="enquiry-email-input" />
-          <Input name="phone" value={form.phone} onChange={updateField} required placeholder="Phone" className="enquiry-input" data-testid="enquiry-phone-input" />
-          <Input name="event_date" type="text" value={form.event_date} onChange={updateField} required placeholder="Event Date (DD/MM/YYYY)" className="enquiry-input" data-testid="enquiry-event-date-input" />
-          <Input name="event_location" value={form.event_location} onChange={updateField} required placeholder="Event Location" className="enquiry-input" data-testid="enquiry-event-location-input" />
-          <Input
-            name="estimated_guest_count"
-            value={form.estimated_guest_count}
-            onChange={updateField}
-            required
-            placeholder="Estimated Guest Count"
-            className="enquiry-input"
-            data-testid="enquiry-guest-count-input"
-          />
+                <form
+                  className="mt-3 w-full max-w-full space-y-3 pl-1 sm:mt-4 sm:space-y-4 sm:pl-0 md:space-y-5"
+                  onSubmit={handleSubmit}
+                  data-testid="enquiry-form"
+                >
+                  {/* Row 1: Name, Email, Phone */}
+                  <div className="grid grid-cols-1 gap-x-5 gap-y-3 sm:grid-cols-2 md:grid-cols-3 md:gap-x-8">
+                    <input
+                      name="full_name"
+                      value={form.full_name}
+                      onChange={updateField}
+                      required
+                      placeholder="Full Name"
+                      className={inputBase}
+                      data-testid="enquiry-full-name-input"
+                    />
+                    <input
+                      name="email"
+                      type="email"
+                      value={form.email}
+                      onChange={updateField}
+                      required
+                      placeholder="Email"
+                      className={inputBase}
+                      data-testid="enquiry-email-input"
+                    />
+                    <input
+                      name="phone"
+                      value={form.phone}
+                      onChange={updateField}
+                      required
+                      placeholder="Phone"
+                      className={`${inputBase} sm:col-span-2 md:col-span-1`}
+                      data-testid="enquiry-phone-input"
+                    />
+                  </div>
 
-          <select name="event_type" value={form.event_type} onChange={updateField} className="enquiry-input h-11 w-full" data-testid="enquiry-event-type-select">
-            <option>Wedding</option>
-            <option>Corporate Event</option>
-            <option>Catering</option>
-            <option>SFX & Entries</option>
-            <option>Other</option>
-          </select>
+                  {/* Row 2: Event Date, Location, Guest Count */}
+                  <div className="grid grid-cols-1 gap-x-5 gap-y-3 sm:grid-cols-2 md:grid-cols-3 md:gap-x-8">
+                    <input
+                      name="event_date"
+                      value={form.event_date}
+                      onChange={updateField}
+                      required
+                      placeholder="Event Date"
+                      className={inputBase}
+                      data-testid="enquiry-event-date-input"
+                    />
+                    <input
+                      name="event_location"
+                      value={form.event_location}
+                      onChange={updateField}
+                      required
+                      placeholder="Event Location"
+                      className={inputBase}
+                      data-testid="enquiry-event-location-input"
+                    />
+                    <input
+                      name="estimated_guest_count"
+                      value={form.estimated_guest_count}
+                      onChange={updateField}
+                      required
+                      placeholder="Estimated Guest Count"
+                      className={`${inputBase} sm:col-span-2 md:col-span-1`}
+                      data-testid="enquiry-guest-count-input"
+                    />
+                  </div>
 
-          <select name="referral_source" value={form.referral_source} onChange={updateField} className="enquiry-input h-11 w-full" data-testid="enquiry-referral-select">
-            <option>Instagram</option>
-            <option>YouTube</option>
-            <option>Facebook</option>
-            <option>WhatsApp</option>
-            <option>Google Search</option>
-            <option>Reference</option>
-          </select>
+                  {/* Row 3: Event Type, Referral Source */}
+                  <div className="grid grid-cols-1 gap-x-5 gap-y-3 sm:grid-cols-2 md:gap-x-8">
+                    <div className="relative">
+                      <select
+                        name="event_type"
+                        value={form.event_type}
+                        onChange={updateField}
+                        required
+                        className={`${selectBase} ${!form.event_type ? "text-[#C6A75E]/60" : ""}`}
+                        data-testid="enquiry-event-type-select"
+                      >
+                        <option value="" disabled>Event Type</option>
+                        <option value="Wedding">Wedding</option>
+                        <option value="Corporate Event">Corporate Event</option>
+                        <option value="Catering">Catering</option>
+                        <option value="SFX & Entries">SFX &amp; Entries</option>
+                        <option value="Others">Others</option>
+                      </select>
+                      <span className="pointer-events-none absolute right-0 top-1/2 -translate-y-1/2 text-[#C6A75E]/60">&#9662;</span>
+                    </div>
+                    <div className="relative">
+                      <select
+                        name="referral_source"
+                        value={form.referral_source}
+                        onChange={updateField}
+                        required
+                        className={`${selectBase} ${!form.referral_source ? "text-[#C6A75E]/60" : ""}`}
+                        data-testid="enquiry-referral-select"
+                      >
+                        <option value="" disabled>How did you hear about us?</option>
+                        <option value="Instagram">Instagram</option>
+                        <option value="Youtube">Youtube</option>
+                        <option value="Google">Google</option>
+                        <option value="Friend & Family">Friend &amp; Family</option>
+                        <option value="Others">Others</option>
+                      </select>
+                      <span className="pointer-events-none absolute right-0 top-1/2 -translate-y-1/2 text-[#C6A75E]/60">&#9662;</span>
+                    </div>
+                  </div>
 
-          <Textarea
-            name="vision"
-            value={form.vision}
-            onChange={updateField}
-            required
-            placeholder="Tell us your vision"
-            className="enquiry-input min-h-[120px]"
-            data-testid="enquiry-vision-textarea"
-          />
+                  {/* Row 4: Vision */}
+                  <div>
+                    <textarea
+                      name="vision"
+                      value={form.vision}
+                      onChange={updateField}
+                      required
+                      placeholder="Tell us about your vision"
+                      rows={2}
+                      className={`${inputBase} resize-none`}
+                      data-testid="enquiry-vision-textarea"
+                    />
+                  </div>
 
-          {error && (
-            <p className="text-sm text-red-700" data-testid="enquiry-error-message">
-              {error}
-            </p>
-          )}
+                  {error && (
+                    <p className="text-center text-xs text-red-700" data-testid="enquiry-error-message">
+                      {error}
+                    </p>
+                  )}
 
-          <Button
-            type="submit"
-            disabled={submitting}
-            className="h-12 rounded-full border border-[#C6A75E] bg-transparent px-7 text-xs uppercase tracking-[0.2em] text-[#4B0F1B] transition-colors hover:bg-[#4B0F1B] hover:text-[#F5EFE6]"
-            data-testid="enquiry-submit-button"
-          >
-            {submitting ? "Submitting..." : "Request Private Consultation"}
-          </Button>
-        </form>
-
-        {submitted && (
-          <div className="mt-10 rounded-2xl border border-[#C6A75E]/35 bg-[#4B0F1B]/10 p-6 text-center" data-testid="enquiry-success-message-panel">
-            <p className="serif-display text-3xl text-[#350A13]" data-testid="enquiry-success-title">
-              Your Story Begins Here.
-            </p>
-            <p className="mt-3 text-sm text-[#50332F]" data-testid="enquiry-success-text">
-              Our team will connect with you within 24–48 hours.
-            </p>
+                  {/* Submit Button */}
+                  <div className="flex justify-center pt-1 sm:pt-2">
+                    <button
+                      type="submit"
+                      disabled={submitting}
+                      className="border border-[#C6A75E] bg-transparent px-6 py-2 text-[10px] uppercase tracking-[0.2em] text-[#C6A75E] transition-colors duration-300 hover:bg-[#C6A75E] hover:text-[#3C0518] disabled:opacity-50 sm:px-8 sm:py-2.5 sm:text-xs"
+                      data-testid="enquiry-submit-button"
+                    >
+                      {submitting ? "Submitting..." : "Begin Your Celebration"}
+                    </button>
+                  </div>
+                </form>
+              </>
+            ) : (
+              <div className="text-center" data-testid="enquiry-success-message-panel">
+                <img
+                  src={brandConfig.logo}
+                  alt="New Beginnings Events"
+                  className="mx-auto h-12 w-12 object-contain sm:h-16 sm:w-16"
+                  loading="eager"
+                />
+                <p className="serif-display mt-4 text-2xl text-[#3C0518] sm:text-3xl" data-testid="enquiry-success-title">
+                  Thank you.
+                </p>
+                <p className="mt-3 text-sm text-[#50332F]" data-testid="enquiry-success-text">
+                  Our team will reach out shortly.
+                </p>
+              </div>
+            )}
           </div>
-        )}
+        </div>
       </div>
     </div>
   );

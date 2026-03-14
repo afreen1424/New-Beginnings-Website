@@ -701,3 +701,20 @@ body {
         letter-spacing: 0.12em;
     }
 }
+
+
+/* Enquiry card background */
+.enquiry-card-bg {
+  background-size: contain;
+  background-position: center;
+  padding: 16% 14%;
+  min-height: 540px;
+}
+
+@media (max-width: 767px) {
+  .enquiry-card-bg {
+    background-size: 100% 100%;
+    padding: 22% 18%;
+    min-height: 0;
+  }
+}

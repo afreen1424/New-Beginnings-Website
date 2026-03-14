@@ -25,7 +25,7 @@ function AppLayout() {
   const isBlogDetailPage = isBlogPage && location.pathname !== "/blog";
   const isEnquiryPage = location.pathname === "/enquiry";
   const isAdminPage = location.pathname === "/admin";
-  const nonStickyHeaderPage = isCorporatePage || isCateringPage || isSfxPage || isPortfolioPage || isBlogDetailPage;
+  const nonStickyHeaderPage = isCorporatePage || isCateringPage || isSfxPage || isPortfolioPage || isBlogDetailPage || isEnquiryPage;
 
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: "instant" });
