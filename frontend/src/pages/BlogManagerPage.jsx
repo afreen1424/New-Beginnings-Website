@@ -4,8 +4,8 @@ import {
   createBlogPost,
   deleteBlogCategory,
   deleteBlogPost,
+  getAdminBlogPosts,
   getBlogCategories,
-  getBlogPosts,
   updateBlogCategory,
   updateBlogPost,
   uploadImage,
@@ -31,6 +31,7 @@ const createInitialForm = () => ({
   meta_description: "",
   content_blocks: [createEmptyBlock("paragraph")],
   gallery_images: ["", "", "", "", "", ""],
+  status: "draft",
 });
 
 const blockTypeOptions = [
@@ -75,16 +76,20 @@ export default function BlogManagerPage() {
   }, [categories]);
 
   const refreshData = async () => {
-    const [categoryData, postData] = await Promise.all([getBlogCategories(), getBlogPosts("all")]);
+    const [categoryData, postData] = await Promise.all([
+      getBlogCategories(),
+      authedPasscode ? getAdminBlogPosts(authedPasscode, "all") : [],
+    ]);
     setCategories(categoryData);
-    setPosts(postData);
+    if (postData.length !== undefined) setPosts(postData);
   };
 
   useEffect(() => {
     refreshData().catch(() => {
       setStatusMessage("Unable to load blog data right now.");
     });
-  }, []);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [authedPasscode]);
 
   const handleVerifyPasscode = async (event) => {
     event.preventDefault();
@@ -120,6 +125,7 @@ export default function BlogManagerPage() {
         images: block.images || [],
       })),
       gallery_images: [...(post.gallery_images || [])],
+      status: post.status || "draft",
     });
   };
 
@@ -445,7 +451,19 @@ export default function BlogManagerPage() {
                       onClick={() => handleSelectPost(post)}
                       data-testid={`manager-post-row-${post.id}`}
                     >
-                      <p className="text-sm text-[#3C0518]">{post.title}</p>
+                      <div className="flex items-start justify-between gap-2">
+                        <p className="text-sm text-[#3C0518]">{post.title}</p>
+                        <span
+                          className={`shrink-0 rounded-full px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider ${
+                            post.status === "published"
+                              ? "bg-emerald-100 text-emerald-800"
+                              : "bg-amber-100 text-amber-800"
+                          }`}
+                          data-testid={`manager-post-status-badge-${post.id}`}
+                        >
+                          {post.status === "published" ? "Published" : "Draft"}
+                        </span>
+                      </div>
                       <div className="mt-2 flex items-center justify-between text-xs text-[#5a3c37]">
                         <span>{post.category}</span>
                         <button
@@ -608,6 +626,27 @@ export default function BlogManagerPage() {
                       </div>
                     );
                   })}
+                </div>
+
+                <div className="flex items-center justify-between rounded-lg border border-[#C6A75E]/30 p-4" data-testid="manager-status-toggle-section">
+                  <div>
+                    <p className="text-sm font-medium text-[#3C0518]">Post Status</p>
+                    <p className="mt-0.5 text-xs text-[#7b5a53]">
+                      {postForm.status === "published" ? "This post is visible on the public blog." : "This post is hidden from the public blog."}
+                    </p>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => updatePostField("status", postForm.status === "published" ? "draft" : "published")}
+                    className={`rounded-full px-4 py-1.5 text-xs font-semibold uppercase tracking-wider transition-colors ${
+                      postForm.status === "published"
+                        ? "bg-emerald-600 text-white hover:bg-emerald-700"
+                        : "bg-amber-500 text-white hover:bg-amber-600"
+                    }`}
+                    data-testid="manager-status-toggle-button"
+                  >
+                    {postForm.status === "published" ? "Published" : "Draft"}
+                  </button>
                 </div>
 
                 <button type="submit" className="gold-outline-button" disabled={loading || uploading} data-testid="manager-save-post-button">

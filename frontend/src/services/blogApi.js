@@ -64,6 +64,17 @@ export const getBlogPosts = async (category = "all") => {
   return handleJson(response);
 };
 
+export const getAdminBlogPosts = async (passcode, category = "all") => {
+  const params = new URLSearchParams({ include_drafts: "true" });
+  if (category && category.toLowerCase() !== "all") {
+    params.set("category", category);
+  }
+  const response = await fetch(`${API_BASE}/blog/posts?${params.toString()}`, {
+    headers: { "x-admin-passcode": passcode },
+  });
+  return handleJson(response);
+};
+
 export const getBlogPostBySlug = async (slug) => {
   const response = await fetch(`${API_BASE}/blog/posts/${slug}`);
   return handleJson(response);

@@ -122,6 +122,7 @@ class BlogPostCreate(BaseModel):
     meta_description: str
     content_blocks: List[BlogContentBlock] = Field(default_factory=list)
     gallery_images: List[str] = Field(default_factory=list)
+    status: Literal["draft", "published"] = "draft"
 
 
 class BlogPost(BlogPostCreate):
@@ -161,6 +162,9 @@ async def generate_unique_slug(title: str, current_post_id: Optional[str] = None
 
 
 async def ensure_blog_seed_data() -> None:
+    # Backfill: set status=published on any posts missing the field
+    await db.blog_posts.update_many({"status": {"$exists": False}}, {"$set": {"status": "published"}})
+
     category_count = await db.blog_categories.count_documents({})
     if category_count == 0:
         seed_categories = [
@@ -207,6 +211,7 @@ async def ensure_blog_seed_data() -> None:
                 },
             ],
             "gallery_images": ["/assets/blog-1.webp", "/assets/wedding-3.webp", "/assets/wedding-5.webp"],
+            "status": "published",
             "created_at": created_at,
             "updated_at": created_at,
         }
@@ -326,9 +331,15 @@ async def delete_blog_category(category_id: str, x_admin_passcode: str = Header(
 
 
 @api_router.get("/blog/posts", response_model=List[BlogPost])
-async def get_blog_posts(category: Optional[str] = Query(default=None)):
+async def get_blog_posts(category: Optional[str] = Query(default=None), include_drafts: bool = Query(default=False), x_admin_passcode: str = Header(default="")):
     await ensure_blog_seed_data()
+
+    # Only allow drafts when admin passcode is provided
+    show_drafts = include_drafts and x_admin_passcode == BLOG_ADMIN_PASSCODE
+
     query = {}
+    if not show_drafts:
+        query["status"] = "published"
     if category and category.lower() != "all":
         query["category"] = category
 
@@ -339,7 +350,7 @@ async def get_blog_posts(category: Optional[str] = Query(default=None)):
 @api_router.get("/blog/posts/{slug}", response_model=BlogPost)
 async def get_blog_post_by_slug(slug: str):
     await ensure_blog_seed_data()
-    post = await db.blog_posts.find_one({"slug": slug}, {"_id": 0})
+    post = await db.blog_posts.find_one({"slug": slug, "status": "published"}, {"_id": 0})
     if not post:
         raise HTTPException(status_code=404, detail="Blog post not found")
     return parse_blog_post(post)
