@@ -1,162 +1,70 @@
-# PRD - New Beginnings Events Luxury Website
+# New Beginnings Events - Product Requirements Document
 
 ## Original Problem Statement
-Build a fully functional, production-ready luxury event management website for **New Beginnings Events** with regal maroon-gold-beige branding, structured premium UX, responsive mobile-first layout, optimized media, immersive home experience, portfolio/blog/services pages, and a regal enquiry flow.
+Build a fully functional, production-ready luxury event management website for "New Beginnings Events". The brand identity is Royal, Regal, Authority-driven with a specific color palette (maroon, gold, ivory), custom typography, and comprehensive multi-page structure.
 
-## User Inputs Confirmed
-- Logo uploaded and integrated
-- WhatsApp: https://wa.me/918122913183
-- Phone: 8122913183
-- YouTube and Instagram links provided
-- Use stock images for now
+## Core Pages
+- **Homepage** - Hero animation, carousel, about section, video showcase, portfolio preview, testimonials, social links
+- **Portfolio** - Grid page + individual project detail pages
+- **Blog** - Dynamic listing + individual post pages (CMS-driven)
+- **Enquiry** - Functional enquiry form
+- **Other Services** - Corporate Events, Catering, SFX & Entries
 
-## Architecture Decisions
-- **Frontend**: React + React Router, Tailwind utility classes + custom CSS animations
-- **Backend**: FastAPI + MongoDB (Motor)
-- **Data Flow**: Enquiry form posts to `/api/enquiries`, persisted in MongoDB, validated with Pydantic models
-- **Media Strategy**: Local WebP assets in `/frontend/public/assets` (<300KB), lightweight WebM decor video (<3MB), lazy loading for imagery
-- **UI Strategy**: Modular page/component split with reusable carousel and reveal components; sticky header with desktop dropdown + mobile slide panel
+## Tech Stack
+- **Frontend:** React, Tailwind CSS, Framer Motion
+- **Backend:** FastAPI (Python)
+- **Database:** MongoDB
+- **UI Components:** Shadcn/UI
 
-## Implemented
-- Full multi-page website:
-  - Home (animated hero, wedding carousel, about, decor video, portfolio preview, reviews, social, footer)
-  - Portfolio (tabs + smooth in-page content transition)
-  - Event detail pages
-  - Blog listing + detailed story pages
-  - Other services pages: Corporate Events, Catering, SFX & Entries
-  - Enquiry page with vertical regal panel and success state
-- Navigation system:
-  - Sticky transparent-to-maroon header on scroll
-  - Desktop “Other Services” dropdown
-  - Mobile hamburger with right-side slide-in menu and close-on-overlay
-  - Persistent LET'S CHAT buttons wired to WhatsApp
-- Backend APIs:
-  - Existing `/api/` kept
-  - Added `POST /api/enquiries`
-  - Added `GET /api/enquiries`
-- Brand styling:
-  - Palette and typography hierarchy aligned to brief
-  - Velvet texture usage on maroon backgrounds
-  - Controlled lightweight transitions and reveal animations
-- QA/testing completed:
-  - Curl API validation for enquiry create/list
-  - Playwright visual flow checks (desktop + mobile)
-  - Testing agent run with report review and fixes applied
+## What's Been Implemented
 
-## Prioritized Backlog
-### P0
-- Replace stock portfolio/blog media with final client-approved assets and real couple/event metadata
-- Add real business contact/address/email content if different from placeholders
+### Phase 1: Website Structure (Complete)
+- Full multi-page luxury event website
+- Homepage with hero animation, carousel, about section, video showcase
+- Portfolio page with grid and detail views
+- Other Services pages (Corporate, Catering, SFX & Entries)
+- Enquiry page with form submission
+- Responsive design for mobile/desktop
+- Custom fonts, color scheme, and animations
 
-### P1
-- Add CMS/admin interface to manage portfolio, blog posts, and testimonials dynamically
-- Add anti-spam protection + server-side rate limiting for enquiry form
+### Phase 2: Blog CMS (Complete - Feb 2026)
+- **Admin Panel** at `/admin` with passcode protection (`nb-manage-2026`)
+- **Category Management** - Full CRUD (add, edit, delete categories)
+- **Blog Post Management** - Full CRUD with:
+  - Title with auto-generated slug preview
+  - Category, Author, Date fields
+  - Hero image (URL paste or file upload)
+  - Excerpt and article content
+  - SEO Title and Meta Description
+  - Flexible content blocks: Paragraph, Full-width Image, Two Image Grid, Three Image Grid, Quote
+  - Drag-and-drop block reordering
+  - Gallery images section
+- **Server-side Image Upload** - `/api/upload` endpoint stores to `/assets/uploads/`
+- **Dynamic Public Pages** - `/blog` and `/blog/:slug` fetch from backend APIs
+- **Auto CTA** - "Planning something unforgettable?" section at end of each blog post
+- Header/footer hidden on admin page for clean admin experience
 
-### P2
-- Add analytics dashboard (lead source, conversion by service category)
-- Add multilingual content (EN + regional language)
+### Backend API Endpoints
+- `GET /api/blog/categories` - List all categories
+- `POST /api/blog/categories` - Create category (auth required)
+- `PUT /api/blog/categories/:id` - Update category (auth required)
+- `DELETE /api/blog/categories/:id` - Delete category (auth required)
+- `GET /api/blog/posts` - List all posts (optional `?category=` filter)
+- `GET /api/blog/posts/:slug` - Get single post by slug
+- `POST /api/blog/posts` - Create post (auth required)
+- `PUT /api/blog/posts/:id` - Update post (auth required)
+- `DELETE /api/blog/posts/:id` - Delete post (auth required)
+- `POST /api/upload` - Upload image file (auth required)
+- `GET /api/blog/admin/health` - Verify admin passcode
+- `POST /api/enquiries` - Submit enquiry form
 
-## Next Tasks
-1. Integrate final branded content pack (photos, videos, copy)
-2. Add admin-authenticated content management endpoints and UI
-3. Expand enquiry workflow with lead status tracking and internal notes
+### Database Schema
+- **blog_posts:** id, slug, title, category, author_name, date, hero_image, excerpt, article_content, seo_title, meta_description, content_blocks[], gallery_images[], created_at, updated_at
+- **blog_categories:** id, name, created_at
+- **enquiries:** id, full_name, email, phone, event_date, event_location, estimated_guest_count, event_type, referral_source, vision, submitted_at
 
-## Refinement Pass (Latest)
-- Applied full color-system uplift across app to Deep Royal Maroon `#4B0F1B`, Warm Ivory `#F5EFE6`, and Antique Gold `#C6A75E`
-- Updated Home hero timing/behavior: letter reveal → text fade (0.6s) → carousel visual takeover with 0.8s fade-in and 900ms crossfades
-- Refined Home About (poetic hook + divider + revised copy + pinned square image), Decor section (full-width ivory arched frame), Reviews (ivory styling), and Social hover glow
-- Upgraded Corporate/Catering/SFX hero overlays, supporting copy blocks, hover-gradient showcase cards, and centered CTAs
-- Enhanced Blog card motion/overlay styling and Enquiry panel opening animation while preserving existing routes and architecture
+## Backlog / Remaining Tasks
 
-## Micro Refinement Pass (Hero/Header/Carousel Text)
-- Hero logo now uses a stroke-style line-drawing animation and fades out with the full hero content timeline before carousel takeover.
-- Header is now always fixed and visible from initial load with no opacity/transition fade behavior tied to hero animation.
-- Home carousel captions moved to bottom-right, now showing only couple names in antique gold serif with subtle fade-in on slide change.
-
-## Micro Refinement Pass (Hero Logo Animation Only)
-- Removed logo stroke/line-draw effect.
-- Implemented cinematic logo reveal: smooth opacity fade-in + subtle scale-in + one-time antique-gold shimmer sweep + soft gold glow.
-- Kept hero/carousel shared timeline intact so entire hero content (including logo) fades out together before carousel takeover in the same viewport.
-
-## Micro Refinement Pass (Mobile + Carousel Editability)
-- Mobile header optimized for single-line brand display (no wrapping), reduced small-screen padding, and maintained hamburger navigation below 1024px.
-- Enforced global no-horizontal-scroll behavior (`html`, `body`, `#root` overflow-x hidden).
-- Carousel caption remains data-driven from slide array (`homeCarouselSlides` with `couple` field), so names are editable via data only.
-- Mobile carousel caption spacing and typography adjusted for readable bottom-right placement while preserving desktop structure.
-
-## Final Homepage Refinement (Luxury Iteration)
-- Updated homepage-only visual system to exact core palette with primary burgundy `#3C0518`, ivory `#F5EFE6`, and gold `#C6A75E` accents.
-- Reworked homepage hero/header choreography (logo + Tangerine script intro, upward lift, delayed header/nav reveal, slide-based hero carousel without captions).
-- Wired newly provided assets: 5 carousel images, final about image, and updated social/contact details.
-- Added transparent burgundy desktop dropdown styling, refined section typography/animations, Google reviews CTA link, and compact single-line home footer with provided contact metadata.
-
-## Final Instruction Pass (Precision Tweaks)
-- Hero brand name animation now uses elegant letter-by-letter reveal (`0.35s`, `0.06s` stagger, `translateY(8px→0)`, opacity fade) while preserving intro timeline.
-- Set homepage/header brand-name color to logo-extracted gold (`#DB9A17`) and aligned center header logo/text visual heights.
-- Updated desktop dropdown background to `rgba(60,5,24,0.65)` while preserving square-corner layout and existing interactions.
-- Corrected hero carousel image rendering for clean viewport fill (`height: 100vh`, object-fit cover, centered) with seamless infinite slide logic retained.
-- Refined About spacing (left text width + wider text/image separation), replaced About image source only, and simplified Video section to clean full-width cinematic playback (70vh desktop / 50vh mobile) without decorative overlays.
-
-## Micro Pass (Header Text + Carousel Scaling)
-- Updated header center brand text color to `#DEA937` and adjusted desktop script size to requested refined value while preserving alignment/layout.
-- Replaced hero carousel image set with newly uploaded 5 images (1920×1080) and preserved transitions/height/spacing.
-- Ensured carousel slide images maintain proportion with `object-fit: cover`, centered framing, and no distortion/stretching.
-
-## About Section Micro Pass
-- Replaced About image source with latest uploaded asset while keeping section layout/alignment intact.
-- Reduced About paragraph body size to ~16–17px for lighter editorial balance.
-- Moved About CTA placement to align neatly under left text content within the About container (no overflow).
-- Removed rounded corners from About right image container for a clean rectangular presentation.
-
-## Video Section + Lower Heading Animation Micro Pass
-- Updated only the “Every Detail Tells A Story” section: reduced top spacing, replaced video source with newly uploaded file, and rendered video as full-width section media (no frame/mask), responsive with `object-fit: cover`.
-- Retained heading style/colors/background while updating heading entrance behavior from this section onward to subtle slide-up + fade-in on viewport entry.
-
-## Video Edge-to-Edge Layout Fix
-- Removed width-limiting paddings around the “Every Detail Tells A Story” media block so video spans full section width edge-to-edge.
-- Kept heading centered and unchanged in font/color while positioning video directly below heading.
-- Updated video rendering to block-level responsive media (`width:100%`, `height:auto`, `object-fit:cover`) without card/frame wrappers.
-
-## Corporate Events Page Refinement Pass
-- Disabled sticky header behavior only on `/services/corporate-events` so header scrolls naturally while preserving header design/layout.
-- Replaced corporate hero with Home-style full-width, full-height slide carousel (auto + infinite + same smooth transition), using newly uploaded 4 images with no overlays/captions/buttons.
-- Updated “Crafted for Scale, Led with Precision.” section typography to match Home heading style and replaced description text with provided copy (same width/alignment/spacing).
-- Kept existing 2x2 grid layout intact, mapped uploaded images to requested category order, retained layout dimensions, added left/right entrance reveals, and matched Home “Stories” hover interaction pattern.
-- Applied Home footer variant specifically on corporate page to match requested footer consistency.
-
-## Catering Page Refinement Pass
-- Disabled sticky header only on `/services/catering` while preserving header visual design.
-- Replaced catering hero with Home-style full-width slide carousel behavior using exactly one image (no overlays/captions/controls), matching Home transition settings.
-- Kept post-carousel heading section structure and styling; set heading text to `Curated Culinary Experiences`.
-- Updated only first/second content section headings + descriptions to requested Vegetarian/Non-Veg menu copy, without layout or spacing alterations.
-- Removed thin gold divider above CTA while preserving CTA styling/alignment/hover behavior and applied Home footer variant on catering page.
-
-## SFX & Entries Page Refinement Pass
-- Disabled sticky header only on `/services/sfx-entries` (header now scrolls naturally) with no visual redesign.
-- Replaced SFX hero with Home-style full-width/full-height slide carousel (auto + infinite + same transition), showing exactly 5 images without overlays/captions/buttons.
-- Added post-carousel section heading `For Moments That Begin with Magic` plus provided paragraph content, using Home heading styling language.
-- Preserved existing 6-card grid structure/layout while adding staggered fade-up entrance animation and Home-like hover/cursor behavior (labels appear only on hover with underline reveal).
-- Kept existing CTA unchanged and matched SFX footer to Home footer variant.
-
-## SFX Image-Only Update Pass
-- Updated SFX hero carousel with newly provided 5 images only (no behavior/style/layout changes).
-- Updated SFX 6-grid images with requested mapping, including newly provided Colour Bomb image.
-- Preserved all existing spacing, hover interactions, animations, responsiveness, CTA, and footer styling.
-
-## Portfolio Pages Refinement Pass
-- Disabled sticky header behavior on `/portfolio` and `/portfolio/:category/:eventId` so header scrolls naturally while keeping existing header styling.
-- Updated Portfolio main page cards to match Home “Stories We’ve Brought to Life” grid behavior/style (same image ratio, hover reveal treatment, cursor behavior), while preserving tab structure.
-- Added elegant staggered fade-up entrance for portfolio cards on scroll.
-- Simplified portfolio project pages to clean structure: heading → large featured image → 4-image gallery (auto-filled to 4 when fewer images available), with staggered entrance animation.
-- Centered “Begin Your Celebration” CTA and applied Home footer variant on portfolio pages.
-
-## Global Consistency Micro Pass
-- Optimized homepage hero logo/name animation timing/easing for smoother rendering while preserving existing font, color, size, and structure.
-- Matched footer variant to Home footer on Blog, Blog detail, and Enquiry pages (no homepage footer changes).
-- Updated footer phone number references to `9677390867` (formatted as `+91 96773 90867`).
-- Updated WhatsApp destination links to `https://wa.me/919677390867` for header Let’s Chat, Home social WhatsApp icon, Catering CTA, and SFX CTA.
-
-## Mobile Hero Refinement Pass
-- Applied mobile-only hero balancing updates to Home, Corporate, Catering, and SFX pages: full-viewport visual treatment, centered framing, and improved title fit behavior.
-- Added centered mobile hero brand overlay (logo + brand name) on Corporate/Catering/SFX hero sections without altering desktop hero layout.
-- Kept desktop behavior/layout unchanged while preserving existing animation systems and responsive structure.
+### P2 - Refinements
+- Hero animation smoothness on homepage (recurring refinement item)
+- Native browser date picker on admin form could be improved with a custom date picker
