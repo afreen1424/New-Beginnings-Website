@@ -14,7 +14,7 @@ const SOCIAL_ICON_MAP = {
 
 function HeroLogoCinematic() {
   return (
-    <div className="hero-logo-cinematic-wrap mx-auto" data-testid="home-hero-logo">
+    <div className="hero-logo-cinematic-wrap mx-auto flex justify-center" data-testid="home-hero-logo">
       <img src={brandConfig.logo} alt="New Beginnings Events" className="hero-logo-cinematic-image" loading="eager" data-testid="home-hero-logo-image" />
     </div>
   );
@@ -22,7 +22,7 @@ function HeroLogoCinematic() {
 
 function AnimatedHeading({ text, active, testId, className = "" }) {
   return (
-    <h2 className={`serif-display section-heading-slide ${active ? "is-visible" : ""} ${className}`} data-testid={testId}>
+    <h2 className={`serif-display section-heading-slide [word-spacing:0.15em] ${active ? "is-visible" : ""} ${className}`} data-testid={testId}>
       {text}
     </h2>
   );
@@ -126,11 +126,11 @@ export default function HomePage({ onIntroComplete }) {
           <FadeCarousel slides={homeCarouselSlides} caption={false} testId="home-main-carousel" fadeDuration={850} interval={4700} transitionType="slide" fullHeight />
         </div>
 
-        <div className={`hero-content-shell relative z-10 mx-auto max-w-5xl ${heroLift ? "hero-content-lift" : ""} ${heroContentFading ? "hero-content-fade-out" : ""}`} data-testid="home-hero-content">
+        <div className={`hero-content-shell relative z-10 mx-auto max-w-5xl flex flex-col items-center -translate-y-8 sm:translate-y-0 ${heroLift ? "hero-content-lift" : ""} ${heroContentFading ? "hero-content-fade-out" : ""}`}>
           <HeroLogoCinematic />
 
           {showTitle && (
-            <h1 className="hero-signature-name mt-8" style={{ letterSpacing: mobile ? "0.06em" : "0.09em" }} data-testid="home-hero-heading">
+            <h1 className="hero-signature-name mt-4 sm:mt-8" style={{ letterSpacing: mobile ? "0.06em" : "0.09em" }} data-testid="home-hero-heading">
               {HERO_TITLE.split("").map((char, idx) => (
                 <span
                   key={`hero-signature-${idx}`}

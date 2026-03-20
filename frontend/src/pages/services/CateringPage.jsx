@@ -5,7 +5,7 @@ export default function CateringPage() {
   return (
     <div className="bg-ivory pb-20" data-testid="catering-service-page">
       <section className="relative" data-testid="catering-hero-section">
-        <div className="relative h-[70vh] min-h-[400px] w-full overflow-hidden">
+        <div className="relative h-screen w-full overflow-hidden">
           <img
             src={cateringService.slides[0]}
             alt="Curated Culinary Experiences"

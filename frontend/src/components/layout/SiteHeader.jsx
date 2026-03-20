@@ -106,7 +106,7 @@ export default function SiteHeader({ introComplete = true, isHome = false, nonSt
           </div>
 
           <Link to="/" className="header-brand-center hidden min-w-0 flex-nowrap items-center justify-center gap-[11px] lg:flex" data-testid="header-brand-link">
-            <img src={brandConfig.logo} alt="New Beginnings Events Logo" className="h-9 w-9 object-contain" loading="eager" data-testid="header-brand-logo" />
+            <img src={brandConfig.logo} alt="New Beginnings Events Logo" className="h-10 w-10 object-contain" loading="eager" data-testid="header-brand-logo" />
             <span className="header-brand-script signature-script whitespace-nowrap" data-testid="header-brand-name">
               New Beginnings Events
             </span>
@@ -124,7 +124,7 @@ export default function SiteHeader({ introComplete = true, isHome = false, nonSt
             </a>
           </div>
 
-          <div className="flex w-full items-center justify-between lg:hidden" data-testid="mobile-header-actions">
+          <div className="relative flex w-full items-center justify-between lg:hidden px-3" data-testid="mobile-header-actions">
             <button
               type="button"
               onClick={() => setMobileOpen(true)}
@@ -135,9 +135,9 @@ export default function SiteHeader({ introComplete = true, isHome = false, nonSt
               <Menu size={18} />
             </button>
 
-            <Link to="/" className="absolute left-1/2 flex -translate-x-1/2 items-center gap-[10px]" data-testid="mobile-header-center-brand">
+            <Link to="/" className="absolute left-1/2 top-1/2 flex -translate-x-1/2 -translate-y-1/2 items-center gap-1.5" data-testid="mobile-header-center-brand">
               <img src={brandConfig.logo} alt="NB Logo" className="h-8 w-8 object-contain" loading="eager" data-testid="mobile-header-brand-logo" />
-              <span className="header-brand-script-mobile signature-script whitespace-nowrap" data-testid="mobile-header-brand-name">
+              <span className="header-brand-script-mobile signature-script whitespace-nowrap text-[1px] tracking-[0.01em]" data-testid="mobile-header-brand-name">
                 New Beginnings Events
               </span>
             </Link>

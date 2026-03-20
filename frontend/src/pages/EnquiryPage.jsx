@@ -29,10 +29,10 @@ const initialForm = {
 };
 
 const inputBase =
-  "w-full border-0 border-b border-[#C6A75E]/50 bg-transparent px-0 py-2 text-sm text-[#3C0518] placeholder-[#C6A75E]/60 outline-none transition-colors focus:border-[#C6A75E] focus:ring-0";
+  "w-full border-0 border-b border-[#C6A75E]/50 bg-transparent px-0 py-2 text-sm text-[#F5EFE8] placeholder-[#C6A75E]/60 outline-none transition-colors focus:border-[#C6A75E] focus:ring-0";
 
 const selectBase =
-  "w-full appearance-none border-0 border-b border-[#C6A75E]/50 bg-transparent px-0 py-2 text-sm text-[#3C0518] outline-none transition-colors focus:border-[#C6A75E] focus:ring-0";
+  "w-full appearance-none border-0 border-b border-[#C6A75E]/50 bg-transparent px-0 py-2 text-sm text-inherit outline-none transition-colors focus:border-[#C6A75E] focus:ring-0";
 
 export default function EnquiryPage() {
   const [form, setForm] = useState(initialForm);
@@ -81,42 +81,43 @@ export default function EnquiryPage() {
   };
 
   return (
-    <div className="bg-[#f5efe8] pb-8 pt-16 sm:pb-12 sm:pt-20" data-testid="enquiry-page">
-      <div className="mx-auto w-full max-w-[1200px] px-2 sm:px-4" data-testid="enquiry-hero-wrapper">
-        {/* Card container with background image */}
-        <div
-          className="enquiry-card-bg relative flex items-center justify-center bg-no-repeat"
-          style={{
-            backgroundImage: isMobile
-              ? "url(/assets/enquiry-card-mobile.png)"
-              : "url(/assets/enquiry-card.png)",
-          }}
-          data-testid="enquiry-card-container"
-        >
-          <div className="flex w-full flex-col items-center justify-center">
+   <div className="bg-[#F5EFE8] min-h-screen flex flex-col justify-between pb-16 pt-16 sm:pb-20 sm:pt-20">
+    <div className="mx-auto w-full max-w-[1500px] px-6 sm:px-10">
+      <div className="relative mx-auto w-full max-w-[1100px]">
+        {/* ✨ SHIMMER / GLOW */}
+        <div className="absolute inset-0 rounded-2xl bg-[radial-gradient(circle_at_center,rgba(198,167,94,0.18),transparent_70%)] blur-2xl"></div>
+        {/* 🟥 CARD (DO NOT CLOSE HERE) */}
+        <div className="relative rounded-2xl border border-[#C6A75E]/40 bg-[#3C0518] p-16 shadow-2xl card-entry">
+          <div className="absolute left-6 top-6 h-8 w-8 border-l border-t border-[#C6A75E]/50"></div>
+          <div className="absolute right-6 top-6 h-8 w-8 border-r border-t border-[#C6A75E]/50"></div>
+          <div className="absolute left-6 bottom-6 h-8 w-8 border-l border-b border-[#C6A75E]/50"></div>
+          <div className="absolute right-6 bottom-6 h-8 w-8 border-r border-b border-[#C6A75E]/50"></div>
+          <div className="flex w-full flex-col items-center justify-center"></div>
             {!submitted ? (
               <>
+              <div className="w-full flex justify-center mb-3 fade-up delay-1">
                 <img
                   src={brandConfig.logo}
                   alt="New Beginnings Events"
-                  className="h-10 w-10 object-contain sm:h-14 sm:w-14"
+                  className="logo-animate h-10 w-10 object-contain sm:h-14 sm:w-14"
                   loading="eager"
                   data-testid="enquiry-logo"
                 />
+                </div>
                 <h1
-                  className="serif-display mt-2 text-center text-lg text-[#C6A75E] sm:mt-3 sm:text-xl md:text-2xl lg:text-3xl"
+                  className="fade-up delay-2 serif-display mt-4 text-center text-xl tracking-[0.35em] text-[#C6A75E] md:text-2xl lg:text-3xl"
                   data-testid="enquiry-heading"
                 >
                   GET IN TOUCH WITH US
                 </h1>
 
                 <form
-                  className="mt-4 w-full max-w-full space-y-4 pl-1 sm:mt-5 sm:space-y-5 sm:pl-0 md:space-y-6"
+                  className="mt-6 w-full max-w-[1000px] space-y-6 fade-up"
                   onSubmit={handleSubmit}
                   data-testid="enquiry-form"
                 >
                   {/* Row 1: Name, Email, Phone */}
-                  <div className="grid grid-cols-1 gap-x-5 gap-y-3 sm:grid-cols-2 md:grid-cols-3 md:gap-x-8">
+                  <div className="grid grid-cols-1 gap-x-10 gap-y-6 sm:grid-cols-2 md:grid-cols-3 md:gap-x-8 delay-3">
                     <input
                       name="full_name"
                       value={form.full_name}
@@ -148,7 +149,7 @@ export default function EnquiryPage() {
                   </div>
 
                   {/* Row 2: Event Date, Location, Guest Count */}
-                  <div className="grid grid-cols-1 gap-x-5 gap-y-3 sm:grid-cols-2 md:grid-cols-3 md:gap-x-8">
+                  <div className="grid grid-cols-1 gap-x-10 gap-y-6 sm:grid-cols-2 md:grid-cols-3 md:gap-x-8 delay-4">
                     <input
                       name="event_date"
                       value={form.event_date}
@@ -179,17 +180,21 @@ export default function EnquiryPage() {
                   </div>
 
                   {/* Row 3: Event Type, Referral Source */}
-                  <div className="grid grid-cols-1 gap-x-5 gap-y-3 sm:grid-cols-2 md:gap-x-8">
+                  <div className="grid grid-cols-1 gap-x-10 gap-y-6 sm:grid-cols-2 md:gap-x-8 delay-5">
                     <div className="relative">
                       <select
                         name="event_type"
                         value={form.event_type}
                         onChange={updateField}
                         required
-                        className={`${selectBase} ${!form.event_type ? "text-[#C6A75E]/60" : ""}`}
+                        className={`${selectBase} ${
+  form.event_type === ""
+    ? "!text-[#C6A75E]/60"
+    : "!text-[#F5EFE8]"
+}`}
                         data-testid="enquiry-event-type-select"
                       >
-                        <option value="" disabled>Event Type</option>
+                        <option value="">Event Type</option>
                         <option value="Wedding">Wedding</option>
                         <option value="Corporate Event">Corporate Event</option>
                         <option value="Catering">Catering</option>
@@ -204,10 +209,14 @@ export default function EnquiryPage() {
                         value={form.referral_source}
                         onChange={updateField}
                         required
-                        className={`${selectBase} ${!form.referral_source ? "text-[#C6A75E]/60" : ""}`}
+                        className={`${selectBase} ${
+  form.referral_source === ""
+    ? "!text-[#C6A75E]/60"
+    : "!text-[#F5EFE8]"
+}`}
                         data-testid="enquiry-referral-select"
                       >
-                        <option value="" disabled>How did you hear about us?</option>
+                        <option value="">How did you hear about us?</option>
                         <option value="Instagram">Instagram</option>
                         <option value="Youtube">Youtube</option>
                         <option value="Google">Google</option>
@@ -219,7 +228,7 @@ export default function EnquiryPage() {
                   </div>
 
                   {/* Row 4: Vision */}
-                  <div>
+                  <div className="fade-up delay-6">
                     <textarea
                       name="vision"
                       value={form.vision}
@@ -243,7 +252,7 @@ export default function EnquiryPage() {
                     <button
                       type="submit"
                       disabled={submitting}
-                      className="border border-[#C6A75E] bg-transparent px-6 py-2 text-[10px] uppercase tracking-[0.2em] text-[#C6A75E] transition-colors duration-300 hover:bg-[#C6A75E] hover:text-[#3C0518] disabled:opacity-50 sm:px-8 sm:py-2.5 sm:text-xs"
+                      className="mt-8 border border-[#C6A75E] bg-transparent px-10 py-3 text-sm uppercase tracking-[0.35em] text-[#C6A75E] transition-all duration-300 hover:bg-[#C6A75E] hover:text-[#3C0518] disabled:opacity-50"
                       data-testid="enquiry-submit-button"
                     >
                       {submitting ? "Submitting..." : "Begin Your Celebration"}
@@ -259,11 +268,11 @@ export default function EnquiryPage() {
                   className="mx-auto h-12 w-12 object-contain sm:h-16 sm:w-16"
                   loading="eager"
                 />
-                <p className="serif-display mt-4 text-2xl text-[#3C0518] sm:text-3xl" data-testid="enquiry-success-title">
+                <p className="serif-display mt-4 text-2xl text-[#F5EFE8] opacity-80 sm:text-3xl" data-testid="enquiry-success-title">
                   Thank you.
                 </p>
-                <p className="mt-3 text-sm text-[#50332F]" data-testid="enquiry-success-text">
-                  Our team will reach out shortly.
+                <p className="serif-display mt-4 text-2xl text-sm text-[#F5EFE8] opacity-80 sm:text-2xl">
+                  Our team will reach out shortly to curate your day.
                 </p>
               </div>
             )}
